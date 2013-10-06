@@ -2,9 +2,12 @@ package com.Grateds.Reversi.MODEL;
 
 public class Board implements Model{
 	
+	private final int COL=8;
+	private final int ROW=8;
+	private int[][] board;
 	
 	public void initialization() {
-		
+		board = new int[ROW][COL];  
 	}
 	
 	public boolean valid_move(int x, int y){
