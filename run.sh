@@ -10,4 +10,4 @@ for file in `ls target/dependency`; do export CLASSPATH=$CLASSPATH:target/depend
 export CLASSPATH=$CLASSPATH:target/classes
 
 echo "*******************  EXECUTING PROGRAM******************************************"
-java -cp $CLASSPATH -Dactivejdbc.log com.Grateds.Reversi
+java -cp $CLASSPATH com.Grateds.Reversi.App
