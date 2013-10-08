@@ -18,7 +18,7 @@ public class Cell implements Model {
 		return value;
 	}// end get value
 	
-	public void is_settable(boolean val) {
-		settable = val;
+	public boolean is_settable() {
+		return settable;
 	}// end is_settable
 }
