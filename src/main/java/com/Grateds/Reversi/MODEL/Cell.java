@@ -21,4 +21,4 @@ public class Cell implements Model {
 	public void is_settable(boolean val) {
 		settable = val;
 	}// end is_settable
-} 
+}
