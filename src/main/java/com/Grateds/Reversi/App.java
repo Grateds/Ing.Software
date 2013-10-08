@@ -4,6 +4,6 @@ import com.Grateds.Reversi.CONTROLLER.*;
 
 public class App {
     public static void main( String[] args ){
-    	int [][] ventas = new int[8][8];  
+    	 System.out.println( "It's OK" );
     }
 }
