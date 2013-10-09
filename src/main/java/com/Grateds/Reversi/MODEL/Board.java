@@ -6,10 +6,10 @@ public class Board implements Model{
 	public static final int sBOARD_SIZE = 8;
 	
 	/** piece represents black */
-	public static final int sBLACK_PIECE = 1;
+	public static final int sBLACK_PIECE = 2;
 	
 	/** piece represents white */
-	public static final int sWHITE_PIECE = 2;
+	public static final int sWHITE_PIECE = 1;
 	
 	private final int COL=8; // num of columns
 	private final int ROW=8; // num of rows
