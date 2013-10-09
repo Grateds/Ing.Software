@@ -27,6 +27,8 @@ public class Board implements Model{
 		board[4][3].set_value(2);
 		board[3][4].set_value(2);
 		n_cell = 4;
+		mBlackScore = 2;
+		mWhiteScore = 2;
 	} // end constructor
 	
 	public void initialization() {
@@ -71,6 +73,8 @@ public class Board implements Model{
 		board[4][3].set_value(2);
 		board[3][4].set_value(2);
 		n_cell = 4;
+		mBlackScore = 2;
+		mWhiteScore = 2;
 	} // end reset_game
 		
 	public void start_game(){
