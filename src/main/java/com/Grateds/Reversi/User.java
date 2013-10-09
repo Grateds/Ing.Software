@@ -3,7 +3,6 @@ package com.Grateds.Reversi;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import java.util.UUID;
 import java.util.Vector;
 
