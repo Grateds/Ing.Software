@@ -36,7 +36,6 @@ public class User {
 		try{
 			usersFile = new FileWriter("src/main/java/com/Grateds/Reversi/users.txt",true);
 			pw = new PrintWriter(usersFile);
-			pw.println("*");
 			pw.print(usr.id+" ");
 			pw.print(usr.Name+" ");
 			pw.println(usr.Score);
