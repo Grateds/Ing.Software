@@ -13,7 +13,7 @@ public class Cell implements Model {
 	public void initialization() {
 		value = 0;
 		settable = true; // default
-	}
+	} // end initialization
 	
 	public void set_value(int new_value) {
 		value = new_value;
