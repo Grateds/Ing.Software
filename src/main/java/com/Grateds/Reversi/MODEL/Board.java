@@ -2,6 +2,15 @@ package com.Grateds.Reversi.MODEL;
 
 public class Board implements Model{
 	
+	/** number of rows */
+	public static final int sBOARD_SIZE = 8;
+	
+	/** piece represents black */
+	public static final int sBLACK_PIECE = 1;
+	
+	/** piece represents white */
+	public static final int sWHITE_PIECE = 2;
+	
 	private final int COL=8; // num of columns
 	private final int ROW=8; // num of rows
 	private Cell[][] board = null;  //board of cells
