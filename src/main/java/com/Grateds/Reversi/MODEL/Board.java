@@ -82,8 +82,7 @@ public class Board implements Model{
 		int mBlackScore = 0;
 		int mWhiteScore = 0;
 		for (int i = 0; i < sBOARD_SIZE; ++i)
-			for (int j = 0; j < sBOARD_SIZE; ++j)
-			{
+			for (int j = 0; j < sBOARD_SIZE; ++j){
 				if (board[i][j].get_value() == sBLACK_PIECE)
 					++mBlackScore;
 				else if (board[i][j].get_value() == sWHITE_PIECE)
