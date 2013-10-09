@@ -2,18 +2,21 @@ package com.Grateds.Reversi.MODEL;
 
 public class Board implements Model{
 	
-	/** number of rows */
-	public static final int sBOARD_SIZE = 8;
+	public static final int sBOARD_SIZE = 8; // number of rows 
 	
-	/** piece represents white */
-	public static final int sWHITE_PIECE = 1;
+	public static final int sBLACK_PIECE = 2; // piece represents black 
 	
-	/** piece represents black */
-	public static final int sBLACK_PIECE = 2;
-
+	public static final int sWHITE_PIECE = 1; // piece represents white 
+	
+	public static final int sEMPTY_PIECE = 0; // empty piece 
+	
+	private int mBlackScore; // score of black piece
+	
+	private int mWhiteScore; // score of white piece 
+	
 	private final int COL=8; // num of columns
 	private final int ROW=8; // num of rows
-	private Cell[][] board = null;  //board of cells
+	private Cell[][] board = null; // board of cells
 	private int n_cell=0;  // num of busy cells
 	
 	public Board(){
@@ -33,7 +36,7 @@ public class Board implements Model{
 			}
 		}
 	} // end initialization
-	
+
 	public void set(int x, int y, int value){
 		board[x][y].set_value(value);
 		n_cell++;
@@ -63,7 +66,7 @@ public class Board implements Model{
 	public void reset_game() {
 		// reset board
 		initialization();
-	        board[3][3].set_value(1);
+	    board[3][3].set_value(1);
 		board[4][4].set_value(1);
 		board[4][3].set_value(2);
 		board[3][4].set_value(2);
@@ -73,7 +76,6 @@ public class Board implements Model{
 	public void start_game(){
 		// new game 
 		reset_game();
-		
 	} // end start_game
 	
 	public void calScore() {
@@ -87,5 +89,15 @@ public class Board implements Model{
 				else if (board[i][j].get_value() == sWHITE_PIECE)
 					++mWhiteScore;
 			}
-	} // end calScore
+	} // end calScore	
+	
+	public int getWhiteScore() {
+    	// Get white's score
+    	return mWhiteScore;
+    } // end getWhiteScore
+       
+    public int getBlackScore() {
+    	// Get black's score
+    	return mBlackScore;
+    } // end getBlackScore
 }
