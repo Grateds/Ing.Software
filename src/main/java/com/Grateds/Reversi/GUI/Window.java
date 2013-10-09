@@ -71,10 +71,7 @@ public class Window extends javax.swing.JPanel implements MouseListener {
 	/** board row texts */
 	private static final String[] sBOARD_ROW_TEXT = {"1", "2", "3", "4", "5", "6", "7", "8"};
 	
-	/***********************************/
-	/* END CONSTANTS FOR DRAWING BOARD */
-	/***********************************/
-	
+
 	/** image of black piece */
 	public static BufferedImage mBlackPieceImg = null;
 	
