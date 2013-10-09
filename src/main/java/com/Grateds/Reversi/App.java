@@ -8,5 +8,9 @@ public class App {
     	 User u = new User();
     	 u.create("Antoni45", 456123);
     	 u.create("El_pabo", 45123749);
+    	 
+    	 Board b = new Board();
+    	 System.out.println(b.getBlackScore());
+    	 System.out.println(b.getWhiteScore());
     }
 }
