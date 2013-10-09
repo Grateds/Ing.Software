@@ -76,7 +76,6 @@ public class Board implements Model{
 		
 	} // end start_game
 	
-	
 	public void calScore() {
 		// Calculate score 
 		int mBlackScore = 0;
