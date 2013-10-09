@@ -26,19 +26,28 @@ public class Board implements Model{
 	} // end initialization
 	
 	public void set(int x, int y, int value){
-		board[y][x].set_value(value);
+		board[x][y].set_value(value);
 		n_cell++;
 	} // end set
 	
 	public int get(int x, int y){
-		return board[y][x].get_value();
+		return board[x][y].get_value();
 	} // end get
 	
 	public boolean valid_move(int x, int y){
-		return board[y][x].is_settable();
+		return board[x][y].is_settable();
 	} // end valid_move
 	
 	public boolean is_complete(){
 		return n_cell==ROW*COL;
 	} // end is_complete
+	
+	public void draw() {
+		for(int i=0; i<COL; i++){
+			for(int j=0; j<ROW; j++){
+				System.out.print(board[i][j].get_value()+" ");
+			}
+			System.out.println();
+		}
+	} // end draw
 }
