@@ -63,7 +63,7 @@ public class Board implements Model{
 	public void reset_game() {
 		// reset board
 		initialization();
-	    board[3][3].set_value(1);
+	        board[3][3].set_value(1);
 		board[4][4].set_value(1);
 		board[4][3].set_value(2);
 		board[3][4].set_value(2);
@@ -71,6 +71,8 @@ public class Board implements Model{
 	} // end reset_game
 		
 	public void start_game(){
+		// new game 
 		reset_game();
+		
 	} // end start_game
 }
