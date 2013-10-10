@@ -1,7 +1,6 @@
 package com.Grateds.Reversi;
 
 import com.Grateds.Reversi.CONTROLLER.*;
-import com.Grateds.Reversi.MODEL.Board;
 
 public class App {
     public static void main( String[] args ){
@@ -9,9 +8,7 @@ public class App {
     	 User u = new User();
     	 u.create("Antoni45", 456123);
     	 u.create("El_pabo", 45123749);
-    	 
-    	 Board b = new Board();
-    	 System.out.println(b.getBlackScore());
-    	 System.out.println(b.getWhiteScore());
+    	 Controller controller = new Controller();
+    	 controller.start_game();		
     }
 }

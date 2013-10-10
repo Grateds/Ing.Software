@@ -2,17 +2,11 @@ package com.Grateds.Reversi.MODEL;
 
 public class Board implements Model{
 	
-	public static final int sBOARD_SIZE = 8; // number of rows 
+	public static final int BLACK_PIECE = 2; // represents black piece
+	public static final int WHITE_PIECE = 1; // represents white piece
 	
-	public static final int sBLACK_PIECE = 2; // piece represents black 
-	
-	public static final int sWHITE_PIECE = 1; // piece represents white 
-	
-	public static final int sEMPTY_PIECE = 0; // empty piece 
-	
-	private int mBlackScore; // score of black piece
-	
-	private int mWhiteScore; // score of white piece 
+	private int BLACK_SCORE; // score of black piece
+	private int WHITE_SCORE; // score of white piece 
 	
 	private final int COL=8; // num of columns
 	private final int ROW=8; // num of rows
@@ -22,13 +16,6 @@ public class Board implements Model{
 	public Board(){
 		board = new Cell[ROW][COL];
 		initialization();
-		board[3][3].set_value(1);
-		board[4][4].set_value(1);
-		board[4][3].set_value(2);
-		board[3][4].set_value(2);
-		n_cell = 4;
-		mBlackScore = 2;
-		mWhiteScore = 2;
 	} // end constructor
 	
 	public void initialization() {
@@ -37,10 +24,19 @@ public class Board implements Model{
 				board[i][j]= new Cell();
 			}
 		}
+		board[3][3].set_value(WHITE_PIECE);
+		board[4][4].set_value(WHITE_PIECE);
+		board[4][3].set_value(BLACK_PIECE);
+		board[3][4].set_value(BLACK_PIECE);
+		n_cell = 4;
+		BLACK_SCORE = 2;
+		WHITE_SCORE = 2;
 	} // end initialization
 
 	public void set(int x, int y, int value){
 		board[x][y].set_value(value);
+		if (value == WHITE_PIECE) ++WHITE_SCORE;
+		else ++BLACK_SCORE;
 		n_cell++;
 	} // end set
 	
@@ -64,44 +60,14 @@ public class Board implements Model{
 			System.out.println();
 		}
 	} // end draw
-	
-	public void reset_game() {
-		// reset board
-		initialization();
-	    board[3][3].set_value(1);
-		board[4][4].set_value(1);
-		board[4][3].set_value(2);
-		board[3][4].set_value(2);
-		n_cell = 4;
-		mBlackScore = 2;
-		mWhiteScore = 2;
-	} // end reset_game
 		
-	public void start_game(){
-		// new game 
-		reset_game();
-	} // end start_game
-	
-	public void calScore() {
-		// Calculate score 
-		int mBlackScore = 0;
-		int mWhiteScore = 0;
-		for (int i = 0; i < sBOARD_SIZE; ++i)
-			for (int j = 0; j < sBOARD_SIZE; ++j){
-				if (board[i][j].get_value() == sBLACK_PIECE)
-					++mBlackScore;
-				else if (board[i][j].get_value() == sWHITE_PIECE)
-					++mWhiteScore;
-			}
-	} // end calScore	
-	
 	public int getWhiteScore() {
     	// Get white's score
-    	return mWhiteScore;
+    	return WHITE_SCORE;
     } // end getWhiteScore
        
     public int getBlackScore() {
     	// Get black's score
-    	return mBlackScore;
+    	return BLACK_SCORE;
     } // end getBlackScore
 }
