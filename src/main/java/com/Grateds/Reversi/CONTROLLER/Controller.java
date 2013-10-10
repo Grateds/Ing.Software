@@ -35,11 +35,13 @@ public class Controller {
 		else table.set(x, y, 2);
 	} // end set_piece
 	
-	public Vector<Integer> get_score() {
-		Vector<Integer> v = new Vector<Integer>();
-		v.add(table.getBlackScore());
-		v.add(table.getWhiteScore());
-		return v;		
-	} // end calScore	
-
+	public int getWhiteScore() {
+    	// Get white's score
+    	return table.get_score().elementAt(1);
+    } // end getWhiteScore
+       
+    public int getBlackScore() {
+    	// Get black's score
+    	return table.get_score().elementAt(0);
+    } // end getBlackScore
 }
