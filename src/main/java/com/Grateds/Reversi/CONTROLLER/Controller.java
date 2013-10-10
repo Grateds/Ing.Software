@@ -12,7 +12,7 @@ public class Controller {
 	
 	public Controller(){
 		table = new Board();
-	}
+	} // end constructor
 	
 	public void initialization(){
 		

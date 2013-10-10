@@ -4,8 +4,8 @@ import java.util.Vector;
 
 public class Board implements Model{
 	
-	public static final int BLACK_PIECE = 2; // represents black piece
-	public static final int WHITE_PIECE = 1; // represents white piece
+	private final int BLACK_PIECE = 2; // represents black piece
+	private final int WHITE_PIECE = 1; // represents white piece
 	
 	private int BLACK_SCORE; // score of black piece
 	private int WHITE_SCORE; // score of white piece 
