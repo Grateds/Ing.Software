@@ -1,5 +1,7 @@
 package com.Grateds.Reversi.MODEL;
 
+import java.util.Vector;
+
 public class Board implements Model{
 	
 	public static final int BLACK_PIECE = 2; // represents black piece
@@ -61,13 +63,10 @@ public class Board implements Model{
 		}
 	} // end draw
 		
-	public int getWhiteScore() {
-    	// Get white's score
-    	return WHITE_SCORE;
-    } // end getWhiteScore
-       
-    public int getBlackScore() {
-    	// Get black's score
-    	return BLACK_SCORE;
-    } // end getBlackScore
+	public Vector<Integer> get_score() {
+		Vector<Integer> v = new Vector<Integer>();
+		v.add(BLACK_SCORE);
+		v.add(WHITE_SCORE);
+		return v;		
+	} // end calScore	
 }
