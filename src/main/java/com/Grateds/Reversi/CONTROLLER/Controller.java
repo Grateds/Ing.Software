@@ -5,10 +5,13 @@ import java.util.Vector;
 import com.Grateds.Reversi.GUI.*;
 import com.Grateds.Reversi.MODEL.*;
 import com.Grateds.Reversi.AI.*;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Controller {
+public class Controller implements Observer {
 	
 	private Board table;
+        private Window main_window;
 	
 	public Controller(){
 		table = new Board();
@@ -36,12 +39,16 @@ public class Controller {
 	} // end set_piece
 	
 	public int getWhiteScore() {
-    	// Get white's score
-    	return table.get_score().elementAt(1);
-    } // end getWhiteScore
-       
-    public int getBlackScore() {
-    	// Get black's score
-    	return table.get_score().elementAt(0);
-    } // end getBlackScore
+		// Get white's score
+		return table.get_score().elementAt(1);
+	}// end getWhiteScore
+
+	public int getBlackScore() {
+		// Get black's score
+		return table.get_score().elementAt(0);
+	} // end getBlackScore
+
+	public void update(Observable o, Object o1) {
+
+	}
 }
