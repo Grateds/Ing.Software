@@ -19,8 +19,8 @@ public class App {
     	 
     	Board b = new Board();
     	SaveAndLoad save = new SaveAndLoad();
-    	save.saveBoard(b);
-    	 
+    	//save.saveBoard(b);
+    	//save.loadBoard();
    }
 }
 
