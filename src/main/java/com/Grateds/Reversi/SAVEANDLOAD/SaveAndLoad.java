@@ -1,10 +1,15 @@
 package com.Grateds.Reversi.SAVEANDLOAD;
+
 import com.Grateds.Reversi.MODEL.Board;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.File;
 import java.io.*;
 
 public class SaveAndLoad {
 
-    public void saveBoard(Board b){
+	public void saveBoard(Board b){
        	FileWriter fichero = null;
         PrintWriter pw = null;
         try{
@@ -19,7 +24,7 @@ public class SaveAndLoad {
 			pw.println("");
             } catch (Exception e) {
                 e.printStackTrace();
-            }finally{
+            } finally{
                try{
             	   if (null != fichero) // I make sure to close the file
             		   fichero.close();
@@ -27,35 +32,27 @@ public class SaveAndLoad {
                   e2.printStackTrace();
                }
             }
-     } // end saveBoard
-    
-    public void loadBoard(){
-    	File archivo = null;
-    	FileReader fr = null;
-    	BufferedReader br = null;
-    	try {
-    		 // Open the file and creating BufferedReader to
-    		 // make a comfortable reading (dispose of the method readLine ()).
-    		 archivo = new File ("src/main/java/com/Grateds/Reversi/savedBoard.txt");
-    		 fr = new FileReader (archivo);
-    		 br = new BufferedReader(fr);
-    		 // reading file
-    		 String linea;
-    		 while((linea=br.readLine())!=null)
-    			 System.out.println(linea);
-    		 }
-    		 catch(Exception e){
-    		        e.printStackTrace();
-    		 }finally{
-    			 // In finally close the file, to make sure is closed if all goes well both as if an exception occurs
-    		     try{                    
-    		         if (null != fr ){
-    		        	 fr.close();
-    		          }                       
-    		      }catch (Exception e2){ 
-    		           e2.printStackTrace();
-    		      }
-    		 }	 
-    }// end loadBoard
+    } // end saveBoard
 	
-} 
+    public void loadBoard(){
+    	    ArrayList<Integer> num = new ArrayList<Integer>();	
+            //Board b = null;
+            File f = new File("src/main/java/com/Grateds/Reversi/savedBoard.txt");
+            int numero;
+            Scanner entrada = null;  
+            try {
+                entrada = new Scanner(f);
+                while (entrada.hasNextInt()) {
+                	numero = entrada.nextInt();
+                	num.add(numero);
+                	System.out.print(numero);	 
+                } // end while
+            }catch (FileNotFoundException e) {
+                System.out.println(e.getMessage());
+            }finally{
+                entrada.close();
+            } 
+            // developing ... Passing ArrayList to the board 
+    } //end loadBoard  
+	
+}
