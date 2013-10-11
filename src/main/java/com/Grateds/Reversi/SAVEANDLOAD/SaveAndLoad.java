@@ -55,7 +55,7 @@ public class SaveAndLoad {
     		      }catch (Exception e2){ 
     		           e2.printStackTrace();
     		      }
-    		 }	
+    		 }	 
     }// end loadBoard
 	
 } 
