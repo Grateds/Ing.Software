@@ -1,7 +1,5 @@
 package com.Grateds.Reversi.CONTROLLER;
 
-import java.util.Vector;
-
 import com.Grateds.Reversi.GUI.*;
 import com.Grateds.Reversi.MODEL.*;
 import com.Grateds.Reversi.AI.*;
@@ -11,7 +9,7 @@ import java.util.Observer;
 public class Controller implements Observer {
 	
 	private Board table;
-        private Window main_window;
+    private Window main_window;
 	
 	public Controller(){
 		table = new Board();
