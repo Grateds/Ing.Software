@@ -8,7 +8,7 @@ public class SaveAndLoad {
        	FileWriter fichero = null;
         PrintWriter pw = null;
         try{
-            fichero = new FileWriter("src/main/java/com/Grateds/Reversi/savedBoard.txt",true);
+            fichero = new FileWriter("src/main/java/com/Grateds/Reversi/savedBoard.txt");
             pw = new PrintWriter(fichero);                   						
             for (int i = 0; i < 8; i++){
             	for (int j = 0; j < 8; j++){
