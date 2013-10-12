@@ -21,7 +21,6 @@ public class SaveAndLoad {
                 }
                 pw.println("");
 			}
-			pw.println("");
             } catch (Exception e) {
                 e.printStackTrace();
             } finally{
@@ -34,25 +33,31 @@ public class SaveAndLoad {
             }
     } // end saveBoard
 	
-    public void loadBoard(){
-    	    ArrayList<Integer> num = new ArrayList<Integer>();	
-            //Board b = null;
-            File f = new File("src/main/java/com/Grateds/Reversi/savedBoard.txt");
-            int numero;
-            Scanner entrada = null;  
-            try {
-                entrada = new Scanner(f);
-                while (entrada.hasNextInt()) {
-                	numero = entrada.nextInt();
-                	num.add(numero);
-                	System.out.print(numero);	 
-                } // end while
-            }catch (FileNotFoundException e) {
-                System.out.println(e.getMessage());
-            }finally{
-                entrada.close();
+    public Board loadBoard(){
+    	ArrayList<Integer> numArray = new ArrayList<Integer>();	
+    	Board b = new Board();
+    	
+        File f = new File("src/main/java/com/Grateds/Reversi/savedBoard.txt");
+        int numero;
+        Scanner entrada = null;  
+        try {
+             entrada = new Scanner(f);
+             while (entrada.hasNextInt()) {
+            	 numero = entrada.nextInt();
+                 numArray.add(numero);	 
+             } // end while
+        }catch (FileNotFoundException e) {
+             System.out.println(e.getMessage());
+        }finally{
+             entrada.close();
+        } 
+        int index = 0;
+        for (int i = 0; i < 8; i++){
+        	for (int j = 0; j < 8; j++){
+            	b.set(i, j, numArray.get(index++));
             } 
-            // developing ... Passing ArrayList to the board 
+        }
+        return b;
     } //end loadBoard  
 	
 }
