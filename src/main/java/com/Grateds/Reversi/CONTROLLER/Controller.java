@@ -1,5 +1,6 @@
 package com.Grateds.Reversi.CONTROLLER;
 
+import com.Grateds.Reversi.SAVEANDLOAD.*;
 import com.Grateds.Reversi.GUI.*;
 import com.Grateds.Reversi.MODEL.*;
 import com.Grateds.Reversi.AI.*;
@@ -10,6 +11,7 @@ public class Controller implements Observer {
 	
 	private Board table;
     private Window main_window;
+    private SaveAndLoad save;
 	
 	public Controller(){
 		table = new Board();
@@ -47,6 +49,13 @@ public class Controller implements Observer {
 	} // end getBlackScore
 
 	public void update(Observable o, Object o1) {
-
 	}
+	
+	public void saveBoard(){	
+		save.saveBoard(table);
+	} // end saveBoard
+	
+	public Board loadBoard(){
+		return save.loadBoard();
+	} // end loadBoard
 }
