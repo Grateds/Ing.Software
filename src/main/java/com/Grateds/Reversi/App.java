@@ -13,19 +13,25 @@ public class App {
     	 Controller controller = new Controller();
     	 controller.start_game();	
     	 controller.set_piece(1, 1, "WHITE");
-    	 //System.out.println("Score BLACK PIECES = "+controller.getBlackScore());
-    	 //System.out.println("Score WHITE PIECES = "+controller.getWhiteScore());   
+    	 System.out.println("Score BLACK PIECES = "+controller.getBlackScore());
+    	 System.out.println("Score WHITE PIECES = "+controller.getWhiteScore());   
     	 
-    	 Board b = new Board();
-    	 SaveAndLoad save = new SaveAndLoad();
-    	 b.set(3, 3, 0);
-    	 b.set(4, 3, 0);
-    	 b.set(3, 4, 0);
-    	 save.saveBoard(b);
-    	 b = save.loadBoard();
-    	 b.draw();	 	 
+    	 /**
+    	  * Writing and Reading test board
+    	  * 
+    	  * Board b = new Board();
+    	  * SaveAndLoad save = new SaveAndLoad();
+    	  *	b.set(3, 3, 0);
+    	  *	b.set(4, 3, 0);
+    	  *	b.set(3, 4, 0);
+    	  *	save.saveBoard(b);
+    	  *	b = save.loadBoard();
+    	  *	b.draw(); 
+    	  *
+    	  **/ 
    }
 }
+
 
 
 
