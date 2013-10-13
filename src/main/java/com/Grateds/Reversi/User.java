@@ -24,7 +24,7 @@ public class User {
 		Name = new_name;
 		Score = new_score;
 		id = generateUniqueId();
-		writeToFile(this,true);
+		writeToFile(this);
 	} // end delete
 	
 	public void delete(Integer id){
@@ -73,11 +73,11 @@ public class User {
 	} // end fileToVector
 	
 	
-	private void writeToFile(User usr, boolean value){
+	private void writeToFile(User usr){
 		FileWriter usersFile = null;
 		PrintWriter pw = null;
 		try{
-			usersFile = new FileWriter("src/main/java/com/Grateds/Reversi/users.txt",value);
+			usersFile = new FileWriter("src/main/java/com/Grateds/Reversi/users.txt");
 			pw = new PrintWriter(usersFile);
 			pw.print(usr.id+" ");
 			pw.print(usr.Name+" ");
