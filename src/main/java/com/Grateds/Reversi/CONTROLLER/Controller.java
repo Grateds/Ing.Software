@@ -10,7 +10,7 @@ import java.util.Observer;
 public class Controller implements Observer {
 	
 	private Board table;
-    private MainWindow main_window;
+    //private MainWindow main_window;
     private SaveAndLoad save;
 	
 	public Controller(){
