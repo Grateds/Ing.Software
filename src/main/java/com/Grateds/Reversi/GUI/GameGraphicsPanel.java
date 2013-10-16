@@ -94,10 +94,10 @@ public class GameGraphicsPanel extends JPanel implements MouseListener{
         int x=me.getX();
         int y=me.getY();
         //System.out.println("click in pos " + (x)+ " y " + (y) );
-        int row = (x/sizeRect+1);
-        int col = (y/sizeRect+1);
+        int col = (x/sizeRect+1);
+        int row = (y/sizeRect+1);
         makeMoveIn(col, row);
-        System.out.println("click in " + row + " y " + col);
+        System.out.println("click in " + col + " y " + row);
         //makeMoveIn(col,row);
         //must send the move to the model
     }
