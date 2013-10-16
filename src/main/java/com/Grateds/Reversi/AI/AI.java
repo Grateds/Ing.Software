@@ -12,11 +12,8 @@ public class AI {
 	} // end constructor
 	
 	 //Check whether a move is valid
-	 //param board the board
-	 //param piece the piece need to check
-	 //param row row of the move
-	 //param col column of the move
-	 //return true if the move is valid, false otherwise
+	 //parameters: board the board-piece the piece need to check-row row of the move-col column of the move
+	 //return: true if the move is valid, false otherwise
 	 
 	public static boolean isValidMove(Board b, int piece, int row, int col) {
 		final int sEMPTY_PIECE = 0;
