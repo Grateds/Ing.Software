@@ -11,8 +11,9 @@ public class App {
     	 Controller controller = new Controller();
     	 controller.start_game();	
     	 controller.set_piece(1, 1, "WHITE");
+    	 controller.set_piece(2, 2, "BLACK");
     	 System.out.println("Score BLACK PIECES = "+controller.getBlackScore());
-    	 System.out.println("Score WHITE PIECES = "+controller.getWhiteScore());    	  
+    	 System.out.println("Score WHITE PIECES = "+controller.getWhiteScore());  
    }
 }
 

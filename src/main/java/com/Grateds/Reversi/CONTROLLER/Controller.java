@@ -10,11 +10,12 @@ import java.util.Observer;
 public class Controller implements Observer {
 	
 	private Board table;
-    //private MainWindow main_window;
+    private MainWindow Window;
     private SaveAndLoad save;
 	
 	public Controller(){
 		table = new Board();
+		Window = new MainWindow();
 	} // end constructor
 	
 	public void initialization(){
@@ -31,6 +32,7 @@ public class Controller implements Observer {
 		
 	public void start_game(){
 		table.initialization();
+		Window.drawBoard(table);
 	} // end start_game
 	
 	public void set_piece(int x, int y, String piece){

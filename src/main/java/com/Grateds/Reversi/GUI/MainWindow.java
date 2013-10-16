@@ -4,9 +4,9 @@
  */
 package com.Grateds.Reversi.GUI;
 
-import com.Grateds.Reversi.CONTROLLER.Controller;
+//import com.Grateds.Reversi.CONTROLLER.Controller; Comented for Vercryger
 import com.Grateds.Reversi.MODEL.Board;
-import javax.swing.UIManager;
+//import javax.swing.UIManager;                     Comented for Vercryger
 
 /**
  *
@@ -14,8 +14,12 @@ import javax.swing.UIManager;
  */
 public class MainWindow extends javax.swing.JFrame {
     
-    private GameMenu menuBar;
-    private Controller controller;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private GameMenu menuBar;
+  //  private Controller controller;
     /**
      * Creates new form MainWindow
      */
@@ -25,11 +29,12 @@ public class MainWindow extends javax.swing.JFrame {
         this.setJMenuBar(menuBar);
         initComponents();
         this.setResizable(false);
+        this.setVisible(true);        // Added line for Vercryger
     }
     
-    public void setController(Controller c){
-        controller = c;
-    }
+//    public void setController(Controller c){
+//        controller = c; 						Comented for Vercryger
+//    }
     public void drawBoard(Board board){
         gameGraphicsPanel1.setBoard(board);
     }
@@ -158,28 +163,28 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try{
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        }catch(Exception e) {}
-        //</editor-fold>
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainWindow().setVisible(true);
-            }
-        });
-    }
-    
+//    /**  Comented for Vercryger
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try{
+//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//        }catch(Exception e) {}
+//        //</editor-fold>
+//        
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new MainWindow().setVisible(true);
+//            }
+//        });
+//    }
+//    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.Grateds.Reversi.GUI.GameGraphicsPanel gameGraphicsPanel1;
     private com.Grateds.Reversi.GUI.gamePanel gamePanel1;
