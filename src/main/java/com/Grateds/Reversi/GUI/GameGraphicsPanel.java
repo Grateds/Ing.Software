@@ -32,7 +32,8 @@ public class GameGraphicsPanel extends JPanel implements MouseListener{
 
     private void loadImages() {
         try {
-            background = ImageIO.read(new File("img/blue01.jpg"));
+        																				
+            background = ImageIO.read(new File("img/blue012.jpg"));// Changed values for Vercryger
             blackPieceImg = ImageIO.read(new File("img/blackpiece.png"));
             whitePieceImg = ImageIO.read(new File("img/whitepiece.png"));
             System.out.println("Images load");
@@ -46,12 +47,13 @@ public class GameGraphicsPanel extends JPanel implements MouseListener{
         g.drawImage(background, WIDTH, WIDTH, this);
         g2d.setStroke(new BasicStroke(3));
         //Draw lines
-        for(int i= 1; i < 9; i++){
-            for(int j= 1; j < 9; j++){
-                g.setColor(Color.black);
-                g2d.drawRect(0, 0, i*sizeRect, j*sizeRect);
-            }
-        }
+        //Comented for Vercryger
+//        for(int i= 1; i < 9; i++){
+//            for(int j= 1; j < 9; j++){
+//                g.setColor(Color.black);
+//                g2d.drawRect(0, 0, i*sizeRect, j*sizeRect);
+//            }
+//        }
         //Draw the model
         if(b!=null){
             drawBoard(g,b);
@@ -94,6 +96,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener{
         //System.out.println("click in pos " + (x)+ " y " + (y) );
         int col = (x/sizeRect+1);
         int row = (y/sizeRect+1);
+        makeMoveIn(col, row);
         System.out.println("click in " + col + " y " + row);
         //makeMoveIn(col,row);
         //must send the move to the model
