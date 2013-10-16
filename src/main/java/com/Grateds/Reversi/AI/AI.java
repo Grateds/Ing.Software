@@ -19,8 +19,9 @@ public class AI {
 	 //return: true if the move is valid, false otherwise
 	 
 	public static boolean isValidMove(Board b, int piece, int row, int col) {
-		// check whether this square is empty
-		if (b.get(row, col) != sEMPTY_PIECE)
+		// pre: 1 <= piece <=2
+		// pos: true if the move is valid, false otherwise		
+		if (b.get(row, col) != sEMPTY_PIECE) // check whether this square is empty
 			return false;		
 		int oppPiece = (piece == sBLACK_PIECE) ? sWHITE_PIECE : sBLACK_PIECE;
 		boolean isValid = false;
@@ -47,6 +48,5 @@ public class AI {
 		}
 		return isValid;
 	} // end isValidMove
-	
-	
+		
 }
