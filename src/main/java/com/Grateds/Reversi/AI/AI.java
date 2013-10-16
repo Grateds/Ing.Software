@@ -7,6 +7,9 @@ public class AI {
 	
 	private static final int[] sOFFSET_MOVE_ROW = {-1, -1, -1,  0,  0,  1,  1,  1}; // move offset for row 
 	private static final int[] sOFFSET_MOVE_COL = {-1,  0,  1, -1,  1, -1,  0,  1}; // move offset for column
+	private static int sEMPTY_PIECE = 0;
+	private static int sBLACK_PIECE = 2;
+	private static int sWHITE_PIECE = 1;
 	
 	public AI(){
 	} // end constructor
@@ -16,9 +19,6 @@ public class AI {
 	 //return: true if the move is valid, false otherwise
 	 
 	public static boolean isValidMove(Board b, int piece, int row, int col) {
-		final int sEMPTY_PIECE = 0;
-		final int sBLACK_PIECE = 2;
-		final int sWHITE_PIECE = 1;
 		// check whether this square is empty
 		if (b.get(row, col) != sEMPTY_PIECE)
 			return false;		
