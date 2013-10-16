@@ -1,6 +1,8 @@
 package com.Grateds.Reversi;
 
+import com.Grateds.Reversi.AI.AI;
 import com.Grateds.Reversi.CONTROLLER.*;
+import com.Grateds.Reversi.MODEL.Board;
 
 public class App {
 
