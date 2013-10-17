@@ -16,6 +16,7 @@ public class Controller implements Observer {
 	public Controller(){
 		table = new Board();
 		Window = new MainWindow();
+		Window.setController(this);
 	} // end constructor
 	
 	public void initialization(){
@@ -27,7 +28,7 @@ public class Controller implements Observer {
 	} // end change_skin
 	
 	public void reset_game() {
-		start_game();
+		table.initialization();
 	} // end reset_game
 		
 	public void start_game(){
