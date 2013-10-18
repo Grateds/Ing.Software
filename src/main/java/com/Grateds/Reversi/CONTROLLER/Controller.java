@@ -15,8 +15,6 @@ public class Controller {
 	
 	public Controller(){
 		table = new Board();
-//		Window = new MainWindow();
-//		Window.setController(this);
 	} // end constructor
 	
 	public void initialization(){
@@ -54,6 +52,15 @@ public class Controller {
 		// Get black's score
 		return table.get_score().elementAt(0);
 	} // end getBlackScore
+	
+	public void drawBoard(){
+		for(int i=0; i<8; i++){
+			for(int j=0; j<8; j++){
+				System.out.print(table.get(i, j)+" ");
+			}
+			System.out.println("");
+		}
+	}
 	
 	public void saveBoard(){	
 		save.saveBoard(table);
