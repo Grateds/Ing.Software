@@ -10,8 +10,8 @@ public class AI {
 	
 	private static final int[] sOFFSET_MOVE_ROW = {-1, -1, -1,  0,  0,  1,  1,  1}; // move offset for row 
 	private static final int[] sOFFSET_MOVE_COL = {-1,  0,  1, -1,  1, -1,  0,  1}; // move offset for column	
-	public static final int sSUGGEST_BLACK_PIECE = 2; //susggest piece for black 
-	public static final int sSUGGEST_WHITE_PIECE = 1; //susggest piece for white 
+	public static final int sSUGGEST_BLACK_PIECE = 2; // susggest piece for black 
+	public static final int sSUGGEST_WHITE_PIECE = 1; // susggest piece for white 
 	private static int sEMPTY_PIECE = 0;
 	private static int sBLACK_PIECE = 2;
 	private static int sWHITE_PIECE = 1;
@@ -20,6 +20,10 @@ public class AI {
 	public AI(){
 		mMoveList = new Vector<String>(); // init move list
 	} // end constructor
+	
+	public Vector<String> getMoveList() {
+	    	return mMoveList;
+	} // end getMoveList
 	
 	 //Check whether a move is valid
 	 //parameters: board the board - piece: the piece need to check - row: row of the move - col: column of the move
@@ -78,3 +82,4 @@ public class AI {
 	} // end findValidMove
 	
 }
+
