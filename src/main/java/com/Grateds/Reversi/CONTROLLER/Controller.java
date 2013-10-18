@@ -30,8 +30,10 @@ public class Controller {
 	} // end reset_game
 		
 	public void start_game(){
+		// set state
 		table.initialization();
-//		Window.drawBoard(table);
+		//Window.drawBoard(table);
+		// get next move
 	} // end start_game
 	
 	public void set_piece(int x, int y, String piece){
