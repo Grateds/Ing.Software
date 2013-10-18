@@ -73,5 +73,3 @@ public interface Agent {
 		} // end compareTo
 	}
 }
-	
-	
