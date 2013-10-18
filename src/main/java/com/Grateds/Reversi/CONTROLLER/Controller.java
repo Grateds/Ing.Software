@@ -7,16 +7,16 @@ import com.Grateds.Reversi.AI.*;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Controller implements Observer {
+public class Controller {
 	
 	private Board table;
-    private MainWindow Window;
+//    private MainWindow Window;
     private SaveAndLoad save;
 	
 	public Controller(){
 		table = new Board();
-		Window = new MainWindow();
-		Window.setController(this);
+//		Window = new MainWindow();
+//		Window.setController(this);
 	} // end constructor
 	
 	public void initialization(){
@@ -33,13 +33,17 @@ public class Controller implements Observer {
 		
 	public void start_game(){
 		table.initialization();
-		Window.drawBoard(table);
+//		Window.drawBoard(table);
 	} // end start_game
 	
 	public void set_piece(int x, int y, String piece){
 		if (piece == "WHITE") table.set(x, y, 1);
 		else table.set(x, y, 2);
 	} // end set_piece
+	
+	public Board getBoard(){
+		return table;
+	}
 	
 	public int getWhiteScore() {
 		// Get white's score
@@ -50,9 +54,6 @@ public class Controller implements Observer {
 		// Get black's score
 		return table.get_score().elementAt(0);
 	} // end getBlackScore
-
-	public void update(Observable o, Object o1) {
-	}
 	
 	public void saveBoard(){	
 		save.saveBoard(table);
