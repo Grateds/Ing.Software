@@ -1,7 +1,8 @@
 package com.Grateds.Reversi.AI;
+
+import com.Grateds.Reversi.AI.Agent.MoveCoord;
 import com.Grateds.Reversi.CONTROLLER.*;
 import com.Grateds.Reversi.MODEL.Board;
-
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -17,13 +18,12 @@ public class AI {
 	private Vector<String> mMoveList;
 	
 	public AI(){
-		
+		mMoveList = new Vector<String>(); // init move list
 	} // end constructor
 	
 	 //Check whether a move is valid
 	 //parameters: board the board - piece: the piece need to check - row: row of the move - col: column of the move
-	 //return: true if the move is valid, false otherwise
-	 
+	 //return: true if the move is valid, false otherwise	 
 	public static boolean isValidMove(Board b, int piece, int row, int col) {
 		// pre: 1 <= piece <=2
 		// pos: true if the move is valid, false otherwise		
@@ -55,30 +55,26 @@ public class AI {
 		return isValid;
 	} // end isValidMove
 	
-	
-	
 	//Finds valid moves for specific piece -> Encuentra movimientos válidos para pieza específica
-	//parameters: board the board - piece the piece need to find move - isSuggest true to indicate suggested pieces on the board
-	 
-//	public static ArrayList<MoveCoord> findValidMove(Board b, int piece, boolean isSuggest) {
-//		// pre: 1 <= piece <=2
-//		//pos: return an array list of moves
-//		int suggestPiece = (piece == sBLACK_PIECE) ? sSUGGEST_BLACK_PIECE : sSUGGEST_WHITE_PIECE;
-//		ArrayList<MoveCoord> moveList = new ArrayList<MoveCoord>();
-//		for (int i = 0; i < 8; ++i)
-//			for (int j = 0; j < 8; ++j) {
-//				// clean the suggest piece before
-//				if (b.get(i,j) == sSUGGEST_BLACK_PIECE || b.get(i,j) == sSUGGEST_WHITE_PIECE)
-//					b.set(i,j,sEMPTY_PIECE);	
-//				if (isValidMove(b,piece, i, j)){	
-//					moveList.add(new MoveCoord(i, j));
-//					// if we want suggestion, mark on board
-//					if (isSuggest)
-//						b.set(i,j,suggestPiece);
-//				}
-//			}
-//		return moveList;
-//	} // end findValidMove
+	//parameters: board the board - piece the piece need to find move - isSuggest true to indicate suggested pieces on the board	 
+	public static ArrayList<MoveCoord> findValidMove(Board b, int piece, boolean isSuggest) {
+		// pre: 1 <= piece <=2
+		// pos: return an array list of moves
+		int suggestPiece = (piece == sBLACK_PIECE) ? sSUGGEST_BLACK_PIECE : sSUGGEST_WHITE_PIECE;
+		ArrayList<MoveCoord> moveList = new ArrayList<MoveCoord>();
+		for (int i = 0; i < 8; ++i)
+			for (int j = 0; j < 8; ++j) {
+				// clean the suggest piece before
+				if (b.get(i,j) == sSUGGEST_BLACK_PIECE || b.get(i,j) == sSUGGEST_WHITE_PIECE)
+					b.set(i,j,sEMPTY_PIECE);	
+				if (isValidMove(b,piece, i, j)){	
+					moveList.add(new MoveCoord(i, j));
+					// if we want suggestion, mark on board
+					if (isSuggest)
+						b.set(i,j,suggestPiece);
+				}
+			}
+		return moveList;
+	} // end findValidMove
 	
 }
-
