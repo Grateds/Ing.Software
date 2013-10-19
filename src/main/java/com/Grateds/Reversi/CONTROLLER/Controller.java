@@ -10,9 +10,9 @@ import java.util.Observer;
 public class Controller {
 	
 	private Board table;
-//    private MainWindow Window;
     private SaveAndLoad save;
-	
+	private AI solver;
+    
 	public Controller(){
 		table = new Board();
 	} // end constructor
@@ -31,17 +31,20 @@ public class Controller {
 		
 	public void start_game(){
 		table.initialization();
-//		Window.drawBoard(table);
 	} // end start_game
 	
-	public void set_piece(int x, int y, String piece){
-		if (piece == "WHITE") table.set(x, y, 1);
-		else table.set(x, y, 2);
+	public void set_piece(int x, int y, int piece){
+		 table.set(x, y, piece);
 	} // end set_piece
 	
-	public Board getBoard(){
-		return table;
+	public boolean isValidMove(Board b, int piece, int x, int y){
+		return solver.isValidMove(b, piece, x, y);
 	}
+	
+	public Board getBoard(){
+		// Get current table
+		return table;
+	} // end getBoard
 	
 	public int getWhiteScore() {
 		// Get white's score

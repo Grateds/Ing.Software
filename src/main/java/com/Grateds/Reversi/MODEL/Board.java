@@ -23,7 +23,7 @@ public class Board extends Observable{
 	public void initialization() {
 		for(int i=0; i<COL; i++){
 			for(int j=0; j<ROW; j++){
-				board[i][j]= new Cell();
+				board[j][i]= new Cell();
 			}
 		}
 		board[3][3].set_value(WHITE_PIECE);
@@ -57,7 +57,7 @@ public class Board extends Observable{
 	public void draw() {
 		for(int i=0; i<COL; i++){
 			for(int j=0; j<ROW; j++){
-				System.out.print(board[i][j].get_value()+" ");
+				System.out.print(board[j][i].get_value()+" ");
 			}
 			System.out.println();
 		}
