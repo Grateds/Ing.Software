@@ -3,6 +3,8 @@ package com.Grateds.Reversi.AI;
 import com.Grateds.Reversi.AI.Agent.MoveCoord;
 import com.Grateds.Reversi.CONTROLLER.*;
 import com.Grateds.Reversi.MODEL.Board;
+import com.Grateds.Reversi.MODEL.Cell;
+
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -16,9 +18,11 @@ public class AI {
 	private static int sBLACK_PIECE = 2;
 	private static int sWHITE_PIECE = 1;
 	private Vector<String> mMoveList;
+	private Agent mAIAgent; // AI agent 
 	
 	public AI(){
 		mMoveList = new Vector<String>(); // init move list
+		//mAIAgent = new NegaScoutAgent(); // set up AI agent
 	} // end constructor
 	
 	public Vector<String> getMoveList() {
@@ -61,18 +65,20 @@ public class AI {
 	
 	//Finds valid moves for specific piece -> Encuentra movimientos válidos para pieza específica
 	//parameters: board the board - piece the piece need to find move - isSuggest true to indicate suggested pieces on the board	 
-	public static ArrayList<MoveCoord> findValidMove(Board b, int piece, boolean isSuggest) {
+	public static ArrayList<Integer> findValidMove(Board b, int piece, boolean isSuggest) {
 		// pre: 1 <= piece <=2
 		// pos: return an array list of moves
 		int suggestPiece = (piece == sBLACK_PIECE) ? sSUGGEST_BLACK_PIECE : sSUGGEST_WHITE_PIECE;
-		ArrayList<MoveCoord> moveList = new ArrayList<MoveCoord>();
+		ArrayList<Integer> moveList = new ArrayList<Integer>();
+
 		for (int i = 0; i < 8; ++i)
 			for (int j = 0; j < 8; ++j) {
 				// clean the suggest piece before
 				if (b.get(i,j) == sSUGGEST_BLACK_PIECE || b.get(i,j) == sSUGGEST_WHITE_PIECE)
 					b.set(i,j,sEMPTY_PIECE);	
 				if (isValidMove(b,piece, i, j)){	
-					moveList.add(new MoveCoord(i, j));
+					moveList.add(i);
+					moveList.add(j);
 					// if we want suggestion, mark on board
 					if (isSuggest)
 						b.set(i,j,suggestPiece);
