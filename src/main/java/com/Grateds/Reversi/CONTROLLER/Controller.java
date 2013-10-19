@@ -30,6 +30,7 @@ public class Controller {
 	} // end reset_game
 		
 	public void start_game(){
+		// set state
 		table.initialization();
 	} // end start_game
 	
