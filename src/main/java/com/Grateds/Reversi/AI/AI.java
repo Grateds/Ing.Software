@@ -22,11 +22,11 @@ public class AI {
 	
 	public AI(){
 		mMoveList = new Vector<String>(); // init move list
-		//mAIAgent = new NegaScoutAgent(); // set up AI agent
+		//mAIAgent = new NegaScoutAgent(); // set up AI agent -> developing
 	} // end constructor
 	
 	public Vector<String> getMoveList() {
-	    	return mMoveList;
+	    	return mMoveList; // -> developing
 	} // end getMoveList
 	
 	 //Check whether a move is valid
