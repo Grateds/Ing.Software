@@ -68,19 +68,20 @@ public class AI {
 	public static ArrayList<Integer> findValidMove(Board b, int piece, boolean isSuggest) {
 		// pre: 1 <= piece <=2
 		// pos: return an array list of moves
-		int suggestPiece = (piece == sBLACK_PIECE) ? sSUGGEST_BLACK_PIECE : sSUGGEST_WHITE_PIECE;
+//		int suggestPiece = (piece == sBLACK_PIECE) ? sSUGGEST_BLACK_PIECE : sSUGGEST_WHITE_PIECE;
 		ArrayList<Integer> moveList = new ArrayList<Integer>();
 		for (int i = 0; i < 8; ++i)
 			for (int j = 0; j < 8; ++j) {
 				// clean the suggest piece before
-				if (b.get(i,j) == sSUGGEST_BLACK_PIECE || b.get(i,j) == sSUGGEST_WHITE_PIECE)
-					b.set(i,j,sEMPTY_PIECE);	
-				if (isValidMove(b,piece, i, j)){	
+//				if (b.get(i,j) == sSUGGEST_BLACK_PIECE || b.get(i,j) == sSUGGEST_WHITE_PIECE)
+//					b.set(i,j,sEMPTY_PIECE);	
+				if (isValidMove(b,piece, i, j)){
+					System.out.println("("+i+","+j+")");
 					moveList.add(i);
 					moveList.add(j);
 					// if we want suggestion, mark on board
-					if (isSuggest)
-						b.set(i,j,suggestPiece);
+//					if (isSuggest)
+//						b.set(i,j,suggestPiece);
 				}
 			}
 		return moveList;

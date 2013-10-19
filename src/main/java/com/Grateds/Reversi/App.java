@@ -15,8 +15,6 @@ public class App {
     	 controller.set_piece(3,4,1);
     	 controller.drawBoard();
     	 System.out.println("===============");
-    	 System.out.println("Score BLACK PIECES = "+controller.getBlackScore());
-    	 System.out.println("Score WHITE PIECES = "+controller.getWhiteScore());  
     	 
     	 AI a = new AI();
     	 ArrayList<Integer> list = a.findValidMove(controller.getBoard(), 1, false);
@@ -26,10 +24,6 @@ public class App {
     		 System.out.println("("+list.get(i)+","+list.get(i+1)+")");
     		 i = i + 2;
     	 }
-    	 System.out.println(a.isValidMove(controller.getBoard(), 1, 3, 2)); // isValidMove(b, 1, 3, 2) should return: false
-    	 System.out.println(a.isValidMove(controller.getBoard(), 2, 4, 5)); // isValidMove(b, 2, 4, 5) should return: true
-    	 System.out.println(a.getMoveList());
-    	 System.out.println(a.findValidMove(controller.getBoard(), 2, true));
    }
 }
 
