@@ -53,15 +53,6 @@ public class Board extends Observable{
 	public boolean is_complete(){
 		return n_cell==ROW*COL;
 	} // end is_complete
-	
-	public void draw() {
-		for(int i=0; i<COL; i++){
-			for(int j=0; j<ROW; j++){
-				System.out.print(board[j][i].get_value()+" ");
-			}
-			System.out.println();
-		}
-	} // end draw
 		
 	public Vector<Integer> get_score() {
 		Vector<Integer> v = new Vector<Integer>();

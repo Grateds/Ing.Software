@@ -70,7 +70,6 @@ public class AI {
 		// pos: return an array list of moves
 		int suggestPiece = (piece == sBLACK_PIECE) ? sSUGGEST_BLACK_PIECE : sSUGGEST_WHITE_PIECE;
 		ArrayList<Integer> moveList = new ArrayList<Integer>();
-
 		for (int i = 0; i < 8; ++i)
 			for (int j = 0; j < 8; ++j) {
 				// clean the suggest piece before
