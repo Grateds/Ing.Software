@@ -14,7 +14,7 @@ public class App {
     	 controller.set_piece(2,4,1);
     	 controller.set_piece(3,4,1);
     	 controller.drawBoard();
-    	 System.out.println("===============");
+    	 System.out.println("===================");
     	 
     	 AI a = new AI();
     	 ArrayList<Integer> list = a.findValidMove(controller.getBoard(), 1, false);
