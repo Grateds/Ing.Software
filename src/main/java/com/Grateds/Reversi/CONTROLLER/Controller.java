@@ -58,7 +58,10 @@ public class Controller {
 	} // end getBlackScore
 	
 	public void drawBoard(){
+		System.out.println("    0 1 2 3 4 5 6 7");
+		System.out.println("    ---------------");
 		for(int i=0; i<8; i++){
+			System.out.print(i+" | ");
 			for(int j=0; j<8; j++){
 				System.out.print(table.get(i, j)+" ");
 			}
