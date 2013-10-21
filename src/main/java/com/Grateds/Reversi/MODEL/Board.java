@@ -7,6 +7,7 @@ public class Board extends Observable{
 	
 	private final int BLACK_PIECE = 2; // represents black piece
 	private final int WHITE_PIECE = 1; // represents white piece
+	private final int EMPTY_PIECE = 0; // represents no-piece
 	
 	private int BLACK_SCORE; // score of black piece
 	private int WHITE_SCORE; // score of white piece 
@@ -36,19 +37,25 @@ public class Board extends Observable{
 	} // end initialization
 
 	public void set(int x, int y, int value){
-		board[x][y].set_value(value);
-		if (value == WHITE_PIECE) ++WHITE_SCORE;
-		else ++BLACK_SCORE;
-		n_cell++;
+		if (board[x][y].get_value()==EMPTY_PIECE){
+			board[x][y].set_value(value);
+			if (value == WHITE_PIECE) ++WHITE_SCORE;
+			else ++BLACK_SCORE;
+			n_cell++;
+		}else if (board[x][y].get_value()==WHITE_PIECE){
+			board[x][y].set_value(value);
+			WHITE_SCORE--;
+			BLACK_SCORE++;
+		}else{
+			board[x][y].set_value(value);
+			WHITE_SCORE++;
+			BLACK_SCORE--;
+		}
 	} // end set
 	
 	public int get(int x, int y){
 		return board[x][y].get_value();
 	} // end get
-	
-	public boolean valid_move(int x, int y){
-		return board[x][y].is_settable();
-	} // end valid_move
 	
 	public boolean is_complete(){
 		return n_cell==ROW*COL;

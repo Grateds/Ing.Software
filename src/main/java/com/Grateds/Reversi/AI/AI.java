@@ -17,6 +17,7 @@ public class AI {
 	private static int sEMPTY_PIECE = 0;
 	private static int sBLACK_PIECE = 2;
 	private static int sWHITE_PIECE = 1;
+	
 	private Vector<String> mMoveList;
 	private Agent mAIAgent; // AI agent 
 	
@@ -32,7 +33,7 @@ public class AI {
 	 //Check whether a move is valid
 	 //parameters: board the board - piece: the piece need to check - row: row of the move - col: column of the move
 	 //return: true if the move is valid, false otherwise	 
-	public static boolean isValidMove(Board b, int piece, int row, int col) {
+	public boolean isValidMove(Board b, int piece, int row, int col) {
 		// pre: 1 <= piece <=2
 		// pos: true if the move is valid, false otherwise		
 		if (b.get(row, col) != sEMPTY_PIECE) // check whether this square is empty
@@ -65,7 +66,7 @@ public class AI {
 	
 	//Finds valid moves for specific piece -> Encuentra movimientos válidos para pieza específica
 	//parameters: board the board - piece the piece need to find move - isSuggest true to indicate suggested pieces on the board	 
-	public static ArrayList<Integer> findValidMove(Board b, int piece, boolean isSuggest) {
+	public ArrayList<Integer> findValidMove(Board b, int piece, boolean isSuggest) {
 		// pre: 1 <= piece <=2
 		// pos: return an array list of moves
 //		int suggestPiece = (piece == sBLACK_PIECE) ? sSUGGEST_BLACK_PIECE : sSUGGEST_WHITE_PIECE;
@@ -76,7 +77,6 @@ public class AI {
 //				if (b.get(i,j) == sSUGGEST_BLACK_PIECE || b.get(i,j) == sSUGGEST_WHITE_PIECE)
 //					b.set(i,j,sEMPTY_PIECE);	
 				if (isValidMove(b,piece, i, j)){
-					System.out.println("("+i+","+j+")");
 					moveList.add(i);
 					moveList.add(j);
 					// if we want suggestion, mark on board
@@ -87,5 +87,143 @@ public class AI {
 		return moveList;
 	} // end findValidMove
 	
+	// piece = piece to find from the position (x,y)
+	public boolean findAtNorth(Board b, int piece, int x, int y){
+		if(x==0 || b.get(x-1, y)==sEMPTY_PIECE) return false;
+		else if(b.get(x-1, y)==piece) return true;
+		else return findAtNorth(b,piece,x-1,y); // there is an opponent
+	}
+
+	// piece = piece to find from the position (x,y)
+	public boolean findAtSouth(Board b, int piece, int x, int y){
+		if(x==7 || b.get(x+1, y)==sEMPTY_PIECE) return false;
+		else if(b.get(x+1, y)==piece) return true;
+		else return findAtSouth(b,piece,x+1,y); // there is an opponent
+	}
+
+	// piece = piece to find from the position (x,y)
+	public boolean findAtWest(Board b, int piece, int x, int y){
+		if(y==0 || b.get(x, y-1)==sEMPTY_PIECE) return false;
+		else if(b.get(x, y-1)==piece) return true;
+		else return findAtWest(b,piece,x,y-1); // there is an opponent
+	}
+	
+	// piece = piece to find from the position (x,y)
+	public boolean findAtEast(Board b, int piece, int x, int y){
+		if(y==7 || b.get(x,y+1)==sEMPTY_PIECE) return false;
+		else if(b.get(x,y+1)==piece) return true;
+		else return findAtEast(b,piece,x,y+1); // there is an opponent
+	}
+	
+	// piece = piece to find from the position (x,y)
+	public boolean findAtNE(Board b, int piece, int x, int y){
+		if(x==0 || y==7 || b.get(x-1,y+1)==sEMPTY_PIECE) return false;
+		else if(b.get(x-1,y+1)==piece) return true;
+		else return findAtNE(b,piece,x-1,y+1); // there is an opponent
+	}
+
+	// piece = piece to find from the position (x,y)
+	public boolean findAtSE(Board b, int piece, int x, int y){
+		if(x==7 || y==7 || b.get(x+1,y+1)==sEMPTY_PIECE) return false;
+		else if(b.get(x+1,y+1)==piece) return true;
+		else return findAtSE(b,piece,x+1,y+1); // there is an opponent
+	}
+		
+	// piece = piece to find from the position (x,y)
+	public boolean findAtSW(Board b, int piece, int x, int y){
+		if(x==7 || y==0 || b.get(x+1,y-1)==sEMPTY_PIECE) return false;
+		else if(b.get(x+1,y-1)==piece) return true;
+		else return findAtSW(b,piece,x+1,y-1); // there is an opponent
+	}
+		
+	// piece = piece to find from the position (x,y)
+	public boolean findAtNW(Board b, int piece, int x, int y){
+		if(x==0 || y==0 || b.get(x-1,y-1)==sEMPTY_PIECE) return false;
+		else if(b.get(x-1,y-1)==piece) return true;
+		else return findAtNW(b,piece,x-1,y-1); // there is an opponent
+	}
+	
+	public boolean isValid(Board b, int piece, int x, int y){
+		return findAtNorth(b,piece,x,y) ||
+				findAtSouth(b,piece,x,y) ||
+				findAtEast(b,piece,x,y)  ||
+				findAtWest(b,piece,x,y)  ||
+				findAtNE(b,piece,x,y)	 ||
+				findAtSE(b,piece,x,y)	 ||
+				findAtNW(b,piece,x,y)	 ||
+				findAtSW(b,piece,x,y);
+	}
+	
+	public void solve(Board b, int piece, int x, int y){
+		int oppPiece = (piece == sBLACK_PIECE) ? sWHITE_PIECE : sBLACK_PIECE;
+		int auxRow = x;
+		int auxCol = y;
+		if (findAtNorth(b,piece,x,y)){
+			while(b.get(auxRow-1, y)==oppPiece){
+				b.set(auxRow-1, y, piece);
+				auxRow--;
+			}
+		}
+		if (findAtSouth(b,piece,x,y)){
+			auxRow = x;
+			auxCol = y;
+			while(b.get(auxRow+1, y)==oppPiece){
+				b.set(auxRow+1, y, piece);
+				auxRow++;
+			}
+		}
+		if (findAtWest(b,piece,x,y)){
+			auxRow = x;
+			auxCol = y;
+			while(b.get(x, auxCol-1)==oppPiece){
+				b.set(x, auxCol-1, piece);
+				auxCol--;
+			}
+		}
+		if (findAtEast(b,piece,x,y)){
+			auxRow = x;
+			auxCol = y;
+			while(b.get(x, auxCol+1)==oppPiece){
+				b.set(x, auxCol+1, piece);
+				auxCol++;
+			}
+		}
+		if (findAtNE(b,piece,x,y)){
+			auxRow = x;
+			auxCol = y;
+			while(b.get(auxRow-1, auxCol+1)==oppPiece){
+				b.set(auxRow-1, auxCol+1, piece);
+				auxRow--;
+				auxCol++;
+			}
+		}
+		if (findAtSE(b,piece,x,y)){
+			auxRow = x;
+			auxCol = y;
+			while(b.get(auxRow+1, auxCol+1)==oppPiece){
+				b.set(auxRow+1, auxCol+1, piece);
+				auxRow++;
+				auxCol++;
+			}
+		}
+		if (findAtSW(b,piece,x,y)){
+			auxRow = x;
+			auxCol = y;
+			while(b.get(auxRow+1, auxCol-1)==oppPiece){
+				b.set(auxRow+1, auxCol-1, piece);
+				auxRow++;
+				auxCol--;
+			}
+		}
+		if (findAtNW(b,piece,x,y)){
+			auxRow = x;
+			auxCol = y;
+			while(b.get(auxRow-1, auxCol-1)==oppPiece){
+				b.set(auxRow-1, auxCol-1, piece);
+				auxRow--;
+				auxCol--;
+			}
+		}
+	} // end solve
 }
 

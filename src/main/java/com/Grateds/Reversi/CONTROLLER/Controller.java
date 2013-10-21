@@ -4,8 +4,6 @@ import com.Grateds.Reversi.SAVEANDLOAD.*;
 import com.Grateds.Reversi.GUI.*;
 import com.Grateds.Reversi.MODEL.*;
 import com.Grateds.Reversi.AI.*;
-import java.util.Observable;
-import java.util.Observer;
 
 public class Controller {
 	
@@ -15,6 +13,8 @@ public class Controller {
     
 	public Controller(){
 		table = new Board();
+		solver = new AI();
+		save = new SaveAndLoad();
 	} // end constructor
 	
 	public void initialization(){
@@ -26,20 +26,20 @@ public class Controller {
 	} // end change_skin
 	
 	public void reset_game() {
-		table.initialization();
+		start_game();
 	} // end reset_game
 		
 	public void start_game(){
-		// set state
 		table.initialization();
 	} // end start_game
 	
 	public void set_piece(int x, int y, int piece){
-		 table.set(x, y, piece);
+		if (isValidMove(piece,x,y)) table.set(x, y, piece);
+		solver.solve(table, piece, x, y);
 	} // end set_piece
 	
-	public boolean isValidMove(Board b, int piece, int x, int y){
-		return solver.isValidMove(b, piece, x, y);
+	public boolean isValidMove(int piece, int x, int y){
+		return solver.isValidMove(table, piece, x, y);
 	}
 	
 	public Board getBoard(){
