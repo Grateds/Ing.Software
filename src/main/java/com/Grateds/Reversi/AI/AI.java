@@ -1,5 +1,6 @@
 package com.Grateds.Reversi.AI;
 
+import com.Grateds.Reversi.AI.Agent.MoveCoord;
 import com.Grateds.Reversi.CONTROLLER.*;
 import com.Grateds.Reversi.MODEL.Board;
 import com.Grateds.Reversi.MODEL.Cell;
@@ -95,14 +96,13 @@ public class AI {
 	} // end findAtNorth
 	
 	/**
-	 * 
+	 * piece = iece to find from the position (x,y)
 	 * @param b
 	 * @param piece
 	 * @param x
 	 * @param y
 	 * @return
 	 */
-	// piece = piece to find from the position (x,y)
 	public boolean findAtSouth(Board b, int piece, int x, int y){
 		if(x==7 || b.get(x+1, y)==sEMPTY_PIECE) return false;
 		else if(b.get(x+1, y)==piece) return true;
@@ -110,14 +110,13 @@ public class AI {
 	}
 	
 	/**
-	 * 
+	 * piece = piece to find from the position (x,y)
 	 * @param b
 	 * @param piece
 	 * @param x
 	 * @param y
 	 * @return
 	 */
-	// piece = piece to find from the position (x,y)
 	public boolean findAtWest(Board b, int piece, int x, int y){
 		if(y==0 || b.get(x, y-1)==sEMPTY_PIECE) return false;
 		else if(b.get(x, y-1)==piece) return true;
@@ -125,14 +124,13 @@ public class AI {
 	} // end findAtWest
 	
 	/**
-	 * 
+	 * piece = piece to find from the position (x,y)
 	 * @param b
 	 * @param piece
 	 * @param x
 	 * @param y
 	 * @return
 	 */
-	// piece = piece to find from the position (x,y)
 	public boolean findAtEast(Board b, int piece, int x, int y){
 		if(y==7 || b.get(x,y+1)==sEMPTY_PIECE) return false;
 		else if(b.get(x,y+1)==piece) return true;
@@ -140,14 +138,13 @@ public class AI {
 	} // end findAtEast
 	
 	/**
-	 * 
+	 * piece = piece to find from the position (x,y)
 	 * @param b
 	 * @param piece
 	 * @param x
 	 * @param y
 	 * @return
 	 */
-	// piece = piece to find from the position (x,y)
 	public boolean findAtNE(Board b, int piece, int x, int y){
 		if(x==0 || y==7 || b.get(x-1,y+1)==sEMPTY_PIECE) return false;
 		else if(b.get(x-1,y+1)==piece) return true;
@@ -155,14 +152,13 @@ public class AI {
 	} // end findAtNE
 
 	/**
-	 * 
+	 * piece = piece to find from the position (x,y)
 	 * @param b
 	 * @param piece
 	 * @param x
 	 * @param y
 	 * @return
 	 */
-	// piece = piece to find from the position (x,y)
 	public boolean findAtSE(Board b, int piece, int x, int y){
 		if(x==7 || y==7 || b.get(x+1,y+1)==sEMPTY_PIECE) return false;
 		else if(b.get(x+1,y+1)==piece) return true;
@@ -170,14 +166,13 @@ public class AI {
 	} // end findAtSE
 	
 	/**
-	 * 
+	 * piece = piece to find from the position (x,y)
 	 * @param b
 	 * @param piece
 	 * @param x
 	 * @param y
 	 * @return
 	 */
-	// piece = piece to find from the position (x,y)
 	public boolean findAtSW(Board b, int piece, int x, int y){
 		if(x==7 || y==0 || b.get(x+1,y-1)==sEMPTY_PIECE) return false;
 		else if(b.get(x+1,y-1)==piece) return true;
@@ -185,14 +180,13 @@ public class AI {
 	} // end findAtSW
 	
 	/**
-	 * 
+	 * piece = piece to find from the position (x,y)
 	 * @param b
 	 * @param piece
 	 * @param x
 	 * @param y
 	 * @return
 	 */
-	// piece = piece to find from the position (x,y)
 	public boolean findAtNW(Board b, int piece, int x, int y){
 		if(x==0 || y==0 || b.get(x-1,y-1)==sEMPTY_PIECE) return false;
 		else if(b.get(x-1,y-1)==piece) return true;
@@ -208,7 +202,7 @@ public class AI {
 	 * @return
 	 */
 	public boolean isValid(Board b, int piece, int x, int y){
-		return findAtNorth(b,piece,x,y) ||
+		return 	findAtNorth(b,piece,x,y) ||
 				findAtSouth(b,piece,x,y) ||
 				findAtEast(b,piece,x,y)  ||
 				findAtWest(b,piece,x,y)  ||
@@ -218,6 +212,13 @@ public class AI {
 				findAtSW(b,piece,x,y);
 	} // end isValid
 	
+	/**
+	 * 
+	 * @param b, the board
+	 * @param piece
+	 * @param x
+	 * @param y
+	 */
 	public void solve(Board b, int piece, int x, int y){
 		int oppPiece = (piece == sBLACK_PIECE) ? sWHITE_PIECE : sBLACK_PIECE;
 		int auxRow = x;
