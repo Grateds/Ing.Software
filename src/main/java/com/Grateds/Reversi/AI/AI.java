@@ -7,6 +7,7 @@ import com.Grateds.Reversi.MODEL.Cell;
 
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.Random;
 
 public class AI {
 	
@@ -225,5 +226,26 @@ public class AI {
 			}
 		}
 	} // end solve
+	
+	
+	/** Simulates a cpu move 
+	 * 
+	 * @param b
+	 * @return
+	 */
+	
+	public boolean simulation(Board b){
+		ArrayList<Integer> pMoves = findValidMove(b,1,false);
+		Random rand = new Random();
+		int numRan; // random number to select a valid move
+		if (pMoves.size() == 0) return false;
+		else{
+			numRan = rand.nextInt(pMoves.size());
+			if ((numRan % 2) != 0) numRan--;
+			b.set(pMoves.get(numRan), pMoves.get(numRan+1), 1);
+			solve(b, 1, pMoves.get(numRan), pMoves.get(numRan+1));
+			return true;
+		}
+	}
 }
 

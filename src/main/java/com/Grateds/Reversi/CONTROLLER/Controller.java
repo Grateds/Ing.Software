@@ -10,11 +10,13 @@ public class Controller {
 	private Board table;
     private SaveAndLoad save;
 	private AI solver;
+	private boolean turn; // true -> player turn | false -> cpu turn
     
 	public Controller(){
 		table = new Board();
 		solver = new AI();
 		save = new SaveAndLoad();
+		turn = true;
 	} // end constructor
 	
 	public void initialization(){
@@ -40,7 +42,11 @@ public class Controller {
 	
 	public boolean isValidMove(int piece, int x, int y){
 		return solver.isValidMove(table, piece, x, y);
-	}
+	} // end isValidMove
+	
+	public boolean cpu_move(){
+		return solver.simulation(table);
+	} // end cpu_move
 	
 	public Board getBoard(){
 		// Get current table
@@ -57,6 +63,22 @@ public class Controller {
 		return table.get_score().elementAt(0);
 	} // end getBlackScore
 	
+	public boolean getTurn(){
+		return turn;
+	} // end getTurn
+	
+	public void setTurn(boolean new_turn){
+		turn = new_turn;
+	} // end setTurn
+		
+	public void saveBoard(){	
+		save.saveBoard(table);
+	} // end saveBoard
+	
+	public Board loadBoard(){
+		return save.loadBoard();
+	} // end loadBoard
+	
 	public void drawBoard(){
 		System.out.println("    0 1 2 3 4 5 6 7");
 		System.out.println("    ---------------");
@@ -68,12 +90,4 @@ public class Controller {
 			System.out.println("");
 		}
 	}
-	
-	public void saveBoard(){	
-		save.saveBoard(table);
-	} // end saveBoard
-	
-	public Board loadBoard(){
-		return save.loadBoard();
-	} // end loadBoard
 }
