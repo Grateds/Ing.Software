@@ -1,12 +1,9 @@
 package com.Grateds.Reversi.AI;
 
-import com.Grateds.Reversi.AI.Agent.MoveCoord;
 import com.Grateds.Reversi.CONTROLLER.*;
 import com.Grateds.Reversi.MODEL.Board;
-import com.Grateds.Reversi.MODEL.Cell;
 
 import java.util.ArrayList;
-import java.util.Vector;
 import java.util.Random;
 
 public class AI {

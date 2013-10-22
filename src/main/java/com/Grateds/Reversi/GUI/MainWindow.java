@@ -1,41 +1,41 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.Grateds.Reversi.GUI;
 
-//import com.Grateds.Reversi.CONTROLLER.Controller; Comented for Vercryger
+import java.util.Observable;
+import java.util.Observer;
+import com.Grateds.Reversi.CONTROLLER.Controller; 
 import com.Grateds.Reversi.MODEL.Board;
-//import javax.swing.UIManager;                     Comented for Vercryger
 
 /**
  *
  * @author pablo
  */
-public class MainWindow extends javax.swing.JFrame {
+public class MainWindow extends javax.swing.JFrame implements Observer {
     
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private GameMenu menuBar;
-  //  private Controller controller;
+	private Controller controller;
+	private Board board;
+	
     /**
      * Creates new form MainWindow
      */
-    public MainWindow() {
+    public MainWindow(Controller c) {
         super("Reversi");
         menuBar = new GameMenu();
-        this.setJMenuBar(menuBar);
+        setJMenuBar(menuBar);
         initComponents();
-        this.setResizable(false);
-        this.setVisible(true);        // Added line for Vercryger
+        setResizable(false);
+        setVisible(true);        // Added line for Vercryger
+        
+        controller = c;
+        board = c.getBoard();
+        board.addObserver(this);
     }
     
-//    public void setController(Controller c){
-//        controller = c; 						Comented for Vercryger
-//    }
-    public void drawBoard(Board board){
+    public void drawBoard(){
         gameGraphicsPanel1.setBoard(board);
     }
 
@@ -48,8 +48,8 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        gamePanel1 = new com.Grateds.Reversi.GUI.gamePanel();
-        gameGraphicsPanel1 = new com.Grateds.Reversi.GUI.GameGraphicsPanel();
+        gamePanel1 = new gamePanel();
+        gameGraphicsPanel1 = new GameGraphicsPanel(controller);
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -73,14 +73,16 @@ public class MainWindow extends javax.swing.JFrame {
         jButton1.setText("New Game");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+            	controller.start_game();
+            	drawBoard();
+            	controller.drawBoard();
             }
         });
 
         jButton2.setText("Undo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+            	controller.drawBoard();
             }
         });
 
@@ -162,7 +164,11 @@ public class MainWindow extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
+    public void update(Observable o, Object arg) {
+		
+	}
+    
 //    /**  Comented for Vercryger
 //     * @param args the command line arguments
 //     */

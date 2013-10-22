@@ -34,6 +34,8 @@ public class Board extends Observable{
 		n_cell = 4;
 		BLACK_SCORE = 2;
 		WHITE_SCORE = 2;
+		this.setChanged();
+		this.notifyObservers();
 	} // end initialization
 
 	public void set(int x, int y, int value){
@@ -46,11 +48,15 @@ public class Board extends Observable{
 			board[x][y].set_value(value);
 			WHITE_SCORE--;
 			BLACK_SCORE++;
+			n_cell++;
 		}else{
 			board[x][y].set_value(value);
 			WHITE_SCORE++;
 			BLACK_SCORE--;
+			n_cell++;
 		}
+		this.setChanged();
+		this.notifyObservers();
 	} // end set
 	
 	public int get(int x, int y){

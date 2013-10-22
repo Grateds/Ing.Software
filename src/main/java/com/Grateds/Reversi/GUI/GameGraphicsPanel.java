@@ -1,5 +1,6 @@
 package com.Grateds.Reversi.GUI;
 
+import com.Grateds.Reversi.CONTROLLER.Controller;
 import com.Grateds.Reversi.MODEL.Board;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -23,11 +24,13 @@ public class GameGraphicsPanel extends JPanel implements MouseListener{
     private BufferedImage background = null;
 
     private Board b;
+    private Controller controller;
     
-    public GameGraphicsPanel(){
+    public GameGraphicsPanel(Controller c){
         loadImages();
         addMouseListener(this);
         setBorder(null);
+        controller = c;
     }
 
     private void loadImages() {
@@ -42,7 +45,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener{
         }
     }
     public void paint(Graphics g) {
-        System.out.println("painting..");
+//        System.out.println("painting..");
         Graphics2D g2d = (Graphics2D) g;
         g.drawImage(background, WIDTH, WIDTH, this);
         g2d.setStroke(new BasicStroke(3));
@@ -59,19 +62,23 @@ public class GameGraphicsPanel extends JPanel implements MouseListener{
             drawBoard(g,b);
         }
     }
+    
     private void drawPiece(Graphics g, BufferedImage img, int row, int col) {
         g.drawImage(img,((col-1) * sizeRect+2),((row-1) * sizeRect)+2, null);
     }
+    
     private void makeMoveIn(int col, int row) {
         Graphics g=getGraphics();
         // update model with the move of the player
         drawPiece(g,blackPieceImg, row, col);
         //controller.clickIn(col, row);
     }
+    
     public void setBoard(Board newBoard){
         b = newBoard;
         //repaint();
     }
+    
     public void drawBoard(Graphics g,Board b){
         //repaint();
         //Graphics g = getGraphics();
@@ -97,9 +104,10 @@ public class GameGraphicsPanel extends JPanel implements MouseListener{
         int col = (x/sizeRect+1);
         int row = (y/sizeRect+1);
         makeMoveIn(col, row);
-        System.out.println("click in " + col + " y " + row);
+        System.out.println("click in " + row + " y " + col);
         //makeMoveIn(col,row);
         //must send the move to the model
+        b.set(row-1, col-1, 2);
     }
     public void mousePressed(MouseEvent me) {}
     public void mouseReleased(MouseEvent me) {}
