@@ -35,6 +35,10 @@ public class Controller {
 		table.initialization();
 	} // end start_game
 	
+	public boolean game_over(){
+		return table.is_complete();
+	}
+	
 	public void set_piece(int x, int y, int piece){
 		if (isValidMove(piece,x,y)) table.set(x, y, piece);
 		solver.solve(table, piece, x, y);
