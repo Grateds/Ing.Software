@@ -309,4 +309,3 @@ public class AI {
 		}
 	} // end simulation
 }
-
