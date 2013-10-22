@@ -18,25 +18,20 @@ public class AI {
 	private static int sEMPTY_PIECE = 0;
 	private static int sBLACK_PIECE = 2;
 	private static int sWHITE_PIECE = 1;
-	
-	private Vector<String> mMoveList;
-	private Agent mAIAgent; // AI agent 
-	
+
 	public AI(){
-		mMoveList = new Vector<String>(); // init move list
-		//mAIAgent = new NegaScoutAgent(); // set up AI agent -> developing
+		
 	} // end constructor
 	
-	public Vector<String> getMoveList() {
-	    	return mMoveList; // -> developing
-	} // end getMoveList
-	
-	 //Check whether a move is valid
-	 //parameters: board the board - piece: the piece need to check - row: row of the move - col: column of the move
-	 //return: true if the move is valid, false otherwise	 
-	public boolean isValidMove(Board b, int piece, int row, int col) {
-		// pre: 1 <= piece <=2
-		// pos: true if the move is valid, false otherwise		
+	/**
+	 * Check whether a move is valid
+	 * @param b, the board
+	 * @param piece, the piece need to check
+	 * @param row, row of the move
+	 * @param col, column of the move
+	 * @return true if the move is valid, false otherwise	
+	 */
+	public boolean isValidMove(Board b, int piece, int row, int col) {		
 		if (b.get(row, col) != sEMPTY_PIECE) // check whether this square is empty
 			return false;		
 		int oppPiece = (piece == sBLACK_PIECE) ? sWHITE_PIECE : sBLACK_PIECE;
@@ -65,85 +60,154 @@ public class AI {
 		return isValid;
 	} // end isValidMove
 	
-	//Finds valid moves for specific piece -> Encuentra movimientos válidos para pieza específica
-	//parameters: board the board - piece the piece need to find move - isSuggest true to indicate suggested pieces on the board	 
+	/**
+	 * Finds valid moves for specific piece
+	 * @param b, the board
+	 * @param piece, piece the piece need to find move
+	 * @param isSuggest, true to indicate suggested pieces on the board
+	 * @return return an array list of moves
+	 */	 
 	public ArrayList<Integer> findValidMove(Board b, int piece, boolean isSuggest) {
-		// pre: 1 <= piece <=2
-		// pos: return an array list of moves
-//		int suggestPiece = (piece == sBLACK_PIECE) ? sSUGGEST_BLACK_PIECE : sSUGGEST_WHITE_PIECE;
 		ArrayList<Integer> moveList = new ArrayList<Integer>();
 		for (int i = 0; i < 8; ++i)
 			for (int j = 0; j < 8; ++j) {
-				// clean the suggest piece before
-//				if (b.get(i,j) == sSUGGEST_BLACK_PIECE || b.get(i,j) == sSUGGEST_WHITE_PIECE)
-//					b.set(i,j,sEMPTY_PIECE);	
+	
 				if (isValidMove(b,piece, i, j)){
 					moveList.add(i);
 					moveList.add(j);
-					// if we want suggestion, mark on board
-//					if (isSuggest)
-//						b.set(i,j,suggestPiece);
 				}
 			}
 		return moveList;
 	} // end findValidMove
 	
+	/**
+	 * 
+	 * @param b
+	 * @param piece
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	// piece = piece to find from the position (x,y)
 	public boolean findAtNorth(Board b, int piece, int x, int y){
 		if(x==0 || b.get(x-1, y)==sEMPTY_PIECE) return false;
 		else if(b.get(x-1, y)==piece) return true;
 		else return findAtNorth(b,piece,x-1,y); // there is an opponent
-	}
-
+	} // end findAtNorth
+	
+	/**
+	 * 
+	 * @param b
+	 * @param piece
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	// piece = piece to find from the position (x,y)
 	public boolean findAtSouth(Board b, int piece, int x, int y){
 		if(x==7 || b.get(x+1, y)==sEMPTY_PIECE) return false;
 		else if(b.get(x+1, y)==piece) return true;
 		else return findAtSouth(b,piece,x+1,y); // there is an opponent
 	}
-
+	
+	/**
+	 * 
+	 * @param b
+	 * @param piece
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	// piece = piece to find from the position (x,y)
 	public boolean findAtWest(Board b, int piece, int x, int y){
 		if(y==0 || b.get(x, y-1)==sEMPTY_PIECE) return false;
 		else if(b.get(x, y-1)==piece) return true;
 		else return findAtWest(b,piece,x,y-1); // there is an opponent
-	}
+	} // end findAtWest
 	
+	/**
+	 * 
+	 * @param b
+	 * @param piece
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	// piece = piece to find from the position (x,y)
 	public boolean findAtEast(Board b, int piece, int x, int y){
 		if(y==7 || b.get(x,y+1)==sEMPTY_PIECE) return false;
 		else if(b.get(x,y+1)==piece) return true;
 		else return findAtEast(b,piece,x,y+1); // there is an opponent
-	}
+	} // end findAtEast
 	
+	/**
+	 * 
+	 * @param b
+	 * @param piece
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	// piece = piece to find from the position (x,y)
 	public boolean findAtNE(Board b, int piece, int x, int y){
 		if(x==0 || y==7 || b.get(x-1,y+1)==sEMPTY_PIECE) return false;
 		else if(b.get(x-1,y+1)==piece) return true;
 		else return findAtNE(b,piece,x-1,y+1); // there is an opponent
-	}
+	} // end findAtNE
 
+	/**
+	 * 
+	 * @param b
+	 * @param piece
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	// piece = piece to find from the position (x,y)
 	public boolean findAtSE(Board b, int piece, int x, int y){
 		if(x==7 || y==7 || b.get(x+1,y+1)==sEMPTY_PIECE) return false;
 		else if(b.get(x+1,y+1)==piece) return true;
 		else return findAtSE(b,piece,x+1,y+1); // there is an opponent
-	}
-		
+	} // end findAtSE
+	
+	/**
+	 * 
+	 * @param b
+	 * @param piece
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	// piece = piece to find from the position (x,y)
 	public boolean findAtSW(Board b, int piece, int x, int y){
 		if(x==7 || y==0 || b.get(x+1,y-1)==sEMPTY_PIECE) return false;
 		else if(b.get(x+1,y-1)==piece) return true;
 		else return findAtSW(b,piece,x+1,y-1); // there is an opponent
-	}
-		
+	} // end findAtSW
+	
+	/**
+	 * 
+	 * @param b
+	 * @param piece
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	// piece = piece to find from the position (x,y)
 	public boolean findAtNW(Board b, int piece, int x, int y){
 		if(x==0 || y==0 || b.get(x-1,y-1)==sEMPTY_PIECE) return false;
 		else if(b.get(x-1,y-1)==piece) return true;
 		else return findAtNW(b,piece,x-1,y-1); // there is an opponent
-	}
+	} // end findAtNW
 	
+	/**
+	 * 
+	 * @param b
+	 * @param piece
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isValid(Board b, int piece, int x, int y){
 		return findAtNorth(b,piece,x,y) ||
 				findAtSouth(b,piece,x,y) ||
@@ -153,7 +217,7 @@ public class AI {
 				findAtSE(b,piece,x,y)	 ||
 				findAtNW(b,piece,x,y)	 ||
 				findAtSW(b,piece,x,y);
-	}
+	} // end isValid
 	
 	public void solve(Board b, int piece, int x, int y){
 		int oppPiece = (piece == sBLACK_PIECE) ? sWHITE_PIECE : sBLACK_PIECE;
@@ -227,13 +291,11 @@ public class AI {
 		}
 	} // end solve
 	
-	
-	/** Simulates a cpu move 
-	 * 
-	 * @param b
-	 * @return
-	 */
-	
+	/**  
+	 * Simulates a cpu move
+	 * @param b, the board
+	 * @return boolean
+	 */	
 	public boolean simulation(Board b){
 		ArrayList<Integer> pMoves = findValidMove(b,1,false);
 		Random rand = new Random();
@@ -246,6 +308,6 @@ public class AI {
 			solve(b, 1, pMoves.get(numRan), pMoves.get(numRan+1));
 			return true;
 		}
-	}
+	} // end simulation
 }
 
