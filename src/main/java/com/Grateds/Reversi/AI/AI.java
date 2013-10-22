@@ -1,6 +1,5 @@
 package com.Grateds.Reversi.AI;
 
-import com.Grateds.Reversi.AI.Agent.MoveCoord;
 import com.Grateds.Reversi.CONTROLLER.*;
 import com.Grateds.Reversi.MODEL.Board;
 import com.Grateds.Reversi.MODEL.Cell;
@@ -19,17 +18,9 @@ public class AI {
 	private static int sBLACK_PIECE = 2;
 	private static int sWHITE_PIECE = 1;
 	
-	private Vector<String> mMoveList;
-	private Agent mAIAgent; // AI agent 
-	
 	public AI(){
-		mMoveList = new Vector<String>(); // init move list
-		//mAIAgent = new NegaScoutAgent(); // set up AI agent -> developing
-	} // end constructor
 	
-	public Vector<String> getMoveList() {
-	    	return mMoveList; // -> developing
-	} // end getMoveList
+	} // end constructor
 	
 	 //Check whether a move is valid
 	 //parameters: board the board - piece: the piece need to check - row: row of the move - col: column of the move
@@ -233,7 +224,6 @@ public class AI {
 	 * @param b
 	 * @return
 	 */
-	
 	public boolean simulation(Board b){
 		ArrayList<Integer> pMoves = findValidMove(b,1,false);
 		Random rand = new Random();
