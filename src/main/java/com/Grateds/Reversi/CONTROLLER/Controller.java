@@ -55,6 +55,8 @@ public class Controller {
 			if (piece == BLACK_PIECE) turn = false;
 			else turn = true;
 			System.out.println("in set_piece -> turn = "+turn);
+			System.out.println("BLACK SCORE = "+getBlackScore());
+	   	    System.out.println("WHITE SCORE = "+getWhiteScore());
 			return true;           // succesful
 		}else return false;       // it can't be possible
 	} // end set_piece

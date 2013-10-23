@@ -43,12 +43,10 @@ public class Board extends Observable{
 			board[x][y].set_value(value);
 			if (value == WHITE_PIECE) ++WHITE_SCORE;
 			else ++BLACK_SCORE;
-			n_cell++;
 		}else if (board[x][y].get_value()==WHITE_PIECE){
 			board[x][y].set_value(value);
 			WHITE_SCORE--;
 			BLACK_SCORE++;
-			n_cell++;
 		}else{
 			board[x][y].set_value(value);
 			WHITE_SCORE++;
