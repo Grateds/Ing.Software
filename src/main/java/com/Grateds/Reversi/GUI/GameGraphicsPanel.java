@@ -98,7 +98,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         int col = (x/sizeRect+1);
         int row = (y/sizeRect+1);
 //        System.out.println("click in " + (row-1) + " y " + (col-1));
-        if(controller.set_piece(row-1, col-1, BLACK_PIECE)) makeMoveIn(col, row, BLACK_PIECE);
+        if (controller.set_piece(row-1, col-1, BLACK_PIECE)) makeMoveIn(col, row, BLACK_PIECE);
     }
     
     public void mousePressed(MouseEvent me) {}
@@ -107,7 +107,8 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
     public void mouseExited(MouseEvent me) {}
 
 	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		
+		Graphics g = getGraphics();
+//		drawBoard(g,controller.getBoard());   <- Es más rápido pero cuando inicia nuevo juego falla
+		paint(g);              // Funciona bien pero es lento
 	}
 }
