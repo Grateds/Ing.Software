@@ -23,7 +23,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
      * Creates new form MainWindow
      */
     public MainWindow(Controller c) {
-        super("Reversi");
+        //super("Reversi");     // changed dastorga
         controller = c;
         board = c.getBoard();
         board.addObserver(this);
@@ -33,11 +33,12 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         initComponents();
         setResizable(false);
         setVisible(true);        
-    }
+    } // end MainWindow
     
     public Controller getController(){
     	return controller;
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,7 +47,6 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         gamePanel1 = new gamePanel();
         gameGraphicsPanel1 = new GameGraphicsPanel(controller);
         jButton1 = new javax.swing.JButton();
@@ -57,7 +57,9 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        setTitle("Reversi");
+        setResizable(false);
+        
         javax.swing.GroupLayout gameGraphicsPanel1Layout = new javax.swing.GroupLayout(gameGraphicsPanel1);
         gameGraphicsPanel1.setLayout(gameGraphicsPanel1Layout);
         gameGraphicsPanel1Layout.setHorizontalGroup(
@@ -91,7 +93,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jLabel1.setText("Black:");
+        jLabel1.setText("Black:");            
 
         jLabel2.setText("White:");
 
