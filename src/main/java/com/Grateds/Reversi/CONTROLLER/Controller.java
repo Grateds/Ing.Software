@@ -111,4 +111,11 @@ public class Controller {
 			System.out.println("");
 		}
 	} // end drawBoard
+	
+	 /**
+     * Exit application
+     */
+    public void quitGame() {
+        System.exit(0);
+    } // end quitGame
 }
