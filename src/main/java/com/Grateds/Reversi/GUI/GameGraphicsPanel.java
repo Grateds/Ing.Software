@@ -12,10 +12,13 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class GameGraphicsPanel extends JPanel implements MouseListener{
+public class GameGraphicsPanel extends JPanel implements MouseListener, Observer{
     
     int sizeRect = 70;
 
@@ -31,6 +34,8 @@ public class GameGraphicsPanel extends JPanel implements MouseListener{
         addMouseListener(this);
         setBorder(null);
         controller = c;
+        b = controller.getBoard();
+        b.addObserver(this);
     }
 
     private void loadImages() {
@@ -58,8 +63,8 @@ public class GameGraphicsPanel extends JPanel implements MouseListener{
 //            }
 //        }
         //Draw the model
-        if(b!=null){
-            drawBoard(g,b);
+        if(controller.getBoard()!=null){
+            drawBoard(g,controller.getBoard());
         }
     }
     
@@ -71,46 +76,37 @@ public class GameGraphicsPanel extends JPanel implements MouseListener{
         Graphics g=getGraphics();
         // update model with the move of the player
         drawPiece(g,blackPieceImg, row, col);
-        //controller.clickIn(col, row);
-    }
-    
-    public void setBoard(Board newBoard){
-        b = newBoard;
-        //repaint();
+        
     }
     
     public void drawBoard(Graphics g,Board b){
-        //repaint();
-        //Graphics g = getGraphics();
         for(int i= 0; i < 8; i++){
             for(int j= 0; j < 8; j++){
-                if(b.get(i, j) == 0){
-                    //System.out.println("");
-                }else if (b.get(i, j) == 1){
-                    drawPiece(g,blackPieceImg, i+1, j+1);
-                    //System.out.println("black piece");
-                }else if (b.get(i, j)== 2){
+                if (b.get(i, j) == 1){
                     drawPiece(g,whitePieceImg, i+1, j+1);
-                    //System.out.println("white piece");
+                }else if (b.get(i, j)== 2){
+                    drawPiece(g,blackPieceImg, i+1, j+1);
                 }
             }
         }
     }
-    /// Mouse events ///
+    
     public void mouseClicked(MouseEvent me) {
         int x=me.getX();
         int y=me.getY();
-        //System.out.println("click in pos " + (x)+ " y " + (y) );
         int col = (x/sizeRect+1);
         int row = (y/sizeRect+1);
-        makeMoveIn(col, row);
-        System.out.println("click in " + row + " y " + col);
-        //makeMoveIn(col,row);
-        //must send the move to the model
-        b.set(row-1, col-1, 2);
+//        System.out.println("click in " + (row-1) + " y " + (col-1));
+        if(controller.set_piece(row-1, col-1, 2)) makeMoveIn(col, row);
     }
+    
     public void mousePressed(MouseEvent me) {}
     public void mouseReleased(MouseEvent me) {}
     public void mouseEntered(MouseEvent me) {}
     public void mouseExited(MouseEvent me) {}
+
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 }

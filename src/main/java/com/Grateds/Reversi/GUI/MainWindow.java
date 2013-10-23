@@ -24,19 +24,15 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
      */
     public MainWindow(Controller c) {
         super("Reversi");
-        menuBar = new GameMenu();
-        setJMenuBar(menuBar);
-        initComponents();
-        setResizable(false);
-        setVisible(true);        // Added line for Vercryger
-        
         controller = c;
         board = c.getBoard();
         board.addObserver(this);
-    }
-    
-    public void drawBoard(){
-        gameGraphicsPanel1.setBoard(board);
+        menuBar = new GameMenu();
+        setJMenuBar(menuBar);
+        controller.start_game(); // fix
+        initComponents();
+        setResizable(false);
+        setVisible(true);        
     }
 
     /**
@@ -74,7 +70,6 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	controller.start_game();
-            	drawBoard();
             	controller.drawBoard();
             }
         });

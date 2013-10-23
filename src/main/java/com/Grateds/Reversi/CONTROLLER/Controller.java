@@ -39,9 +39,12 @@ public class Controller {
 		return table.is_complete();
 	}
 	
-	public void set_piece(int x, int y, int piece){
-		if (isValidMove(piece,x,y)) table.set(x, y, piece);
-		solver.solve(table, piece, x, y);
+	public boolean set_piece(int x, int y, int piece){
+		if (isValidMove(piece,x,y)){
+			table.set(x, y, piece);
+			solver.solve(table, piece, x, y);
+			return true;           // succesful
+		}else return false;       // it can't be possible
 	} // end set_piece
 	
 	public boolean isValidMove(int piece, int x, int y){
