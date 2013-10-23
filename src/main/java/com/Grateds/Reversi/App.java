@@ -61,5 +61,7 @@ public class App {
 //    	 System.out.println("BLACK SCORE = "+controller.getBlackScore());
 //    	 System.out.println("WHITE SCORE = "+controller.getWhiteScore());
     	MainWindow window = new MainWindow(controller);
+    	controller = window.getController();
+    	controller.start_game();
     }
 }

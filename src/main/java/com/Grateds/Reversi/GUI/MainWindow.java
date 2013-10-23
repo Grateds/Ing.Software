@@ -29,12 +29,15 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         board.addObserver(this);
         menuBar = new GameMenu();
         setJMenuBar(menuBar);
-        controller.start_game(); // fix
+        controller.initialization(); // fix
         initComponents();
         setResizable(false);
         setVisible(true);        
     }
-
+    
+    public Controller getController(){
+    	return controller;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,7 +72,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         jButton1.setText("New Game");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	controller.start_game();
+            	controller.initialization();
             	controller.drawBoard();
             }
         });

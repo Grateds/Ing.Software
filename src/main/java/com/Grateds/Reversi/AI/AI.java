@@ -15,9 +15,13 @@ public class AI {
 	private static int sEMPTY_PIECE = 0;
 	private static int sBLACK_PIECE = 2;
 	private static int sWHITE_PIECE = 1;
+	
+	private Controller controller;
+	private Board b;
 
-	public AI(){
-		
+	public AI(Controller c){
+		controller = c;
+		b = c.getBoard();
 	} // end constructor
 	
 	/**
@@ -28,7 +32,7 @@ public class AI {
 	 * @param col, column of the move
 	 * @return true if the move is valid, false otherwise	
 	 */
-	public boolean isValidMove(Board b, int piece, int row, int col) {		
+	public boolean isValidMove(int piece, int row, int col) {		
 		if (b.get(row, col) != sEMPTY_PIECE) // check whether this square is empty
 			return false;		
 		int oppPiece = (piece == sBLACK_PIECE) ? sWHITE_PIECE : sBLACK_PIECE;
@@ -64,12 +68,12 @@ public class AI {
 	 * @param isSuggest, true to indicate suggested pieces on the board
 	 * @return return an array list of moves
 	 */	 
-	public ArrayList<Integer> findValidMove(Board b, int piece, boolean isSuggest) {
+	public ArrayList<Integer> findValidMove(int piece, boolean isSuggest) {
 		ArrayList<Integer> moveList = new ArrayList<Integer>();
 		for (int i = 0; i < 8; ++i)
 			for (int j = 0; j < 8; ++j) {
 	
-				if (isValidMove(b,piece, i, j)){
+				if (isValidMove(piece, i, j)){
 					moveList.add(i);
 					moveList.add(j);
 				}
@@ -86,10 +90,10 @@ public class AI {
 	 * @return
 	 */
 	// piece = piece to find from the position (x,y)
-	public boolean findAtNorth(Board b, int piece, int x, int y){
+	public boolean findAtNorth(int piece, int x, int y){
 		if(x==0 || b.get(x-1, y)==sEMPTY_PIECE) return false;
 		else if(b.get(x-1, y)==piece) return true;
-		else return findAtNorth(b,piece,x-1,y); // there is an opponent
+		else return findAtNorth(piece,x-1,y); // there is an opponent
 	} // end findAtNorth
 	
 	/**
@@ -100,10 +104,10 @@ public class AI {
 	 * @param y
 	 * @return
 	 */
-	public boolean findAtSouth(Board b, int piece, int x, int y){
+	public boolean findAtSouth(int piece, int x, int y){
 		if(x==7 || b.get(x+1, y)==sEMPTY_PIECE) return false;
 		else if(b.get(x+1, y)==piece) return true;
-		else return findAtSouth(b,piece,x+1,y); // there is an opponent
+		else return findAtSouth(piece,x+1,y); // there is an opponent
 	}
 	
 	/**
@@ -114,10 +118,10 @@ public class AI {
 	 * @param y
 	 * @return
 	 */
-	public boolean findAtWest(Board b, int piece, int x, int y){
+	public boolean findAtWest(int piece, int x, int y){
 		if(y==0 || b.get(x, y-1)==sEMPTY_PIECE) return false;
 		else if(b.get(x, y-1)==piece) return true;
-		else return findAtWest(b,piece,x,y-1); // there is an opponent
+		else return findAtWest(piece,x,y-1); // there is an opponent
 	} // end findAtWest
 	
 	/**
@@ -128,10 +132,10 @@ public class AI {
 	 * @param y
 	 * @return
 	 */
-	public boolean findAtEast(Board b, int piece, int x, int y){
+	public boolean findAtEast(int piece, int x, int y){
 		if(y==7 || b.get(x,y+1)==sEMPTY_PIECE) return false;
 		else if(b.get(x,y+1)==piece) return true;
-		else return findAtEast(b,piece,x,y+1); // there is an opponent
+		else return findAtEast(piece,x,y+1); // there is an opponent
 	} // end findAtEast
 	
 	/**
@@ -142,10 +146,10 @@ public class AI {
 	 * @param y
 	 * @return
 	 */
-	public boolean findAtNE(Board b, int piece, int x, int y){
+	public boolean findAtNE(int piece, int x, int y){
 		if(x==0 || y==7 || b.get(x-1,y+1)==sEMPTY_PIECE) return false;
 		else if(b.get(x-1,y+1)==piece) return true;
-		else return findAtNE(b,piece,x-1,y+1); // there is an opponent
+		else return findAtNE(piece,x-1,y+1); // there is an opponent
 	} // end findAtNE
 
 	/**
@@ -156,10 +160,10 @@ public class AI {
 	 * @param y
 	 * @return
 	 */
-	public boolean findAtSE(Board b, int piece, int x, int y){
+	public boolean findAtSE(int piece, int x, int y){
 		if(x==7 || y==7 || b.get(x+1,y+1)==sEMPTY_PIECE) return false;
 		else if(b.get(x+1,y+1)==piece) return true;
-		else return findAtSE(b,piece,x+1,y+1); // there is an opponent
+		else return findAtSE(piece,x+1,y+1); // there is an opponent
 	} // end findAtSE
 	
 	/**
@@ -170,10 +174,10 @@ public class AI {
 	 * @param y
 	 * @return
 	 */
-	public boolean findAtSW(Board b, int piece, int x, int y){
+	public boolean findAtSW(int piece, int x, int y){
 		if(x==7 || y==0 || b.get(x+1,y-1)==sEMPTY_PIECE) return false;
 		else if(b.get(x+1,y-1)==piece) return true;
-		else return findAtSW(b,piece,x+1,y-1); // there is an opponent
+		else return findAtSW(piece,x+1,y-1); // there is an opponent
 	} // end findAtSW
 	
 	/**
@@ -184,10 +188,10 @@ public class AI {
 	 * @param y
 	 * @return
 	 */
-	public boolean findAtNW(Board b, int piece, int x, int y){
+	public boolean findAtNW(int piece, int x, int y){
 		if(x==0 || y==0 || b.get(x-1,y-1)==sEMPTY_PIECE) return false;
 		else if(b.get(x-1,y-1)==piece) return true;
-		else return findAtNW(b,piece,x-1,y-1); // there is an opponent
+		else return findAtNW(piece,x-1,y-1); // there is an opponent
 	} // end findAtNW
 	
 	/**
@@ -198,15 +202,15 @@ public class AI {
 	 * @param y
 	 * @return
 	 */
-	public boolean isValid(Board b, int piece, int x, int y){
-		return 	findAtNorth(b,piece,x,y) ||
-				findAtSouth(b,piece,x,y) ||
-				findAtEast(b,piece,x,y)  ||
-				findAtWest(b,piece,x,y)  ||
-				findAtNE(b,piece,x,y)	 ||
-				findAtSE(b,piece,x,y)	 ||
-				findAtNW(b,piece,x,y)	 ||
-				findAtSW(b,piece,x,y);
+	public boolean isValid(int piece, int x, int y){
+		return 	findAtNorth(piece,x,y) ||
+				findAtSouth(piece,x,y) ||
+				findAtEast(piece,x,y)  ||
+				findAtWest(piece,x,y)  ||
+				findAtNE(piece,x,y)	 ||
+				findAtSE(piece,x,y)	 ||
+				findAtNW(piece,x,y)	 ||
+				findAtSW(piece,x,y);
 	} // end isValid
 	
 	/**
@@ -216,17 +220,17 @@ public class AI {
 	 * @param x
 	 * @param y
 	 */
-	public void solve(Board b, int piece, int x, int y){
+	public void solve(int piece, int x, int y){
 		int oppPiece = (piece == sBLACK_PIECE) ? sWHITE_PIECE : sBLACK_PIECE;
 		int auxRow = x;
 		int auxCol = y;
-		if (findAtNorth(b,piece,x,y)){
+		if (findAtNorth(piece,x,y)){
 			while(b.get(auxRow-1, y)==oppPiece){
 				b.set(auxRow-1, y, piece);
 				auxRow--;
 			}
 		}
-		if (findAtSouth(b,piece,x,y)){
+		if (findAtSouth(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
 			while(b.get(auxRow+1, y)==oppPiece){
@@ -234,7 +238,7 @@ public class AI {
 				auxRow++;
 			}
 		}
-		if (findAtWest(b,piece,x,y)){
+		if (findAtWest(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
 			while(b.get(x, auxCol-1)==oppPiece){
@@ -242,7 +246,7 @@ public class AI {
 				auxCol--;
 			}
 		}
-		if (findAtEast(b,piece,x,y)){
+		if (findAtEast(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
 			while(b.get(x, auxCol+1)==oppPiece){
@@ -250,7 +254,7 @@ public class AI {
 				auxCol++;
 			}
 		}
-		if (findAtNE(b,piece,x,y)){
+		if (findAtNE(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
 			while(b.get(auxRow-1, auxCol+1)==oppPiece){
@@ -259,7 +263,7 @@ public class AI {
 				auxCol++;
 			}
 		}
-		if (findAtSE(b,piece,x,y)){
+		if (findAtSE(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
 			while(b.get(auxRow+1, auxCol+1)==oppPiece){
@@ -268,7 +272,7 @@ public class AI {
 				auxCol++;
 			}
 		}
-		if (findAtSW(b,piece,x,y)){
+		if (findAtSW(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
 			while(b.get(auxRow+1, auxCol-1)==oppPiece){
@@ -277,7 +281,7 @@ public class AI {
 				auxCol--;
 			}
 		}
-		if (findAtNW(b,piece,x,y)){
+		if (findAtNW(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
 			while(b.get(auxRow-1, auxCol-1)==oppPiece){
@@ -294,15 +298,15 @@ public class AI {
 	 * @return boolean
 	 */	
 	public boolean simulation(Board b){
-		ArrayList<Integer> pMoves = findValidMove(b,1,false);
+		ArrayList<Integer> pMoves = findValidMove(1,false);
 		Random rand = new Random();
 		int numRan; // random number to select a valid move
 		if (pMoves.size() == 0) return false;
 		else{
 			numRan = rand.nextInt(pMoves.size());
 			if ((numRan % 2) != 0) numRan--;
-			b.set(pMoves.get(numRan), pMoves.get(numRan+1), 1);
-			solve(b, 1, pMoves.get(numRan), pMoves.get(numRan+1));
+			controller.set_piece(pMoves.get(numRan), pMoves.get(numRan+1), sWHITE_PIECE);
+			solve(sWHITE_PIECE, pMoves.get(numRan), pMoves.get(numRan+1));
 			return true;
 		}
 	} // end simulation

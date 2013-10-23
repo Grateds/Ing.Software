@@ -11,16 +11,18 @@ public class Controller {
     private SaveAndLoad save;
 	private AI solver;
 	private boolean turn; // true -> player turn | false -> cpu turn
-    
+	private int BLACK_PIECE = 2;
+	private int WHITE_PIECE = 1;
+	
 	public Controller(){
 		table = new Board();
-		solver = new AI();
+		solver = new AI(this);
 		save = new SaveAndLoad();
 		turn = true;
 	} // end constructor
 	
 	public void initialization(){
-		
+		table.initialization();
 	} // end initialization
 	
 	public void change_skin(){
@@ -28,11 +30,18 @@ public class Controller {
 	} // end change_skin
 	
 	public void reset_game() {
-		start_game();
+		initialization();
 	} // end reset_game
 		
 	public void start_game(){
-		table.initialization();
+		while (!game_over()){ // AGREGAR CASO DONDE NO HAY MAS MOVIMIENTOS 
+			if(!turn){
+	       		 setTurn(cpu_move());
+	       	 }
+	   	 }
+	   	 if(getBlackScore()>getWhiteScore()) System.out.println("YOU WIN!");
+	   	 else if (getBlackScore()<getWhiteScore()) System.out.println("CPU WIN!");
+	   	 else System.out.println("= DRAW =");
 	} // end start_game
 	
 	public boolean game_over(){
@@ -42,13 +51,16 @@ public class Controller {
 	public boolean set_piece(int x, int y, int piece){
 		if (isValidMove(piece,x,y)){
 			table.set(x, y, piece);
-			solver.solve(table, piece, x, y);
+			solver.solve(piece, x, y);
+			if (piece == BLACK_PIECE) turn = false;
+			else turn = true;
+			System.out.println("in set_piece -> turn = "+turn);
 			return true;           // succesful
 		}else return false;       // it can't be possible
 	} // end set_piece
 	
 	public boolean isValidMove(int piece, int x, int y){
-		return solver.isValidMove(table, piece, x, y);
+		return solver.isValidMove(piece, x, y);
 	} // end isValidMove
 	
 	public boolean cpu_move(){
