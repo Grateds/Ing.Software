@@ -25,7 +25,8 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
     private BufferedImage blackPieceImg = null;
     private BufferedImage whitePieceImg = null;
     private BufferedImage background = null;
-
+    private int BLACK_PIECE = 2;
+	private int WHITE_PIECE = 1;
     private Board b;
     private Controller controller;
     
@@ -72,11 +73,11 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         g.drawImage(img,((col-1) * sizeRect+2),((row-1) * sizeRect)+2, null);
     }
     
-    private void makeMoveIn(int col, int row) {
-        Graphics g=getGraphics();
+    private void makeMoveIn(int col, int row, int piece) {
+        Graphics g = getGraphics();
         // update model with the move of the player
-        drawPiece(g,blackPieceImg, row, col);
-        
+        if (piece == BLACK_PIECE) drawPiece(g,blackPieceImg, row, col);
+        else drawPiece(g,blackPieceImg, row, col);
     }
     
     public void drawBoard(Graphics g,Board b){
@@ -97,7 +98,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         int col = (x/sizeRect+1);
         int row = (y/sizeRect+1);
 //        System.out.println("click in " + (row-1) + " y " + (col-1));
-        if(controller.set_piece(row-1, col-1, 2)) makeMoveIn(col, row);
+        if(controller.set_piece(row-1, col-1, BLACK_PIECE)) makeMoveIn(col, row, BLACK_PIECE);
     }
     
     public void mousePressed(MouseEvent me) {}
