@@ -1,4 +1,4 @@
-Project 2013 - Reverer™
+Project 2013 - Reversi™
 =======================================
 
 * Contributors:
