@@ -1,7 +1,6 @@
 package com.Grateds.Reversi.CONTROLLER;
 
 import com.Grateds.Reversi.SAVEANDLOAD.*;
-import com.Grateds.Reversi.GUI.*;
 import com.Grateds.Reversi.MODEL.*;
 import com.Grateds.Reversi.AI.*;
 
@@ -37,11 +36,12 @@ public class Controller {
 		while (!game_over()){ // AGREGAR CASO DONDE NO HAY MAS MOVIMIENTOS 
 			if(!turn){
 	       		 setTurn(cpu_move());
-	       	 }
-	   	 }
-	   	 if(getBlackScore()>getWhiteScore()) System.out.println("YOU WIN!");
-	   	 else if (getBlackScore()<getWhiteScore()) System.out.println("CPU WIN!");
-	   	 else System.out.println("= DRAW =");
+			}
+	   	}
+		System.out.println("GAME OVER");
+	   	if(getBlackScore()>getWhiteScore()) System.out.println("YOU WIN!");
+	   	else if (getBlackScore()<getWhiteScore()) System.out.println("CPU WIN!");
+	   	else System.out.println("= DRAW =");
 	} // end start_game
 	
 	public boolean game_over(){

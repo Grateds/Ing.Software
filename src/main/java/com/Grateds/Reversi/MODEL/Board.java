@@ -15,7 +15,7 @@ public class Board extends Observable{
 	private final int COL=8; // num of columns
 	private final int ROW=8; // num of rows
 	private Cell[][] board = null; // board of cells
-	private int n_cell=0;  // num of busy cells
+	public int n_cell=0;  // num of busy cells
 	
 	public Board(){
 		board = new Cell[ROW][COL];
@@ -41,6 +41,7 @@ public class Board extends Observable{
 	public void set(int x, int y, int value){
 		if (board[x][y].get_value()==EMPTY_PIECE){
 			board[x][y].set_value(value);
+			n_cell++;
 			if (value == WHITE_PIECE) ++WHITE_SCORE;
 			else ++BLACK_SCORE;
 		}else if (board[x][y].get_value()==WHITE_PIECE){
@@ -51,7 +52,6 @@ public class Board extends Observable{
 			board[x][y].set_value(value);
 			WHITE_SCORE++;
 			BLACK_SCORE--;
-			n_cell++;
 		}
 		this.setChanged();
 		this.notifyObservers();
