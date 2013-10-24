@@ -15,7 +15,7 @@ Project 2013 - Reversi™
 License
 =======================================
 
-Copyright (c) 2013-present - Grateds, Inc.
+© 2013 Grateds, Inc.
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
