@@ -1,4 +1,4 @@
-Project 2013 - Reversi Game Application
+Project 2013 - Reverer™
 =======================================
 
 * Contributors:
@@ -15,7 +15,7 @@ Project 2013 - Reversi Game Application
 License
 =======================================
 
-Copyright (c) 2013-present - Abuzaid - Astorga - Marconi
+Copyright (c) 2013-present - Grateds, Inc.
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
