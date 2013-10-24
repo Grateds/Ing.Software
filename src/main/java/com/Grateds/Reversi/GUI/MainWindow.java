@@ -76,6 +76,8 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	controller.initialization();
             	controller.drawBoard();
+            	gameGraphicsPanel1.repaint();
+            	
             }
         });
 

@@ -24,7 +24,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
 
     private BufferedImage blackPieceImg = null;
     private BufferedImage whitePieceImg = null;
-    private BufferedImage background = null;
+    private BufferedImage boardImg = null;
     private int BLACK_PIECE = 2;
 	private int WHITE_PIECE = 1;
     private Board b;
@@ -42,27 +42,17 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
     private void loadImages() {
         try {
         																				
-            background = ImageIO.read(new File("img/blue012.jpg"));
-            blackPieceImg = ImageIO.read(new File("img/blackpiece.png"));
-            whitePieceImg = ImageIO.read(new File("img/whitepiece.png"));
+            boardImg = ImageIO.read(new File("img/skin_2/board.jpg"));
+            blackPieceImg = ImageIO.read(new File("img/skin_2/blackpiece.png"));
+            whitePieceImg = ImageIO.read(new File("img/skin_2/whitepiece.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public void paint(Graphics g) {
-//        System.out.println("painting..");
         Graphics2D g2d = (Graphics2D) g;
-        g.drawImage(background, WIDTH, WIDTH, this);
+        g.drawImage(boardImg, WIDTH, WIDTH, this);
         g2d.setStroke(new BasicStroke(3));
-        //Draw lines
-        //Comented for Vercryger
-//        for(int i= 1; i < 9; i++){
-//            for(int j= 1; j < 9; j++){
-//                g.setColor(Color.black);
-//                g2d.drawRect(0, 0, i*sizeRect, j*sizeRect);
-//            }
-//        }
-        //Draw the model
         if(controller.getBoard()!=null){
             drawBoard(g,controller.getBoard());
         }
@@ -96,7 +86,6 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         int y=me.getY();
         int col = (x/sizeRect+1);
         int row = (y/sizeRect+1);
-//        System.out.println("click in " + (row-1) + " y " + (col-1));
         if (controller.set_piece(row-1, col-1, BLACK_PIECE)) makeMoveIn(col, row, BLACK_PIECE);
     }
     
@@ -107,7 +96,6 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
 
 	public void update(Observable arg0, Object arg1) {
 		Graphics g = getGraphics();
-		drawBoard(g,controller.getBoard());  // <- Es más rápido pero cuando inicia nuevo juego falla
-//		paint(g);              // Funciona bien pero es lento
+		drawBoard(g,controller.getBoard());  
 	}
 }

@@ -9,18 +9,18 @@ import javax.swing.JPanel;
 
 public class gamePanel extends JPanel{
 
-    private BufferedImage img;
+    private BufferedImage background;
 
     public gamePanel() {
         try {
-            img = ImageIO.read(new File("img/wood8.jpg"));
+            background = ImageIO.read(new File("img/skin_2/background.jpg"));
         } catch(IOException e) {
             e.printStackTrace();
         }
         setBorder(null);
     }
     public void paint(Graphics g) {
-        g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+        g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
         setOpaque(false);
         super.paint(g);
     }
