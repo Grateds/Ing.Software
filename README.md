@@ -3,7 +3,7 @@ Project 2013 - Reversi™
 
 * Contributors:
 
-    * [Abuzaid Karim](https://github.com/Vercryger) - Abuzaid.Karim@gmail.com
+    * [Abuzaid Karim](https://github.com/Vercryger)
 
 
     * [Dario Maximiliano Astorga](https://github.com/dastorga) - astorgadm@gmail.com
