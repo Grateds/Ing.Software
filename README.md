@@ -1,9 +1,9 @@
-Project 2013 - Reversi Game Application
+Project 2013 - Reversi™
 =======================================
 
 * Contributors:
 
-    * [Abuzaid Karim](https://github.com/Vercryger) - Abuzaid.Karim@gmail.com
+    * [Abuzaid Karim](https://github.com/Vercryger)
 
 
     * [Dario Maximiliano Astorga](https://github.com/dastorga) - astorgadm@gmail.com
@@ -15,7 +15,7 @@ Project 2013 - Reversi Game Application
 License
 =======================================
 
-Copyright (c) 2013-present - Abuzaid - Astorga - Marconi
+© 2013 Grateds, Inc.
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
