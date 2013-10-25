@@ -5,15 +5,8 @@ import java.util.Observer;
 import com.Grateds.Reversi.CONTROLLER.Controller; 
 import com.Grateds.Reversi.MODEL.Board;
 
-/**
- *
- * @author pablo
- */
 public class MainWindow extends javax.swing.JFrame implements Observer {
-    
-    /**
-	 * 
-	 */
+  
 	private static final long serialVersionUID = 1L;
 	private GameMenu menuBar;
 	private Controller controller;
