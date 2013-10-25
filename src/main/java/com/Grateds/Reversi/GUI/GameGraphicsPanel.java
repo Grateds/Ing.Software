@@ -20,7 +20,12 @@ import javax.swing.JPanel;
 
 public class GameGraphicsPanel extends JPanel implements MouseListener, Observer{
     
-    int sizeRect = 70;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	int sizeRect = 70;
 
     private BufferedImage blackPieceImg = null;
     private BufferedImage whitePieceImg = null;
