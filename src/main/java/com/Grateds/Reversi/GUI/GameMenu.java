@@ -44,6 +44,12 @@ public class GameMenu extends JMenuBar{
         
         jMenuItem3.setText("Load game"); // Load game
         jMenu1.add(jMenuItem3);
+        jMenuItem2.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent event) {
+        		controller.loadBoard();
+        		controller.drawBoard();
+        	}
+        });
         jMenu1.add(jSeparator2);
         
         jMenuItem4.setText("Undo"); // Undo
