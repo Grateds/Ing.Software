@@ -16,7 +16,6 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
      * Creates new form MainWindow
      */
     public MainWindow(Controller c) {
-        //super("Reversi");     // changed dastorga
         controller = c;
         board = c.getBoard();
         board.addObserver(this);
@@ -70,14 +69,13 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             	controller.initialization();
             	controller.drawBoard();
             	gameGraphicsPanel1.repaint();
-            	
             }
         });
 
         jButton2.setText("Undo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	controller.drawBoard();
+            	
             }
         });
 
@@ -88,11 +86,20 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jLabel1.setText("Black:");            
+        jLabel1.setText("Black:");	// score of Black piece
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
+        jLabel1.setForeground(new java.awt.Color(000, 0, 0));        
+        add(jLabel1, java.awt.BorderLayout.SOUTH);
 
-        jLabel2.setText("White:");
+        jLabel2.setText("White:");	// score of White piece
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
+        jLabel2.setForeground(new java.awt.Color(000, 0, 0));        
+        add(jLabel2, java.awt.BorderLayout.SOUTH);
 
         jLabel3.setText("Time:");
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
+        jLabel3.setForeground(new java.awt.Color(000, 0, 0));        
+        add(jLabel3, java.awt.BorderLayout.SOUTH);
 
         javax.swing.GroupLayout gamePanel1Layout = new javax.swing.GroupLayout(gamePanel1);
         gamePanel1.setLayout(gamePanel1Layout);
