@@ -18,7 +18,7 @@ public class GameMenu extends JMenuBar{
 	private Controller controller;
 	private Board board;
 	
-	public GameMenu(){
+	public GameMenu(Controller c){
 		
 	controller = c;
 	board = c.getBoard();	
