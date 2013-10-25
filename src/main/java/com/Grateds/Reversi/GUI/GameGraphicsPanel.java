@@ -101,6 +101,6 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
 
 	public void update(Observable arg0, Object arg1) {
 		Graphics g = getGraphics();
-		drawBoard(g,controller.getBoard());  
+		drawBoard(g,controller.getBoard());
 	}
 }
