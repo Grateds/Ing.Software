@@ -20,7 +20,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         controller = c;
         board = c.getBoard();
         board.addObserver(this);
-        menuBar = new GameMenu();
+        menuBar = new GameMenu(c);
         setJMenuBar(menuBar);
         controller.initialization(); // fix
         initComponents();
