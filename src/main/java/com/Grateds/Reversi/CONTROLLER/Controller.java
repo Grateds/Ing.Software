@@ -1,7 +1,5 @@
 package com.Grateds.Reversi.CONTROLLER;
 
-import java.util.ArrayList;
-
 import com.Grateds.Reversi.SAVEANDLOAD.*;
 import com.Grateds.Reversi.MODEL.*;
 import com.Grateds.Reversi.AI.*;
@@ -14,10 +12,6 @@ public class Controller {
 	private boolean turn; // true -> player turn | false -> cpu turn
 	private int BLACK_PIECE = 2;
 	private int WHITE_PIECE = 1;
-	
-	private ArrayList<Integer> whiteValidMoves;
-	private ArrayList<Integer> blackValidMoves;
-	
 	
 	public Controller(){
 		table = new Board();
@@ -74,16 +68,6 @@ public class Controller {
 	public boolean isValidMove(int piece, int x, int y){
 		return solver.isValidMove(piece, x, y);
 	} // end isValidMove
-	
-	public void manager(){
-		if (!turn){  // CPU turn
-			whiteValidMoves = solver.findValidMove(WHITE_PIECE, false);
-			if (whiteValidMoves.size()==0) turn = true;
-		}else{      // Player turn
-			blackValidMoves = solver.findValidMove(BLACK_PIECE, false);
-			if (blackValidMoves.size()==0) turn = false;
-		}
-	}
 	
 	public boolean cpu_move(){
 		return solver.simulation(table);
