@@ -86,19 +86,19 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jLabel1.setText("Black:");	// score of Black piece
+        jLabel1.setText("Blue:");	// score of Black piece
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
-        jLabel1.setForeground(new java.awt.Color(000, 0, 0));        
+        jLabel1.setForeground(new java.awt.Color(0, 50, 250));        
         add(jLabel1, java.awt.BorderLayout.SOUTH);
 
-        jLabel2.setText("White:");	// score of White piece
+        jLabel2.setText("Gray:");	// score of White piece
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
-        jLabel2.setForeground(new java.awt.Color(000, 0, 0));        
+        jLabel2.setForeground(new java.awt.Color(10, 20, 0));        
         add(jLabel2, java.awt.BorderLayout.SOUTH);
 
         jLabel3.setText("Time:");
         jLabel3.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
-        jLabel3.setForeground(new java.awt.Color(000, 0, 0));        
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));        
         add(jLabel3, java.awt.BorderLayout.SOUTH);
 
         javax.swing.GroupLayout gamePanel1Layout = new javax.swing.GroupLayout(gamePanel1);
