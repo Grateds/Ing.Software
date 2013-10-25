@@ -16,10 +16,21 @@ public class GameMenu extends JMenuBar{
         jMenu1.setText("Game");
         jMenuItem1.setText("New game");
         jMenu1.add(jMenuItem1);
+        jMenuItem1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent event) {
+        		//new
+        	}
+        });
+        
         jMenu1.add(jSeparator1);
         
         jMenuItem2.setText("Save game"); // Save game
         jMenu1.add(jMenuItem2);
+        jMenuItem2.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent event) {
+        		//controller.
+        	}
+        });
         
         jMenuItem3.setText("Load game"); // Load game
         jMenu1.add(jMenuItem3);
