@@ -44,6 +44,9 @@ public class Controller {
 	       		 setTurn(cpu_move());
 	       		 if(!turn) System.out.println("PASS");
 			}
+			
+			// Player turn
+			 
 	   	}
 		System.out.println("GAME OVER");
 	   	if(getBlackScore()>getWhiteScore()) System.out.println("YOU WIN!");

@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.Grateds.Reversi.AI.AI;
 import com.Grateds.Reversi.CONTROLLER.*;
 import com.Grateds.Reversi.GUI.MainWindow;
+import com.Grateds.Reversi.GUI.SmallWindow;
 import com.Grateds.Reversi.SAVEANDLOAD.SaveAndLoad;
 
 public class App {
@@ -63,5 +64,6 @@ public class App {
     	MainWindow window = new MainWindow(controller);
     	controller = window.getController();
     	controller.start_game();
+    	
     }
 }

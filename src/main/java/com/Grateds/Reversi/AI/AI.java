@@ -300,13 +300,12 @@ public class AI {
 		ArrayList<Integer> pMoves = findValidMove(1,false);
 		Random rand = new Random();
 		int numRan; // random number to select a valid move
-		if (pMoves.size() == 0) return true;
-		else{
+		if (pMoves.size() != 0) {
 			numRan = rand.nextInt(pMoves.size());
 			if ((numRan % 2) != 0) numRan--;
 			controller.set_piece(pMoves.get(numRan), pMoves.get(numRan+1), sWHITE_PIECE);
 			solve(sWHITE_PIECE, pMoves.get(numRan), pMoves.get(numRan+1));
-			return true;
 		}
+		return true;
 	} // end simulation
 }
