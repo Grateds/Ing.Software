@@ -1,5 +1,7 @@
 package com.Grateds.Reversi.CONTROLLER;
 
+import java.util.ArrayList;
+
 import com.Grateds.Reversi.SAVEANDLOAD.*;
 import com.Grateds.Reversi.MODEL.*;
 import com.Grateds.Reversi.AI.*;
@@ -12,6 +14,10 @@ public class Controller {
 	private boolean turn; // true -> player turn | false -> cpu turn
 	private int BLACK_PIECE = 2;
 	private int WHITE_PIECE = 1;
+	
+	private ArrayList<Integer> whiteValidMoves;
+	private ArrayList<Integer> blackValidMoves;
+	
 	
 	public Controller(){
 		table = new Board();
@@ -33,9 +39,10 @@ public class Controller {
 	} // end reset_game
 		
 	public void start_game(){
-		while (!game_over()){ // AGREGAR CASO DONDE NO HAY MAS MOVIMIENTOS 
-			if(!turn){
+		while (!game_over()){  
+			if(!turn || (turn && solver.findValidMove(BLACK_PIECE, false).size()==0)){
 	       		 setTurn(cpu_move());
+	       		 if(!turn) System.out.println("PASS");
 			}
 	   	}
 		System.out.println("GAME OVER");
@@ -45,7 +52,7 @@ public class Controller {
 	} // end start_game
 	
 	public boolean game_over(){
-		return table.is_complete();
+		return table.is_complete() || getWhiteScore()==0 || getBlackScore() == 0;
 	}
 	
 	public boolean set_piece(int x, int y, int piece){
@@ -64,6 +71,16 @@ public class Controller {
 	public boolean isValidMove(int piece, int x, int y){
 		return solver.isValidMove(piece, x, y);
 	} // end isValidMove
+	
+	public void manager(){
+		if (!turn){  // CPU turn
+			whiteValidMoves = solver.findValidMove(WHITE_PIECE, false);
+			if (whiteValidMoves.size()==0) turn = true;
+		}else{      // Player turn
+			blackValidMoves = solver.findValidMove(BLACK_PIECE, false);
+			if (blackValidMoves.size()==0) turn = false;
+		}
+	}
 	
 	public boolean cpu_move(){
 		return solver.simulation(table);
@@ -92,7 +109,7 @@ public class Controller {
 		turn = new_turn;
 	} // end setTurn
 		
-	public void saveBoard(){	
+	public void saveBoard(Board b){  // Le agregue pase la tabla como parametro (Board table). 2013/10/25
 		save.saveBoard(table);
 	} // end saveBoard
 	
@@ -112,9 +129,6 @@ public class Controller {
 		}
 	} // end drawBoard
 	
-	 /**
-     * Exit application
-     */
     public void quitGame() {
         System.exit(0);
     } // end quitGame

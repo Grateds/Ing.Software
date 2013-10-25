@@ -72,7 +72,6 @@ public class AI {
 		ArrayList<Integer> moveList = new ArrayList<Integer>();
 		for (int i = 0; i < 8; ++i)
 			for (int j = 0; j < 8; ++j) {
-	
 				if (isValidMove(piece, i, j)){
 					moveList.add(i);
 					moveList.add(j);
@@ -301,7 +300,7 @@ public class AI {
 		ArrayList<Integer> pMoves = findValidMove(1,false);
 		Random rand = new Random();
 		int numRan; // random number to select a valid move
-		if (pMoves.size() == 0) return false;
+		if (pMoves.size() == 0) return true;
 		else{
 			numRan = rand.nextInt(pMoves.size());
 			if ((numRan % 2) != 0) numRan--;

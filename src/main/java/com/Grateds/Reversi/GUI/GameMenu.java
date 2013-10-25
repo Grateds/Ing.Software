@@ -16,8 +16,13 @@ public class GameMenu extends JMenuBar{
 	
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
+	private Board board;
 	
-	public GameMenu(){
+	public GameMenu(Controller c){
+		
+		controller = c;
+		board = c.getBoard();
+		
         // Menu Game
         this.add(jMenu1);
         jMenu1.setText("Game");
@@ -25,7 +30,7 @@ public class GameMenu extends JMenuBar{
         jMenu1.add(jMenuItem1);
         jMenuItem1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		
+        		controller.initialization();	
         	}
         }); 
         jMenu1.add(jSeparator1);
@@ -34,12 +39,20 @@ public class GameMenu extends JMenuBar{
         jMenu1.add(jMenuItem2);
         jMenuItem2.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		
+        		controller.saveBoard(board); 
+        		System.out.println("Tablero guardado con exito.!");
         	}
         });
         
         jMenuItem3.setText("Load game"); // Load game
         jMenu1.add(jMenuItem3);
+        jMenuItem3.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent event) {
+        		//controller.loadBoard();
+        		//controller.drawBoard();
+        		//System.out.println("Tablero cargado con exito.!");
+        	}
+        });
         jMenu1.add(jSeparator2);
         
         jMenuItem4.setText("Undo"); // Undo
