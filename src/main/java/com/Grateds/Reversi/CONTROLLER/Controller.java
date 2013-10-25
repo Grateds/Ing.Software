@@ -92,7 +92,7 @@ public class Controller {
 		turn = new_turn;
 	} // end setTurn
 		
-	public void saveBoard(){	
+	public void saveBoard(Board table){  // Le agregue pase la tabla como parametro (Board table). 2013/10/25
 		save.saveBoard(table);
 	} // end saveBoard
 	
