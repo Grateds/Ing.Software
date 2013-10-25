@@ -1,16 +1,24 @@
 package com.Grateds.Reversi.GUI;
 
-import java.awt.Event;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu.Separator;
 
-public class GameMenu extends JMenuBar{   
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import javax.swing.JMenuItem;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+
+import com.Grateds.Reversi.CONTROLLER.Controller;
+import com.Grateds.Reversi.MODEL.Board;
+
+public class GameMenu extends JMenuBar{ 
 	
-    public GameMenu(){
+	private static final long serialVersionUID = 1L;
+	private Controller controller;
+	private Board board;
+	
+	public GameMenu(){
         // Menu Game
         this.add(jMenu1);
         jMenu1.setText("Game");
@@ -18,17 +26,16 @@ public class GameMenu extends JMenuBar{
         jMenu1.add(jMenuItem1);
         jMenuItem1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		//new
+        		
         	}
-        });
-        
+        }); 
         jMenu1.add(jSeparator1);
         
         jMenuItem2.setText("Save game"); // Save game
         jMenu1.add(jMenuItem2);
         jMenuItem2.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		//controller.
+        		
         	}
         });
         
@@ -61,8 +68,9 @@ public class GameMenu extends JMenuBar{
           
         this.add(jMenu2); // Menu Help
         jMenu2.setText("Help");
-        jMenuItem9.setText("About");
         jMenu2.add(jMenuItem9);
+        jMenuItem9.setText("About");
+        
     }
 
     JMenuBar jMenuBar1 = new javax.swing.JMenuBar();
