@@ -5,17 +5,27 @@ import java.util.Observer;
 import com.Grateds.Reversi.CONTROLLER.Controller; 
 import com.Grateds.Reversi.MODEL.Board;
 
+/**
+ *
+ * @author pablo
+ */
 public class MainWindow extends javax.swing.JFrame implements Observer {
-  
+    
+    /**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	private GameMenu menuBar;
 	private Controller controller;
 	private Board board;
+	private String WhiteScore;
+	private String BlackScore;
 	
     /**
      * Creates new form MainWindow
      */
     public MainWindow(Controller c) {
+        //super("Reversi");     // changed dastorga
         controller = c;
         board = c.getBoard();
         board.addObserver(this);
@@ -25,10 +35,16 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         initComponents();
         setResizable(false);
         setVisible(true);        
+        setScores(controller.getBlackScore(),controller.getWhiteScore());
     } // end MainWindow
     
     public Controller getController(){
     	return controller;
+    }
+    
+    private void setScores(Integer BScore, Integer WScore){
+    	BlackScore=BScore.toString();
+    	WhiteScore=WScore.toString();    	
     }
     
     /**
@@ -68,14 +84,14 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	controller.initialization();
             	controller.drawBoard();
-            	gameGraphicsPanel1.repaint();
+            	gameGraphicsPanel1.repaint();            	
             }
         });
 
         jButton2.setText("Undo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	
+            	controller.drawBoard();
             }
         });
 
@@ -86,12 +102,12 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jLabel1.setText("Blue:");	// score of Black piece
+        jLabel1.setText("Black: "+4);	// score of Black piece
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
-        jLabel1.setForeground(new java.awt.Color(0, 50, 250));        
+        jLabel1.setForeground(new java.awt.Color(0, 18, 18));        
         add(jLabel1, java.awt.BorderLayout.SOUTH);
 
-        jLabel2.setText("Gray:");	// score of White piece
+        jLabel2.setText("White: "+4);	// score of White piece
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
         jLabel2.setForeground(new java.awt.Color(10, 20, 0));        
         add(jLabel2, java.awt.BorderLayout.SOUTH);
@@ -168,7 +184,14 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_jButton3ActionPerformed
     
     public void update(Observable o, Object arg) {
-		
+		setScores(controller.getBlackScore(),controller.getWhiteScore());
+		jLabel1.setText("Black: "+BlackScore);	// score of Black piece
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
+        jLabel1.setForeground(new java.awt.Color(0, 18, 18));        
+        jLabel2.setText("White: "+WhiteScore);	// score of White piece
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
+        jLabel2.setForeground(new java.awt.Color(10, 20, 0));        
+
 	}
     
 //    /**  Comented for Vercryger
