@@ -83,8 +83,8 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	controller.initialization();
-            	controller.drawBoard();
-            	gameGraphicsPanel1.repaint();            	
+            	gameGraphicsPanel1.repaint();
+            	update(controller.getBoard(),"");
             }
         });
 
@@ -102,12 +102,12 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jLabel1.setText("Black: "+4);	// score of Black piece
+        jLabel1.setText("Black: "+2);	// score of Black piece
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
         jLabel1.setForeground(new java.awt.Color(0, 18, 18));        
         add(jLabel1, java.awt.BorderLayout.SOUTH);
 
-        jLabel2.setText("White: "+4);	// score of White piece
+        jLabel2.setText("White: "+2);	// score of White piece
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
         jLabel2.setForeground(new java.awt.Color(10, 20, 0));        
         add(jLabel2, java.awt.BorderLayout.SOUTH);
