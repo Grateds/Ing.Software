@@ -102,7 +102,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jLabel1.setText("Black: "+4);	// score of Black piece
+        jLabel1.setText("Brown: "+4);	// score of Black piece
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
         jLabel1.setForeground(new java.awt.Color(0, 18, 18));        
         add(jLabel1, java.awt.BorderLayout.SOUTH);
