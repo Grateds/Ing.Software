@@ -38,7 +38,7 @@ public class GameMenu extends JMenuBar{
         jMenu1.add(jMenuItem2);
         jMenuItem2.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		controller.saveBoard(board); 	
+        		//controller.saveBoard(board); 	
         	}
         });
         
@@ -46,8 +46,8 @@ public class GameMenu extends JMenuBar{
         jMenu1.add(jMenuItem3);
         jMenuItem2.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		controller.loadBoard();
-        		controller.drawBoard();
+        		//controller.loadBoard();
+        		//controller.drawBoard();
         	}
         });
         jMenu1.add(jSeparator2);
