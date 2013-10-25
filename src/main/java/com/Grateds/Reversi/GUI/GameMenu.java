@@ -19,6 +19,9 @@ public class GameMenu extends JMenuBar{
 	private Board board;
 	
 	public GameMenu(){
+		
+	controller = c;
+	board = c.getBoard();	
         // Menu Game
         this.add(jMenu1);
         jMenu1.setText("Game");
@@ -35,7 +38,7 @@ public class GameMenu extends JMenuBar{
         jMenu1.add(jMenuItem2);
         jMenuItem2.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		
+        		controller.saveBoard(board); 	
         	}
         });
         
