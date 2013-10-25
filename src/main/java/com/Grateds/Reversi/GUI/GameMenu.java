@@ -29,7 +29,7 @@ public class GameMenu extends JMenuBar{
         jMenu1.add(jMenuItem1);
         jMenuItem1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		
+        		controller.initialization();	
         	}
         }); 
         jMenu1.add(jSeparator1);
