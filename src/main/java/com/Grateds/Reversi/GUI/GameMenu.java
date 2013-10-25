@@ -16,7 +16,6 @@ public class GameMenu extends JMenuBar{
 	
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
-	private Board board;
 	
 	public GameMenu(){
         // Menu Game
