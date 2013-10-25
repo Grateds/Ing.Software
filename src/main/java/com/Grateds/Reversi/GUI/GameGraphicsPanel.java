@@ -47,9 +47,9 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
     private void loadImages() {
         try {
         																				
-            boardImg = ImageIO.read(new File("img/skin_2/board.jpg"));
-            blackPieceImg = ImageIO.read(new File("img/skin_2/blackpiece.png"));
-            whitePieceImg = ImageIO.read(new File("img/skin_2/whitepiece.png"));
+            boardImg = ImageIO.read(new File("img/skin_1/board.jpg"));
+            blackPieceImg = ImageIO.read(new File("img/skin_1/blackpiece.png"));
+            whitePieceImg = ImageIO.read(new File("img/skin_1/whitepiece.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

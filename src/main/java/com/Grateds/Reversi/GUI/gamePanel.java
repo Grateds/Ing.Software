@@ -13,7 +13,7 @@ public class gamePanel extends JPanel{
 
     public gamePanel() {
         try {
-            background = ImageIO.read(new File("img/skin_2/background.jpg"));
+            background = ImageIO.read(new File("img/skin_1/background.jpg"));
         } catch(IOException e) {
             e.printStackTrace();
         }
