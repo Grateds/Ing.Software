@@ -11,7 +11,8 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
 	private GameMenu menuBar;
 	private Controller controller;
 	private Board board;
-	
+	private String WhiteScore;
+	private String BlackScore;
     /**
      * Creates new form MainWindow
      */
@@ -24,13 +25,18 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         controller.initialization(); // fix
         initComponents();
         setResizable(false);
-        setVisible(true);        
+        setVisible(true);   
+        setScores(controller.getBlackScore(),controller.getWhiteScore());
     } // end MainWindow
     
     public Controller getController(){
     	return controller;
     }
     
+    private void setScores(Integer BScore, Integer WScore){
+    	      BlackScore=BScore.toString();
+    	      WhiteScore=WScore.toString();      
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -168,8 +174,16 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_jButton3ActionPerformed
     
     public void update(Observable o, Object arg) {
-		
-	}
+    	    setScores(controller.getBlackScore(),controller.getWhiteScore());
+    	    jLabel1.setText("Black: "+BlackScore);  // score of Black piece
+    	    jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
+    	    jLabel1.setForeground(new java.awt.Color(0, 18, 18));        
+    	    jLabel2.setText("White: "+WhiteScore);  // score of White piece
+    	    jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
+    	    jLabel2.setForeground(new java.awt.Color(10, 20, 0));        
+    	
+    	    
+    	   }
     
 //    /**  Comented for Vercryger
 //     * @param args the command line arguments
