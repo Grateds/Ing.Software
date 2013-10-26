@@ -16,12 +16,13 @@ public class GameMenu extends JMenuBar{
 	
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
-	private Board board;
-	
+	private Board board = new Board();
+	private MainWindow window;
 	public GameMenu(Controller c){
 		
 		controller = c;
 		board = c.getBoard();
+		
 		
         // Menu Game
         this.add(jMenu1);
@@ -30,7 +31,14 @@ public class GameMenu extends JMenuBar{
         jMenu1.add(jMenuItem1);
         jMenuItem1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		controller.initialization();	
+        		//controller.initialization();
+        
+        		
+        		//window.update(controller.getBoard(),"");
+        		//controller.drawBoard();
+        		
+        		
+        		//cargar tablero
         	}
         }); 
         jMenu1.add(jSeparator1);
@@ -48,9 +56,10 @@ public class GameMenu extends JMenuBar{
         jMenu1.add(jMenuItem3);
         jMenuItem3.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		//controller.loadBoard();
-        		//controller.drawBoard();
-        		//System.out.println("Tablero cargado con exito.!");
+        		board = controller.loadBoard();
+        		controller.setBoard(board);
+        		//window.update(board, "");
+        		System.out.println("Tablero cargado con exito.!");
         	}
         });
         jMenu1.add(jSeparator2);
