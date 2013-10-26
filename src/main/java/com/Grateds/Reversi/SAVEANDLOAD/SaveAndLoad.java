@@ -35,8 +35,7 @@ public class SaveAndLoad {
 	
     public Board loadBoard(){
     	ArrayList<Integer> numArray = new ArrayList<Integer>();	
-    	Board b = new Board();
-    	
+    	Board b = new Board();  	
         File f = new File("src/main/java/com/Grateds/Reversi/savedBoard.txt");
         int numero;
         Scanner entrada = null;  
