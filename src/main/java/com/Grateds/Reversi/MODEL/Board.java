@@ -19,6 +19,7 @@ public class Board extends Observable{
 	
 	public Board(){
 		board = new Cell[ROW][COL];
+		//
 	} // end constructor
 	
 	public void initialization() {
