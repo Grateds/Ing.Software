@@ -11,7 +11,7 @@ import com.Grateds.Reversi.SAVEANDLOAD.SaveAndLoad;
 
 public class App {
 
-    public static void main( String[] args ){
+    public static void main( String[] args ) throws InterruptedException{
     	 Controller controller = new Controller();
 //    	 controller.start_game();
 //    	 Scanner in = new Scanner(System.in);

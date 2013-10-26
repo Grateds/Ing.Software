@@ -23,22 +23,22 @@ public class Controller {
 	public void initialization(){
 		table.initialization();
 	} // end initialization
-	
-	public void reset_game() {
+        
+        public void reset_game() {
 		table.reset();
 		initialization();
 		turn = true;
 	} // end reset_game
-		
-	public void start_game(){
-		while (!game_over()){  
+        
+	Boolean runGame = true;	
+	public void start_game() throws InterruptedException{
+		while (!game_over() || runGame){  
 			if(!turn || (turn && solver.findValidMove(BLACK_PIECE, false).size()==0)){
 	       		 setTurn(cpu_move());
 	       		 if(!turn) System.out.println("PASS");
 			}
-			
-			// Player turn
-			 
+                        // Player turn
+                        try{Thread.sleep(20);}catch(InterruptedException e){}
 	   	}
 		System.out.println("GAME OVER");
 	   	if(getBlackScore()>getWhiteScore()) System.out.println("YOU WIN!");
