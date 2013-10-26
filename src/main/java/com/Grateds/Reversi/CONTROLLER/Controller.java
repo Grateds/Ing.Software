@@ -24,12 +24,10 @@ public class Controller {
 		table.initialization();
 	} // end initialization
 	
-	public void change_skin(){
-		
-	} // end change_skin
-	
 	public void reset_game() {
+		table.reset();
 		initialization();
+		turn = true;
 	} // end reset_game
 		
 	public void start_game(){
@@ -115,6 +113,7 @@ public class Controller {
 			System.out.println("");
 		}
 	} // end drawBoard
+	
 	public void setBoard(Board board){
 		//table = board;
 		for(int i=0; i<8; i++){

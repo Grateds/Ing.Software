@@ -17,7 +17,6 @@ public class GameMenu extends JMenuBar{
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
 	private Board board = new Board();
-	private MainWindow window;
 	public GameMenu(Controller c){
 		
 		controller = c;
@@ -31,14 +30,7 @@ public class GameMenu extends JMenuBar{
         jMenu1.add(jMenuItem1);
         jMenuItem1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		//controller.initialization();
-        
         		
-        		//window.update(controller.getBoard(),"");
-        		//controller.drawBoard();
-        		
-        		
-        		//cargar tablero
         	}
         }); 
         jMenu1.add(jSeparator1);

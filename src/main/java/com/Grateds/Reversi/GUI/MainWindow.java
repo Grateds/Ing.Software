@@ -71,16 +71,14 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         jButton1.setText("New Game");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	controller.initialization();
-            	gameGraphicsPanel1.repaint();
-            	update(controller.getBoard(),"");
+            	jButton1ActionPerformed(evt);
             }
         });
 
         jButton2.setText("Undo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	
+            	 jButton2ActionPerformed(evt);
             }
         });
 
@@ -153,11 +151,17 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    	controller.reset_game();
+    	gameGraphicsPanel1.repaint();
+    	update(controller.getBoard(),"");
+    	System.out.println("================== NEW GAME =================="); 
+    	System.out.println("Black = "+controller.getBlackScore());
+    	System.out.println("White = "+controller.getWhiteScore());
+    	System.out.println("Complete = "+controller.game_over());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        controller.drawBoard();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

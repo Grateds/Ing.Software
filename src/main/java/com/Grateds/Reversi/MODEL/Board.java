@@ -9,8 +9,8 @@ public class Board extends Observable{
 	private final int WHITE_PIECE = 1; // represents white piece
 	private final int EMPTY_PIECE = 0; // represents no-piece
 	
-	private int BLACK_SCORE; // score of black piece
-	private int WHITE_SCORE; // score of white piece 
+	private int BLACK_SCORE=0; // score of black piece
+	private int WHITE_SCORE=0; // score of white piece 
 	
 	private final int COL=8; // num of columns
 	private final int ROW=8; // num of rows
@@ -26,6 +26,17 @@ public class Board extends Observable{
 		}
 	} // end constructor
 	
+	public void reset(){
+		for(int i=0; i<COL; i++){
+			for(int j=0; j<ROW; j++){
+				board[j][i].set_value(0);
+			}
+		}
+		BLACK_SCORE = 0;
+		WHITE_SCORE = 0;
+		n_cell = 0;
+	}
+	
 	public void initialization() {
 		board[3][3].set_value(WHITE_PIECE);
 		board[4][4].set_value(WHITE_PIECE);
@@ -34,8 +45,6 @@ public class Board extends Observable{
 		n_cell = 4;
 		BLACK_SCORE = 2;
 		WHITE_SCORE = 2;
-//		this.setChanged();
-//		this.notifyObservers();
 	} // end initialization
 
 	public void set(int x, int y, int value){
