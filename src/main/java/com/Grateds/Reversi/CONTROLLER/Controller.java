@@ -115,6 +115,14 @@ public class Controller {
 			System.out.println("");
 		}
 	} // end drawBoard
+	public void setBoard(Board board){
+		//table = board;
+		for(int i=0; i<8; i++){
+			for(int j=0; j<8; j++){
+				table.set(i, j, board.get(i, j));
+			}
+		}
+	}
 	
     public void quitGame() {
         System.exit(0);
