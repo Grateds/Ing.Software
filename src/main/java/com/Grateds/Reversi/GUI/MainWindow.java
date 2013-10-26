@@ -154,10 +154,6 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     	controller.reset_game();
     	gameGraphicsPanel1.repaint();
     	update(controller.getBoard(),"");
-    	System.out.println("================== NEW GAME =================="); 
-    	System.out.println("Black = "+controller.getBlackScore());
-    	System.out.println("White = "+controller.getWhiteScore());
-    	System.out.println("Complete = "+controller.game_over());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

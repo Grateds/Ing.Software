@@ -60,7 +60,7 @@ public class Controller {
 			System.out.println("BLACK SCORE = "+getBlackScore());
 	   	    System.out.println("WHITE SCORE = "+getWhiteScore());
 			return true;           // succesful
-		}else return false;       // it can't be possible
+		}else return false;       
 	} // end set_piece
 	
 	public boolean isValidMove(int piece, int x, int y){
@@ -94,7 +94,7 @@ public class Controller {
 		turn = new_turn;
 	} // end setTurn
 		
-	public void saveBoard(Board b){  // Le agregue pase la tabla como parametro (Board table). 2013/10/25
+	public void saveBoard(Board b){  
 		save.saveBoard(table);
 	} // end saveBoard
 	
