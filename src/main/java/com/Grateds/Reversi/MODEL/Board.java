@@ -19,15 +19,14 @@ public class Board extends Observable{
 	
 	public Board(){
 		board = new Cell[ROW][COL];
-		//
-	} // end constructor
-	
-	public void initialization() {
 		for(int i=0; i<COL; i++){
 			for(int j=0; j<ROW; j++){
 				board[j][i]= new Cell();
 			}
 		}
+	} // end constructor
+	
+	public void initialization() {
 		board[3][3].set_value(WHITE_PIECE);
 		board[4][4].set_value(WHITE_PIECE);
 		board[4][3].set_value(BLACK_PIECE);
@@ -35,6 +34,8 @@ public class Board extends Observable{
 		n_cell = 4;
 		BLACK_SCORE = 2;
 		WHITE_SCORE = 2;
+//		this.setChanged();
+//		this.notifyObservers();
 	} // end initialization
 
 	public void set(int x, int y, int value){
@@ -70,4 +71,6 @@ public class Board extends Observable{
 		v.add(WHITE_SCORE);
 		return v;		
 	} // end calScore	
+	
+	
 }
