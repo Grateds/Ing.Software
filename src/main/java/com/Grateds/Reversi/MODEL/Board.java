@@ -34,8 +34,6 @@ public class Board extends Observable{
 		n_cell = 4;
 		BLACK_SCORE = 2;
 		WHITE_SCORE = 2;
-//		this.setChanged();
-//		this.notifyObservers();
 	} // end initialization
 
 	public void set(int x, int y, int value){
