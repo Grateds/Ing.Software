@@ -34,9 +34,10 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     }
     
     private void setScores(Integer BScore, Integer WScore){
-    	      BlackScore=BScore.toString();
-    	      WhiteScore=WScore.toString();      
+    	BlackScore=BScore.toString();
+    	WhiteScore=WScore.toString();      
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,6 +173,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     	    jLabel2.setText("White: "+WhiteScore);  // score of White piece
     	    jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
     	    jLabel2.setForeground(new java.awt.Color(10, 20, 0));        
+    	    repaint();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
