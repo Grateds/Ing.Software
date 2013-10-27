@@ -114,14 +114,14 @@ public class Controller {
 		}
 	} // end drawBoard
 	
-	public void setBoard(Board board){
-		//table = board;
+	public void setBoard(Board board){	
+		table.reset();
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
 				table.set(i, j, board.get(i, j));
 			}
 		}
-	}
+	} // end setBoard
 	
     public void quitGame() {
         System.exit(0);
