@@ -54,7 +54,6 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         }
     }
     public void paint(Graphics g) {
-        //System.out.println("pintando");
         Graphics2D g2d = (Graphics2D) g;
         g.drawImage(boardImg, WIDTH, WIDTH, this);
         g2d.setStroke(new BasicStroke(3));
@@ -102,6 +101,6 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
 	public void update(Observable arg0, Object arg1) {
 		Graphics g = getGraphics();
 		drawBoard(g,controller.getBoard());
-                repaint();
+        repaint();
 	}
 }
