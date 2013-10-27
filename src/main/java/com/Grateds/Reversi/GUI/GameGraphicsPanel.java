@@ -14,8 +14,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -63,10 +61,6 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         if(controller.getBoard()!=null){
             drawBoard(g,controller.getBoard());
         }
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException ex) {}
-        repaint();
     }
     
     private void drawPiece(Graphics g, BufferedImage img, int row, int col) {
@@ -108,5 +102,6 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
 	public void update(Observable arg0, Object arg1) {
 		Graphics g = getGraphics();
 		drawBoard(g,controller.getBoard());
+                repaint();
 	}
 }
