@@ -173,7 +173,10 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     	    jLabel2.setText("White: "+WhiteScore);  // score of White piece
     	    jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
     	    jLabel2.setForeground(new java.awt.Color(10, 20, 0));        
-    	    repaint();
+    
+    	    gamePanel1.repaint();
+    	    this.repaint();
+    	    gameGraphicsPanel1.repaint();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
