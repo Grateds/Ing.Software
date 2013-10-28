@@ -1,21 +1,13 @@
-Project 2013 - Reversi™
-=======================================
+# Project 2013 - Reversi™
 
-* Contributors:
+##### To run:
 
-    * [Abuzaid Karim](https://github.com/Vercryger)
-
-
-    * [Dario Maximiliano Astorga](https://github.com/dastorga) - astorgadm@gmail.com
+	$ ./run.sh
 
 
-    * [Pablo Marconi](https://github.com/pmarconi) - pablo.marconi.ar@gmail.com 
+## License
 
-
-License
-=======================================
-
-© 2013 Grateds, Inc.
+© 2013 [Grateds, Inc](https://github.com/Grateds).
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
