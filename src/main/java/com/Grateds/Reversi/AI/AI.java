@@ -73,6 +73,7 @@ public class AI {
 		for (int i = 0; i < 8; ++i)
 			for (int j = 0; j < 8; ++j) {
 				if (isValidMove(piece, i, j)){
+					b.set_suggest(i, j, 1);
 					moveList.add(i);
 					moveList.add(j);
 				}

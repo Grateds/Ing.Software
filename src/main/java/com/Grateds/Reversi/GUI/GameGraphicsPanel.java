@@ -1,5 +1,6 @@
 package com.Grateds.Reversi.GUI;
 
+import java.util.concurrent.TimeUnit;
 import com.Grateds.Reversi.CONTROLLER.Controller;
 import com.Grateds.Reversi.MODEL.Board;
 import java.awt.BasicStroke;
@@ -29,6 +30,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
 
     private BufferedImage blackPieceImg = null;
     private BufferedImage whitePieceImg = null;
+    private BufferedImage suggestImg = null;
     private BufferedImage boardImg = null;
     private int BLACK_PIECE = 2;
 	private int WHITE_PIECE = 1;
@@ -49,6 +51,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
             boardImg = ImageIO.read(new File("img/skin_1/board.jpg"));
             blackPieceImg = ImageIO.read(new File("img/skin_1/blackpiece.png"));
             whitePieceImg = ImageIO.read(new File("img/skin_1/whitepiece.png"));
+            suggestImg = ImageIO.read(new File("img/skin_1/suggest.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,7 +83,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
                     drawPiece(g,whitePieceImg, i+1, j+1);
                 }else if (b.get(i, j)== 2){
                     drawPiece(g,blackPieceImg, i+1, j+1);
-                }
+                }else if (b.getSuggest(i, j)==1) drawPiece(g,suggestImg, i+1, j+1);
             }
         }
     }
@@ -99,8 +102,13 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
     public void mouseExited(MouseEvent me) {}
 
 	public void update(Observable arg0, Object arg1) {
+		try {
+			TimeUnit.MILLISECONDS.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Graphics g = getGraphics();
 		drawBoard(g,controller.getBoard());
-        //repaint();
 	}
 }

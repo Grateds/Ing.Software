@@ -1,5 +1,9 @@
 package com.Grateds.Reversi.CONTROLLER;
 
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JOptionPane;
+
 import com.Grateds.Reversi.SAVEANDLOAD.*;
 import com.Grateds.Reversi.MODEL.*;
 import com.Grateds.Reversi.AI.*;
@@ -12,12 +16,14 @@ public class Controller {
 	private boolean turn; // true -> player turn | false -> cpu turn
 	private int BLACK_PIECE = 2;
 	private int WHITE_PIECE = 1;
+	private Boolean runGame;	
 	
 	public Controller(){
 		table = new Board();
 		solver = new AI(this);
 		save = new SaveAndLoad();
 		turn = true;
+		runGame = true;
 	} // end constructor
 	
 	public void initialization(){
@@ -29,21 +35,31 @@ public class Controller {
 		initialization();
 		turn = true;
 	} // end reset_game
-        
-	Boolean runGame = true;	
+     
 	public void start_game() throws InterruptedException{
-		while (!game_over() || runGame){  
+		boolean win = true;
+		boolean loose = true;
+		boolean draw = true;
+		
+		while (!game_over() || runGame){
 			if(!turn || (turn && solver.findValidMove(BLACK_PIECE, false).size()==0)){
-	       		 setTurn(cpu_move());
-	       		 if(!turn) System.out.println("PASS");
+				TimeUnit.SECONDS.sleep(1);
+				setTurn(cpu_move());
 			}
-                        // Player turn
-                        try{Thread.sleep(20);}catch(InterruptedException e){}
-	   	}
-		System.out.println("GAME OVER");
-	   	if(getBlackScore()>getWhiteScore()) System.out.println("YOU WIN!");
-	   	else if (getBlackScore()<getWhiteScore()) System.out.println("CPU WIN!");
-	   	else System.out.println("= DRAW =");
+            // Player turn
+            if(game_over()){
+            	if(getBlackScore()>getWhiteScore() && win){
+//            		JOptionPane.showMessageDialog(null, "YOU WIN");
+//            		win = false;
+            	}else if (getBlackScore()<getWhiteScore() && loose) {
+//            		JOptionPane.showMessageDialog(null, "CPU WINS");
+//            		loose = false;
+            	}else if(getBlackScore()==getWhiteScore() && draw){
+//            		JOptionPane.showMessageDialog(null, "DRAW");
+//            		draw = false;
+            	}
+            }
+		}
 	} // end start_game
 	
 	public boolean game_over(){
@@ -57,8 +73,6 @@ public class Controller {
 			if (piece == BLACK_PIECE) turn = false;
 			else turn = true;
 			System.out.println("in set_piece -> turn = "+turn);
-			System.out.println("BLACK SCORE = "+getBlackScore());
-	   	    System.out.println("WHITE SCORE = "+getWhiteScore());
 			return true;           // succesful
 		}else return false;       
 	} // end set_piece

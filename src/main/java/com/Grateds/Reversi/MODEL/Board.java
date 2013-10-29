@@ -30,6 +30,7 @@ public class Board extends Observable{
 		for(int i=0; i<COL; i++){
 			for(int j=0; j<ROW; j++){
 				board[j][i].set_value(0);
+				board[j][i].suggest(0);
 			}
 		}
 		BLACK_SCORE = 0;
@@ -62,9 +63,26 @@ public class Board extends Observable{
 			WHITE_SCORE++;
 			BLACK_SCORE--;
 		}
+		resetSuggest();
 		this.setChanged();
 		this.notifyObservers();
 	} // end set
+	
+	public void set_suggest(int x, int y, int value){
+		board[x][y].suggest(value);	
+	}
+	
+	public int getSuggest(int x, int y){
+		return board[x][y].get_suggest();
+	}
+	
+	public void resetSuggest(){
+		for(int i=0; i<COL; i++){
+			for(int j=0; j<ROW; j++){
+				board[j][i].suggest(0);
+			}
+		}
+	}
 	
 	public int get(int x, int y){
 		return board[x][y].get_value();
