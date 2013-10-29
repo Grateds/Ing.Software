@@ -17,11 +17,12 @@ public class GameMenu extends JMenuBar{
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
 	private Board board = new Board();
+	//private MainWindow window;
+
 	public GameMenu(Controller c){
 		
 		controller = c;
-		board = c.getBoard();
-		
+		board = c.getBoard();	
 		
         // Menu Game
         this.add(jMenu1);
@@ -50,18 +51,19 @@ public class GameMenu extends JMenuBar{
         	public void actionPerformed(ActionEvent event) {
         		board = controller.loadBoard();
         		controller.setBoard(board);
-        		//window.update(board, "");
+//        		window.gameGraphicsPanel1.repaint();
+//        		window.update(controller.getBoard(),"");
         		System.out.println("Tablero cargado con exito.!");
         	}
         });
         jMenu1.add(jSeparator2);
         
-        jMenuItem4.setText("Undo"); // Undo
+        jMenuItem4.setText("Skins"); // Undo
         jMenu1.add(jMenuItem4);
+        jMenu1.add(jSeparator3); 
         
-        jMenuItem5.setText("Redo"); // Redo
-        jMenu1.add(jMenuItem5);
-        jMenu1.add(jSeparator3);
+//      jMenuItem5.setText("Redo"); // Redo
+//      jMenu1.add(jMenuItem5);
         
         jMenuItem6.setText("Top scores"); // Top scores
         jMenu1.add(jMenuItem6);
@@ -96,7 +98,7 @@ public class GameMenu extends JMenuBar{
     Separator jSeparator2 = new javax.swing.JPopupMenu.Separator();
     
     JMenuItem jMenuItem4 = new javax.swing.JMenuItem();
-    JMenuItem jMenuItem5 = new javax.swing.JMenuItem();
+//  JMenuItem jMenuItem5 = new javax.swing.JMenuItem();
     Separator jSeparator3 = new javax.swing.JPopupMenu.Separator();
     
     JMenuItem jMenuItem6 = new javax.swing.JMenuItem();
