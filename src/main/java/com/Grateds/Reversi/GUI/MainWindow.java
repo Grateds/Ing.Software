@@ -77,7 +77,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jButton2.setText("Change Turn");
+        jButton2.setText("First Shift Change");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	
