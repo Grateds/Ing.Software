@@ -1,7 +1,7 @@
 package com.Grateds.Reversi.CONTROLLER;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-
 import javax.swing.JOptionPane;
 
 import com.Grateds.Reversi.SAVEANDLOAD.*;
@@ -17,6 +17,8 @@ public class Controller {
 	private int BLACK_PIECE = 2;
 	private int WHITE_PIECE = 1;
 	private Boolean runGame;	
+	private ArrayList<Integer> blackValidMoves = new ArrayList<Integer>();
+	private ArrayList<Integer> whiteValidMoves = new ArrayList<Integer>();
 	
 	public Controller(){
 		table = new Board();
@@ -24,6 +26,7 @@ public class Controller {
 		save = new SaveAndLoad();
 		turn = true;
 		runGame = true;
+		blackValidMoves.add(2); // just for init
 	} // end constructor
 	
 	public void initialization(){
@@ -42,10 +45,13 @@ public class Controller {
 		boolean draw = true;
 		
 		while (!game_over() || runGame){
-			if(!turn || (turn && solver.findValidMove(BLACK_PIECE, false).size()==0)){
+			if(!turn || (turn && blackValidMoves.size()==0)){
 				TimeUnit.SECONDS.sleep(1);
-				setTurn(cpu_move());
+				update_whiteValidMoves();
+				cpu_move(whiteValidMoves);
+				setTurn(true);
 			}
+			update_blackValidMoves();
             // Player turn
             if(game_over()){
             	if(getBlackScore()>getWhiteScore() && win){
@@ -66,6 +72,14 @@ public class Controller {
 		return table.is_complete() || getWhiteScore()==0 || getBlackScore() == 0;
 	}
 	
+	public void update_blackValidMoves(){
+		blackValidMoves = solver.findValidMove(BLACK_PIECE);
+	}
+	
+	public void update_whiteValidMoves(){
+		whiteValidMoves = solver.findValidMove(WHITE_PIECE);
+	}
+	
 	public boolean set_piece(int x, int y, int piece){
 		if (isValidMove(piece,x,y)){
 			table.set(x, y, piece);
@@ -74,15 +88,15 @@ public class Controller {
 			else turn = true;
 			System.out.println("in set_piece -> turn = "+turn);
 			return true;           // succesful
-		}else return false;       
+		}else return false;       // not possible
 	} // end set_piece
 	
 	public boolean isValidMove(int piece, int x, int y){
 		return solver.isValidMove(piece, x, y);
 	} // end isValidMove
 	
-	public boolean cpu_move(){
-		return solver.simulation(table);
+	public void cpu_move(ArrayList<Integer> playerMoves){
+		solver.simulation(table,playerMoves);
 	} // end cpu_move
 	
 	public Board getBoard(){

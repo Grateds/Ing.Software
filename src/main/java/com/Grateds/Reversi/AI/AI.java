@@ -68,7 +68,7 @@ public class AI {
 	 * @param isSuggest, true to indicate suggested pieces on the board
 	 * @return return an array list of moves
 	 */	 
-	public ArrayList<Integer> findValidMove(int piece, boolean isSuggest) {
+	public ArrayList<Integer> findValidMove(int piece) {
 		ArrayList<Integer> moveList = new ArrayList<Integer>();
 		for (int i = 0; i < 8; ++i)
 			for (int j = 0; j < 8; ++j) {
@@ -297,8 +297,8 @@ public class AI {
 	 * @param b, the board
 	 * @return boolean
 	 */	
-	public boolean simulation(Board b){
-		ArrayList<Integer> pMoves = findValidMove(1,false);
+	public void simulation(Board b, ArrayList<Integer> pMoves){
+//		ArrayList<Integer> pMoves = findValidMove(1);
 		Random rand = new Random();
 		int numRan; // random number to select a valid move
 		if (pMoves.size() != 0) {
@@ -307,6 +307,5 @@ public class AI {
 			controller.set_piece(pMoves.get(numRan), pMoves.get(numRan+1), sWHITE_PIECE);
 			solve(sWHITE_PIECE, pMoves.get(numRan), pMoves.get(numRan+1));
 		}
-		return true;
 	} // end simulation
 }
