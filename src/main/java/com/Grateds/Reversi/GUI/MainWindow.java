@@ -134,12 +134,11 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     	controller.stop();
     	NewGame window = new NewGame(controller);
-//    	controller.stop();
-//    	controller.reset_game();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void update(Observable o, Object arg) {
-    	setScores(controller.getBlackScore_update(),controller.getWhiteScore_update());
+    	controller.get_scores();
+    	setScores(controller.getblackscore(),controller.getWhiteScore());
     	jLabel1.setText("Black: "+BlackScore);  // score of Black piece
     	jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 22)); 
     	jLabel2.setText("White: "+WhiteScore);  // score of White piece

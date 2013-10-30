@@ -15,7 +15,7 @@ public class Board extends Observable{
 	private final int COL=8; // num of columns
 	private final int ROW=8; // num of rows
 	private Cell[][] board = null; // board of cells
-	public int n_cell=0;  // num of busy cells
+	private int n_cell=0;  // num of busy cells
 	
 	public Board(){
 		board = new Cell[ROW][COL];
@@ -90,7 +90,7 @@ public class Board extends Observable{
 	public boolean is_complete(){
 		return n_cell==ROW*COL;
 	} // end is_complete
-		
+	
 	public Vector<Integer> get_score() {
 		Vector<Integer> v = new Vector<Integer>();
 		v.add(BLACK_SCORE);
@@ -98,22 +98,46 @@ public class Board extends Observable{
 		return v;		
 	} // end calScore
 	
-	public Vector<Integer> get_score_update() {   
-		Vector<Integer> v = new Vector<Integer>();
+	public void change_board(Board b){
+		reset();
+		n_cell = 0;
 		BLACK_SCORE = 0;
 		WHITE_SCORE = 0;
-		for(int i=0; i<COL; i++){
-			for(int j=0; j<ROW; j++){	
-				if (board[i][j].get_value()== WHITE_PIECE){
-					WHITE_SCORE++;
-				}
-				else if (board[i][j].get_value()== BLACK_PIECE){
+		for(int i=0; i<8; i++){
+			for(int j=0; j<8; j++){
+				if (b.get(i, j)==BLACK_PIECE){
+					board[i][j].set_value(b.get(i, j));
+					n_cell++;
 					BLACK_SCORE++;
+				}else if(b.get(i, j)==WHITE_PIECE){
+					board[i][j].set_value(b.get(i, j));
+					n_cell++;
+					WHITE_SCORE++;
 				}
 			}
 		}
-		v.add(BLACK_SCORE);
-		v.add(WHITE_SCORE);
-		return v;		
-	} // end get_score_update	
+		System.out.println("BLACK: "+BLACK_SCORE);
+		System.out.println("WHITE: "+WHITE_SCORE);
+		System.out.println("N° CELL: "+n_cell);
+		this.setChanged();
+		this.notifyObservers();
+	}
+//	public Vector<Integer> get_score_update() {   
+//		Vector<Integer> v = new Vector<Integer>();
+//		BLACK_SCORE = 0;
+//		WHITE_SCORE = 0;
+//		for(int i=0; i<COL; i++){
+//			for(int j=0; j<ROW; j++){	
+//				if (board[i][j].get_value()== WHITE_PIECE){
+//					WHITE_SCORE++;
+//				}
+//				else if (board[i][j].get_value()== BLACK_PIECE){
+//					BLACK_SCORE++;
+//				}
+//			}
+//		}
+//		v.add(BLACK_SCORE);
+//		v.add(WHITE_SCORE);
+//		return v;		
+//	} // end get_score_update	
 }

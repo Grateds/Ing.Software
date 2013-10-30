@@ -1,6 +1,8 @@
 package com.Grateds.Reversi.CONTROLLER;
 
 import java.util.ArrayList;
+import java.util.Vector;
+
 import javax.swing.JOptionPane;
 
 import com.Grateds.Reversi.SAVEANDLOAD.*;
@@ -15,6 +17,8 @@ public class Controller {
 	private boolean turn; // true -> player turn | false -> cpu turn
 	private int BLACK_PIECE = 2;
 	private int WHITE_PIECE = 1;
+	private int BLACK_SCORE;
+	private int WHITE_SCORE;
 	private Boolean runGame;	
 	private Boolean stopped;
 	private ArrayList<Integer> blackValidMoves = new ArrayList<Integer>();
@@ -154,24 +158,30 @@ public class Controller {
 		}
 	} // end drawBoard
 	
+	public void get_scores(){
+		Vector<Integer> v =	table.get_score();
+		BLACK_SCORE = v.get(0);
+		WHITE_SCORE = v.get(1);
+	}
 	
-	public int getWhiteScore_update() { 
-		return table.get_score_update().elementAt(1);
-	}// end getWhiteScore_update 
+	public int getwhitescore() { 
+		return WHITE_SCORE;
+	}// end getwhitescore 
 
-	public int getBlackScore_update() {  
-		return table.get_score_update().elementAt(0);
-	} // endgetBlackScore_update
+	public int getblackscore() {  
+		return BLACK_SCORE;
+	} // endgetblackscore
+	
+//	public int getWhiteScore_update() { 
+//		return table.get_score_update().elementAt(1);
+//	}// end getWhiteScore_update 
+//
+//	public int getBlackScore_update() {  
+//		return table.get_score_update().elementAt(0);
+//	} // endgetBlackScore_update
 	
 	public void setBoard(Board board){	
-		table.reset();	
-		for(int i=0; i<8; i++){
-			for(int j=0; j<8; j++){
-				table.set(i, j, board.get(i, j));
-			}
-		}
-		System.out.println(getBlackScore_update());
-		System.out.println(getWhiteScore_update());
+		table.change_board(board);
 	} // end setBoard
 	
     public void quitGame() {
