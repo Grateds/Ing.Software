@@ -18,6 +18,7 @@ public class NewGame extends javax.swing.JFrame {
     public NewGame(Controller c) {
         initComponents();
         controller = c;
+        this.setResizable(false);
         this.setLocationRelativeTo(getOwner());
         this.setVisible(true);
     }
