@@ -109,7 +109,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             .addGroup(gamePanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(gameGraphicsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
+                .addGap(20, 20, 20)
                 .addGroup(gamePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
