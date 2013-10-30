@@ -78,10 +78,10 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jButton2.setText("First Shift Change");
+        jButton2.setText("First Computer");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	
+            	jButton2ActionPerformed(evt);         	
             }
         });
 
@@ -159,7 +159,8 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        controller.drawBoard();
+    	controller.reset_game_first_computer();
+    	System.out.print("Comienza jugando la computadora");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
