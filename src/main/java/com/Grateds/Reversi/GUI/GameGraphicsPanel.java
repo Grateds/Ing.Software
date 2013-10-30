@@ -4,10 +4,8 @@ import java.util.concurrent.TimeUnit;
 import com.Grateds.Reversi.CONTROLLER.Controller;
 import com.Grateds.Reversi.MODEL.Board;
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Stroke;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -30,10 +28,8 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
 
     private BufferedImage blackPieceImg = null;
     private BufferedImage whitePieceImg = null;
-    private BufferedImage suggestImg = null;
     private BufferedImage boardImg = null;
     private int BLACK_PIECE = 2;
-	private int WHITE_PIECE = 1;
     private Board b;
     private Controller controller;
     
@@ -51,7 +47,6 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
             boardImg = ImageIO.read(new File("img/skin_1/board.jpg"));
             blackPieceImg = ImageIO.read(new File("img/skin_1/blackpiece.png"));
             whitePieceImg = ImageIO.read(new File("img/skin_1/whitepiece.png"));
-            suggestImg = ImageIO.read(new File("img/skin_1/suggest.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -83,7 +78,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
                     drawPiece(g,whitePieceImg, i+1, j+1);
                 }else if (b.get(i, j)== 2){
                     drawPiece(g,blackPieceImg, i+1, j+1);
-                }else if (b.getSuggest(i, j)==1) drawPiece(g,suggestImg, i+1, j+1);
+                }
             }
         }
     }

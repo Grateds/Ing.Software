@@ -29,13 +29,12 @@ public class Board extends Observable{
 	public void reset(){
 		for(int i=0; i<COL; i++){
 			for(int j=0; j<ROW; j++){
-				board[j][i].set_value(0);
-				board[j][i].suggest(0);
+				board[j][i]= new Cell();
 			}
 		}
-		BLACK_SCORE = 0;
-		WHITE_SCORE = 0;
-		n_cell = 0;
+		initialization();
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public void initialization() {
@@ -97,7 +96,5 @@ public class Board extends Observable{
 		v.add(BLACK_SCORE);
 		v.add(WHITE_SCORE);
 		return v;		
-	} // end calScore	
-	
-	
+	} // end calScore		
 }

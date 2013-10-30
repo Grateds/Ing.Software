@@ -1,7 +1,6 @@
 package com.Grateds.Reversi.CONTROLLER;
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 import com.Grateds.Reversi.SAVEANDLOAD.*;
@@ -17,6 +16,7 @@ public class Controller {
 	private int BLACK_PIECE = 2;
 	private int WHITE_PIECE = 1;
 	private Boolean runGame;	
+	private Boolean stoped;
 	private ArrayList<Integer> blackValidMoves = new ArrayList<Integer>();
 	private ArrayList<Integer> whiteValidMoves = new ArrayList<Integer>();
 	
@@ -26,27 +26,28 @@ public class Controller {
 		save = new SaveAndLoad();
 		turn = true;
 		runGame = true;
+		stoped = false;
 		blackValidMoves.add(2); // just for init
 	} // end constructor
 	
 	public void initialization(){
-		table.initialization();
+		table.reset();
 	} // end initialization
         
-        public void reset_game() {
-		table.reset();
+    public void reset_game(){
 		initialization();
 		turn = true;
+		stoped = false;
+		update_blackValidMoves();
 	} // end reset_game
      
-	public void start_game() throws InterruptedException{
+	public void start_game(){
 		boolean win = true;
 		boolean loose = true;
 		boolean draw = true;
 		
 		while (!game_over() || runGame){
-			if(!turn || (turn && blackValidMoves.size()==0)){
-				TimeUnit.SECONDS.sleep(1);
+			if( !stoped && (!turn || (turn && blackValidMoves.size()==0))){
 				update_whiteValidMoves();
 				cpu_move(whiteValidMoves);
 				setTurn(true);
@@ -69,7 +70,10 @@ public class Controller {
 	} // end start_game
 	
 	public boolean game_over(){
-		return table.is_complete() || getWhiteScore()==0 || getBlackScore() == 0;
+		return table.is_complete()  || 
+				getWhiteScore()==0   || 
+				getBlackScore() == 0 || 
+				(blackValidMoves.size()==0 && whiteValidMoves.size()==0);
 	}
 	
 	public void update_blackValidMoves(){
@@ -80,13 +84,16 @@ public class Controller {
 		whiteValidMoves = solver.findValidMove(WHITE_PIECE);
 	}
 	
+	public void stop(){
+		stoped = true;
+	}
+	
 	public boolean set_piece(int x, int y, int piece){
 		if (isValidMove(piece,x,y)){
 			table.set(x, y, piece);
 			solver.solve(piece, x, y);
 			if (piece == BLACK_PIECE) turn = false;
 			else turn = true;
-			System.out.println("in set_piece -> turn = "+turn);
 			return true;           // succesful
 		}else return false;       // not possible
 	} // end set_piece

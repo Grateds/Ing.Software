@@ -225,7 +225,7 @@ public class AI {
 		int auxRow = x;
 		int auxCol = y;
 		if (findAtNorth(piece,x,y)){
-			while(b.get(auxRow-1, y)==oppPiece){
+			while(auxRow-1 >= 0 && b.get(auxRow-1, y)==oppPiece){
 				b.set(auxRow-1, y, piece);
 				auxRow--;
 			}
@@ -233,7 +233,7 @@ public class AI {
 		if (findAtSouth(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
-			while(b.get(auxRow+1, y)==oppPiece){
+			while(auxRow+1 <=7 && b.get(auxRow+1, y)==oppPiece){
 				b.set(auxRow+1, y, piece);
 				auxRow++;
 			}
@@ -241,7 +241,7 @@ public class AI {
 		if (findAtWest(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
-			while(b.get(x, auxCol-1)==oppPiece){
+			while(auxCol-1 >= 0 && b.get(x, auxCol-1)==oppPiece){
 				b.set(x, auxCol-1, piece);
 				auxCol--;
 			}
@@ -249,7 +249,7 @@ public class AI {
 		if (findAtEast(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
-			while(b.get(x, auxCol+1)==oppPiece){
+			while(auxCol+1 <= 7 && b.get(x, auxCol+1)==oppPiece){
 				b.set(x, auxCol+1, piece);
 				auxCol++;
 			}
@@ -257,7 +257,7 @@ public class AI {
 		if (findAtNE(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
-			while(b.get(auxRow-1, auxCol+1)==oppPiece){
+			while(auxRow-1 >= 0 && auxCol+1 <= 7 && b.get(auxRow-1, auxCol+1)==oppPiece){
 				b.set(auxRow-1, auxCol+1, piece);
 				auxRow--;
 				auxCol++;
@@ -266,7 +266,7 @@ public class AI {
 		if (findAtSE(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
-			while(b.get(auxRow+1, auxCol+1)==oppPiece){
+			while(auxRow+1 <= 7 && auxCol+1 <= 7 && b.get(auxRow+1, auxCol+1)==oppPiece){
 				b.set(auxRow+1, auxCol+1, piece);
 				auxRow++;
 				auxCol++;
@@ -275,7 +275,7 @@ public class AI {
 		if (findAtSW(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
-			while(b.get(auxRow+1, auxCol-1)==oppPiece){
+			while(auxRow+1 <= 7 && auxCol-1 >= 0 && b.get(auxRow+1, auxCol-1)==oppPiece){
 				b.set(auxRow+1, auxCol-1, piece);
 				auxRow++;
 				auxCol--;
@@ -284,7 +284,7 @@ public class AI {
 		if (findAtNW(piece,x,y)){
 			auxRow = x;
 			auxCol = y;
-			while(b.get(auxRow-1, auxCol-1)==oppPiece){
+			while(auxRow-1 >= 0 && auxCol-1 >= 0 && b.get(auxRow-1, auxCol-1)==oppPiece){
 				b.set(auxRow-1, auxCol-1, piece);
 				auxRow--;
 				auxCol--;

@@ -22,11 +22,13 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         board.addObserver(this);
         menuBar = new GameMenu(c);
         setJMenuBar(menuBar);
-        controller.initialization(); // fix
         initComponents();
         setResizable(false);
-        setVisible(true);   
+        this.setLocation(600, 0);
+        setVisible(true);
+        controller.initialization();
         setScores(controller.getBlackScore(),controller.getWhiteScore());
+
     } // end MainWindow
     
     public Controller getController(){
@@ -152,9 +154,8 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    	controller.stop();
     	controller.reset_game();
-    	gameGraphicsPanel1.repaint();
-    	update(controller.getBoard(),"");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -173,10 +174,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     	    jLabel2.setText("White: "+WhiteScore);  // score of White piece
     	    jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
     	    jLabel2.setForeground(new java.awt.Color(10, 20, 0));        
-    
-    	    gamePanel1.repaint();
     	    this.repaint();
-    	    gameGraphicsPanel1.repaint();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
