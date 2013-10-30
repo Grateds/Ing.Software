@@ -155,15 +155,15 @@ public class Controller {
 	} // end drawBoard
 	
 	
-	public int getWhiteScore_update() { //**************** agregado
+	public int getWhiteScore_update() { 
 		return table.get_score_update().elementAt(1);
 	}// end getWhiteScore_update 
 
-	public int getBlackScore_update() {  //-****************
+	public int getBlackScore_update() {  
 		return table.get_score_update().elementAt(0);
 	} // endgetBlackScore_update
 	
-	public void setBoard(Board board){	//-**************************
+	public void setBoard(Board board){	
 		table.reset();	
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
