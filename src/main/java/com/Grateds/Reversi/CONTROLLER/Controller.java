@@ -154,15 +154,24 @@ public class Controller {
 		}
 	} // end drawBoard
 	
-	public void setBoard(Board board){	
-		table.reset();
+	
+	public int getWhiteScore_update() { //**************** agregado
+		return table.get_score_update().elementAt(1);
+	}// end getWhiteScore_update 
+
+	public int getBlackScore_update() {  //-****************
+		return table.get_score_update().elementAt(0);
+	} // endgetBlackScore_update
+	
+	public void setBoard(Board board){	//-**************************
+		table.reset();	
 		for(int i=0; i<8; i++){
 			for(int j=0; j<8; j++){
 				table.set(i, j, board.get(i, j));
 			}
 		}
-//		update_blackValidMoves();
-//		update_whiteValidMoves();
+		System.out.println(getBlackScore_update());
+		System.out.println(getWhiteScore_update());
 	} // end setBoard
 	
     public void quitGame() {
