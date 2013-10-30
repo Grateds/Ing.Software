@@ -96,5 +96,24 @@ public class Board extends Observable{
 		v.add(BLACK_SCORE);
 		v.add(WHITE_SCORE);
 		return v;		
-	} // end calScore		
+	} // end calScore
+	
+	public Vector<Integer> get_score_update() {   
+		Vector<Integer> v = new Vector<Integer>();
+		BLACK_SCORE = 0;
+		WHITE_SCORE = 0;
+		for(int i=0; i<COL; i++){
+			for(int j=0; j<ROW; j++){	
+				if (board[i][j].get_value()== WHITE_PIECE){
+					WHITE_SCORE++;
+				}
+				else if (board[i][j].get_value()== BLACK_PIECE){
+					BLACK_SCORE++;
+				}
+			}
+		}
+		v.add(BLACK_SCORE);
+		v.add(WHITE_SCORE);
+		return v;		
+	} // end get_score_update	
 }
