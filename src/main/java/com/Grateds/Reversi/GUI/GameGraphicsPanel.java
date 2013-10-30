@@ -1,6 +1,5 @@
 package com.Grateds.Reversi.GUI;
 
-import java.util.concurrent.TimeUnit;
 import com.Grateds.Reversi.CONTROLLER.Controller;
 import com.Grateds.Reversi.MODEL.Board;
 import java.awt.BasicStroke;
@@ -97,12 +96,6 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
     public void mouseExited(MouseEvent me) {}
 
 	public void update(Observable arg0, Object arg1) {
-		try {
-			TimeUnit.MILLISECONDS.sleep(100);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		Graphics g = getGraphics();
 		drawBoard(g,controller.getBoard());
 	}
