@@ -41,7 +41,6 @@ public class GameMenu extends JMenuBar{
         jMenuItem2.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
         		controller.saveBoard(board); 
-        		System.out.println("Tablero guardado con exito.!");
         	}
         });
         
@@ -51,9 +50,6 @@ public class GameMenu extends JMenuBar{
         	public void actionPerformed(ActionEvent event) {
         		board = controller.loadBoard();
         		controller.setBoard(board);
-//        		window.gameGraphicsPanel1.repaint();
-//        		window.update(controller.getBoard(),"");
-        		System.out.println("Tablero cargado con exito.!");
         	}
         });
         jMenu1.add(jSeparator2);

@@ -29,7 +29,6 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         setVisible(true);
         controller.initialization();
         setScores(controller.getBlackScore(),controller.getWhiteScore());
-
     } // end MainWindow
     
     public Controller getController(){
@@ -86,7 +85,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jButton3.setText("Change Piese");
+        jButton3.setText("Change Piece");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
