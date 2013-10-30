@@ -156,9 +156,18 @@ public class Controller {
 				table.set(i, j, board.get(i, j));
 			}
 		}
+		update_blackValidMoves();
+		update_whiteValidMoves();
 	} // end setBoard
 	
     public void quitGame() {
         System.exit(0);
     } // end quitGame
+    
+    public void reset_game_first_computer(){ // utilizado en MainWindow
+		initialization();
+		turn = false;
+		stoped = false;
+		update_blackValidMoves();
+	} // reset_game_first_computer
 }
