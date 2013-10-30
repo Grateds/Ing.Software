@@ -74,19 +74,19 @@ public class Controller {
 				getWhiteScore()==0   || 
 				getBlackScore() == 0 || 
 				(blackValidMoves.size()==0 && whiteValidMoves.size()==0);
-	}
+	} // end game_over
 	
 	public void update_blackValidMoves(){
 		blackValidMoves = solver.findValidMove(BLACK_PIECE);
-	}
+	} // end update_blackValidMoves
 	
 	public void update_whiteValidMoves(){
 		whiteValidMoves = solver.findValidMove(WHITE_PIECE);
-	}
+	} // end update_whiteValidMoves
 	
 	public void stop(){
 		stoped = true;
-	}
+	} // end stop
 	
 	public boolean set_piece(int x, int y, int piece){
 		if (isValidMove(piece,x,y)){
