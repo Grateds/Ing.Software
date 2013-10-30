@@ -187,7 +187,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public void update(Observable o, Object arg) {
-    	setScores(controller.getBlackScore(),controller.getWhiteScore());
+    	setScores(controller.getBlackScore_update(),controller.getWhiteScore_update());
     	jLabel1.setText("Black: "+BlackScore);  // score of Black piece
     	jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 22)); 
     	jLabel2.setText("White: "+WhiteScore);  // score of White piece
