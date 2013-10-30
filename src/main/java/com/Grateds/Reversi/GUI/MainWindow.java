@@ -51,9 +51,6 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         gamePanel1 = new gamePanel();
         gameGraphicsPanel1 = new GameGraphicsPanel(controller);
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -79,27 +76,6 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jButton2.setText("First Computer");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	jButton2ActionPerformed(evt);         	
-            }
-        });
-
-        jButton3.setText("First Human");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        
-        jButton4.setText("Change Piece");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Black: "+2);	// score of Black piece
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));        
@@ -117,12 +93,9 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             .addGroup(gamePanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(gameGraphicsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(50, 50, 50)
                 .addGroup(gamePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addContainerGap(74, Short.MAX_VALUE))
@@ -137,12 +110,6 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
                         .addGroup(gamePanel1Layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
@@ -171,21 +138,6 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
 //    	controller.reset_game();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    	controller.reset_game_first(false);
-//    	System.out.print("Comienza jugando la computadora.!");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    	controller.stop();
-   	 	controller.reset_game_first(true);
-//   	 	System.out.print("Comienza jugando el humano.!");  
-    }//GEN-LAST:event_jButton3ActionPerformed
-    
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    	// TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     public void update(Observable o, Object arg) {
     	setScores(controller.getBlackScore_update(),controller.getWhiteScore_update());
     	jLabel1.setText("Black: "+BlackScore);  // score of Black piece
@@ -199,9 +151,6 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     private com.Grateds.Reversi.GUI.GameGraphicsPanel gameGraphicsPanel1;
     private com.Grateds.Reversi.GUI.gamePanel gamePanel1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
