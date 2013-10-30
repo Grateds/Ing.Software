@@ -16,7 +16,7 @@ public class Controller {
 	private int BLACK_PIECE = 2;
 	private int WHITE_PIECE = 1;
 	private Boolean runGame;	
-	private Boolean stoped;
+	private Boolean stopped;
 	private ArrayList<Integer> blackValidMoves = new ArrayList<Integer>();
 	private ArrayList<Integer> whiteValidMoves = new ArrayList<Integer>();
 	
@@ -26,7 +26,7 @@ public class Controller {
 		save = new SaveAndLoad();
 		turn = true;
 		runGame = true;
-		stoped = false;
+		stopped = false;
 		blackValidMoves.add(2); // just for init
 	} // end constructor
 	
@@ -37,7 +37,7 @@ public class Controller {
     public void reset_game(){
 		initialization();
 		turn = true;
-		stoped = false;
+		stopped = false;
 		update_blackValidMoves();
 	} // end reset_game
      
@@ -47,12 +47,13 @@ public class Controller {
 		boolean draw = true;
 		
 		while (!game_over() || runGame){
-			if( !stoped && (!turn || (turn && blackValidMoves.size()==0))){
+			if( !stopped && (!turn || (turn && blackValidMoves.size()==0))){
 				update_whiteValidMoves();
 				cpu_move(whiteValidMoves);
 				setTurn(true);
 			}
 			update_blackValidMoves();
+			update_whiteValidMoves();
             // Player turn
             if(game_over()){
             	if(getBlackScore()>getWhiteScore() && win){
@@ -85,8 +86,12 @@ public class Controller {
 	} // end update_whiteValidMoves
 	
 	public void stop(){
-		stoped = true;
+		stopped = true;
 	} // end stop
+	
+	public void resume(){
+		stopped = false;
+	}
 	
 	public boolean set_piece(int x, int y, int piece){
 		if (isValidMove(piece,x,y)){
@@ -156,8 +161,8 @@ public class Controller {
 				table.set(i, j, board.get(i, j));
 			}
 		}
-		//update_blackValidMoves();
-		//update_whiteValidMoves();
+//		update_blackValidMoves();
+//		update_whiteValidMoves();
 	} // end setBoard
 	
     public void quitGame() {
@@ -167,7 +172,8 @@ public class Controller {
     public void reset_game_first(boolean b){ // utilizado en MainWindow
 		initialization();
 		turn = b;
-		stoped = false;
-		update_blackValidMoves();
+		stopped = false;
+		if (b) update_blackValidMoves();
+		else update_whiteValidMoves();
 	} // reset_game_first_computer
 }

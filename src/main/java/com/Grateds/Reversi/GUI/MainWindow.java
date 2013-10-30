@@ -25,7 +25,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         setJMenuBar(menuBar);
         initComponents();
         setResizable(false);
-        this.setLocation(600, 0);
+        this.setLocationRelativeTo(getOwner());
         setVisible(true);
         controller.initialization();
         setScores(controller.getBlackScore(),controller.getWhiteScore());
@@ -166,18 +166,20 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     	controller.stop();
-    	controller.reset_game();
+    	NewGame window = new NewGame(controller);
+//    	controller.stop();
+//    	controller.reset_game();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     	controller.reset_game_first(false);
-    	System.out.print("Comienza jugando la computadora.!");
+//    	System.out.print("Comienza jugando la computadora.!");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     	controller.stop();
    	 	controller.reset_game_first(true);
-   	 	System.out.print("Comienza jugando el humano.!");  
+//   	 	System.out.print("Comienza jugando el humano.!");  
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -187,11 +189,9 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     public void update(Observable o, Object arg) {
     	setScores(controller.getBlackScore(),controller.getWhiteScore());
     	jLabel1.setText("Black: "+BlackScore);  // score of Black piece
-    	jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
-    	jLabel1.setForeground(new java.awt.Color(0, 18, 18));        
+    	jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 22)); 
     	jLabel2.setText("White: "+WhiteScore);  // score of White piece
-    	jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
-    	jLabel2.setForeground(new java.awt.Color(10, 20, 0));        
+    	jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 22));       
     	this.repaint();
     }
     
