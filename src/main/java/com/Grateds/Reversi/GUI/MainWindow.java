@@ -13,6 +13,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
 	private Board board;
 	private String WhiteScore;
 	private String BlackScore;
+	
     /**
      * Creates new form MainWindow
      */
@@ -78,14 +79,14 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jButton2.setText("Undo");
+        jButton2.setText("First Shift Change");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	 jButton2ActionPerformed(evt);
+            	
             }
         });
 
-        jButton3.setText("Redo");
+        jButton3.setText("Change Piese");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -125,7 +126,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
                     .addGroup(gamePanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(gameGraphicsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(gamePanel1Layout.createSequentialGroup()
+                        .addGroup(gamePanel1Layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
