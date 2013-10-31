@@ -138,6 +138,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
 
     public void update(Observable o, Object arg) {
     	controller.get_scores();
+    	controller.update_totalScore();
     	setScores(controller.getBlackScore(),controller.getWhiteScore());
     	jLabel1.setText("Black: "+BlackScore);  // score of Black piece
     	jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 22)); 

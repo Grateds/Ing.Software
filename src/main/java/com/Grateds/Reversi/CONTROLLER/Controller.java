@@ -6,6 +6,7 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 
 import com.Grateds.Reversi.SAVEANDLOAD.*;
+import com.Grateds.Reversi.GUI.NewWinner;
 import com.Grateds.Reversi.MODEL.*;
 import com.Grateds.Reversi.AI.*;
 
@@ -23,6 +24,7 @@ public class Controller {
 	private Boolean stopped;
 	public Boolean finishMoveCPU;
 	public Boolean finishMovePlayer;
+	private int totalScore;
 	private ArrayList<Integer> blackValidMoves = new ArrayList<Integer>();
 	private ArrayList<Integer> whiteValidMoves = new ArrayList<Integer>();
 	
@@ -31,6 +33,7 @@ public class Controller {
 		solver = new AI(this);
 		save = new SaveAndLoad();
 		turn = true;
+		totalScore = 0;
 		runGame = true;
 		stopped = false;
 		finishMoveCPU = true;
@@ -55,11 +58,11 @@ public class Controller {
 		boolean draw = true;
 		
 		while (!game_over() || runGame){
-			if( !stopped && (!turn || (turn && blackValidMoves.size()==0))){
-			//if(!turn && finishMovePlayer && !stopped || (turn && blackValidMoves.size()==0)){
+//			if( !stopped && (!turn || (turn && blackValidMoves.size()==0))){
+			if(!turn && finishMovePlayer && !stopped || (turn && blackValidMoves.size()==0)){
+				not_done_moveCPU();
 				update_whiteValidMoves();
 				cpu_move(whiteValidMoves);
-//				get_scores(); 
 				setTurn(true);
 				done_moveCPU();
 			}
@@ -67,6 +70,7 @@ public class Controller {
             if(game_over() && finishMovePlayer && finishMoveCPU){
             	if(getBlackScore()>getWhiteScore() && win){
             		JOptionPane.showMessageDialog(null, "YOU WIN");
+            		NewWinner winer = new NewWinner(this);
             		win = false;
             	}else if (getBlackScore()<getWhiteScore() && loose) {
             		JOptionPane.showMessageDialog(null, "CPU WINS");
@@ -168,6 +172,14 @@ public class Controller {
 			System.out.println("");
 		}
 	} // end drawBoard
+	
+	public void update_totalScore(){
+		totalScore = (BLACK_SCORE-WHITE_SCORE)*324;
+	}
+	
+	public int get_totalScore(){
+		return totalScore;
+	}
 	
 	public void get_scores(){
 		Vector<Integer> v =	table.get_score();

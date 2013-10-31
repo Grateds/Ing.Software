@@ -77,7 +77,7 @@ public class User {
 		FileWriter usersFile = null;
 		PrintWriter pw = null;
 		try{
-			usersFile = new FileWriter("src/main/java/com/Grateds/Reversi/users.txt");
+			usersFile = new FileWriter("src/main/java/com/Grateds/Reversi/users.txt",true);
 			pw = new PrintWriter(usersFile);
 			pw.print(usr.id+" ");
 			pw.print(usr.Name+" ");

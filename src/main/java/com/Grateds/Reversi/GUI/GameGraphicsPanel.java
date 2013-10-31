@@ -88,8 +88,9 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         int col = (x/sizeRect+1);
         int row = (y/sizeRect+1);
         
-        if (controller.finishMoveCPU && controller.set_piece(row-1, col-1, BLACK_PIECE)){
+        if (controller.getTurn() && controller.set_piece(row-1, col-1, BLACK_PIECE)){
         	controller.stop();
+        	controller.not_done_movePlayer();
         	makeMoveIn(col, row, BLACK_PIECE);
         	controller.done_movePlayer();
         	controller.resume();

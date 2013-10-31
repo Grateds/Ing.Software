@@ -220,7 +220,7 @@ public class AI {
 	 * @param x
 	 * @param y
 	 */
-	public int solve(int piece, int x, int y){
+	public void solve(int piece, int x, int y){
 		int oppPiece = (piece == BLACK_PIECE) ? WHITE_PIECE : BLACK_PIECE;
 		int auxRow = x;
 		int auxCol = y;
@@ -290,7 +290,6 @@ public class AI {
 				auxCol--;
 			}
 		}
-		return 0;
 	} // end solve
 	
 	/**  
@@ -298,7 +297,7 @@ public class AI {
 	 * @param b, the board
 	 * @return boolean
 	 */	
-	public int simulation(Board b, ArrayList<Integer> pMoves){
+	public void simulation(Board b, ArrayList<Integer> pMoves){
 //		ArrayList<Integer> pMoves = findValidMove(1);
 		Random rand = new Random();
 		int numRan; // random number to select a valid move
@@ -306,8 +305,7 @@ public class AI {
 			numRan = rand.nextInt(pMoves.size());
 			if ((numRan % 2) != 0) numRan--;
 			controller.set_piece(pMoves.get(numRan), pMoves.get(numRan+1), WHITE_PIECE);
-			return solve(WHITE_PIECE, pMoves.get(numRan), pMoves.get(numRan+1));
+			solve(WHITE_PIECE, pMoves.get(numRan), pMoves.get(numRan+1));
 		}
-		return 1;
 	} // end simulation
 }
