@@ -87,7 +87,13 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         int y=me.getY();
         int col = (x/sizeRect+1);
         int row = (y/sizeRect+1);
-        if (controller.set_piece(row-1, col-1, BLACK_PIECE)) makeMoveIn(col, row, BLACK_PIECE);
+        
+        if (controller.finishMoveCPU && controller.set_piece(row-1, col-1, BLACK_PIECE)){
+        	controller.stop();
+        	makeMoveIn(col, row, BLACK_PIECE);
+        	controller.done_movePlayer();
+        	controller.resume();
+        }
     }
     
     public void mousePressed(MouseEvent me) {}

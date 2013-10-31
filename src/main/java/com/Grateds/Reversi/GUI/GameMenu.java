@@ -31,7 +31,7 @@ public class GameMenu extends JMenuBar{
         jMenuItem1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
         		controller.stop();
-        		controller.reset_game();     		
+            	NewGame window = new NewGame(controller);  		
         	}
         }); 
         jMenu1.add(jSeparator1);

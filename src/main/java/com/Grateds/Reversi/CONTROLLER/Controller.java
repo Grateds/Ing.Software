@@ -21,6 +21,8 @@ public class Controller {
 	private int WHITE_SCORE;
 	private Boolean runGame;	
 	private Boolean stopped;
+	public Boolean finishMoveCPU;
+	public Boolean finishMovePlayer;
 	private ArrayList<Integer> blackValidMoves = new ArrayList<Integer>();
 	private ArrayList<Integer> whiteValidMoves = new ArrayList<Integer>();
 	
@@ -31,6 +33,8 @@ public class Controller {
 		turn = true;
 		runGame = true;
 		stopped = false;
+		finishMoveCPU = true;
+		finishMovePlayer = true;
 		blackValidMoves.add(2); // just for init
 	} // end constructor
 	
@@ -52,23 +56,24 @@ public class Controller {
 		
 		while (!game_over() || runGame){
 			if( !stopped && (!turn || (turn && blackValidMoves.size()==0))){
+			//if(!turn && finishMovePlayer && !stopped || (turn && blackValidMoves.size()==0)){
 				update_whiteValidMoves();
 				cpu_move(whiteValidMoves);
+//				get_scores(); 
 				setTurn(true);
+				done_moveCPU();
 			}
-			update_blackValidMoves();
-			update_whiteValidMoves();
             // Player turn
-            if(game_over()){
+            if(game_over() && finishMovePlayer && finishMoveCPU){
             	if(getBlackScore()>getWhiteScore() && win){
-//            		JOptionPane.showMessageDialog(null, "YOU WIN");
-//            		win = false;
+            		JOptionPane.showMessageDialog(null, "YOU WIN");
+            		win = false;
             	}else if (getBlackScore()<getWhiteScore() && loose) {
-//            		JOptionPane.showMessageDialog(null, "CPU WINS");
-//            		loose = false;
+            		JOptionPane.showMessageDialog(null, "CPU WINS");
+            		loose = false;
             	}else if(getBlackScore()==getWhiteScore() && draw){
-//            		JOptionPane.showMessageDialog(null, "DRAW");
-//            		draw = false;
+            		JOptionPane.showMessageDialog(null, "DRAW");
+            		draw = false;
             	}
             }
 		}
@@ -76,8 +81,8 @@ public class Controller {
 	
 	public boolean game_over(){
 		return table.is_complete()  || 
-				getWhiteScore()==0   || 
-				getBlackScore() == 0 || 
+				WHITE_SCORE ==0      || 
+				BLACK_SCORE == 0     || 
 				(blackValidMoves.size()==0 && whiteValidMoves.size()==0);
 	} // end game_over
 	
@@ -89,9 +94,25 @@ public class Controller {
 		whiteValidMoves = solver.findValidMove(WHITE_PIECE);
 	} // end update_whiteValidMoves
 	
+	public void done_moveCPU(){
+		finishMoveCPU = true;
+	} 
+	
+	public void not_done_moveCPU(){
+		finishMoveCPU = false;
+	}
+	
+	public void done_movePlayer(){
+		finishMovePlayer = true;
+	} 
+	
+	public void not_done_movePlayer(){
+		finishMovePlayer = false;
+	}
+	
 	public void stop(){
 		stopped = true;
-	} // end stop
+	} 
 	
 	public void resume(){
 		stopped = false;
@@ -100,11 +121,11 @@ public class Controller {
 	public boolean set_piece(int x, int y, int piece){
 		if (isValidMove(piece,x,y)){
 			table.set(x, y, piece);
-			solver.solve(piece, x, y);
 			if (piece == BLACK_PIECE) turn = false;
 			else turn = true;
-			return true;           // succesful
-		}else return false;       // not possible
+			solver.solve(piece, x, y);
+			return true;// succesful
+		}else return false;
 	} // end set_piece
 	
 	public boolean isValidMove(int piece, int x, int y){
@@ -119,16 +140,6 @@ public class Controller {
 		// Get current table
 		return table;
 	} // end getBoard
-	
-	public int getWhiteScore() {
-		// Get white's score
-		return table.get_score().elementAt(1);
-	}// end getWhiteScore
-
-	public int getBlackScore() {
-		// Get black's score
-		return table.get_score().elementAt(0);
-	} // end getBlackScore
 	
 	public boolean getTurn(){
 		return turn;
@@ -164,21 +175,13 @@ public class Controller {
 		WHITE_SCORE = v.get(1);
 	}
 	
-	public int getwhitescore() { 
+	public int getWhiteScore() { 
 		return WHITE_SCORE;
 	}// end getwhitescore 
 
-	public int getblackscore() {  
+	public int getBlackScore() {  
 		return BLACK_SCORE;
 	} // endgetblackscore
-	
-//	public int getWhiteScore_update() { 
-//		return table.get_score_update().elementAt(1);
-//	}// end getWhiteScore_update 
-//
-//	public int getBlackScore_update() {  
-//		return table.get_score_update().elementAt(0);
-//	} // endgetBlackScore_update
 	
 	public void setBoard(Board board){	
 		table.change_board(board);

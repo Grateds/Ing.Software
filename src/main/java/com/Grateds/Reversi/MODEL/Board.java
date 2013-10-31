@@ -116,28 +116,7 @@ public class Board extends Observable{
 				}
 			}
 		}
-		System.out.println("BLACK: "+BLACK_SCORE);
-		System.out.println("WHITE: "+WHITE_SCORE);
-		System.out.println("N° CELL: "+n_cell);
 		this.setChanged();
 		this.notifyObservers();
 	}
-//	public Vector<Integer> get_score_update() {   
-//		Vector<Integer> v = new Vector<Integer>();
-//		BLACK_SCORE = 0;
-//		WHITE_SCORE = 0;
-//		for(int i=0; i<COL; i++){
-//			for(int j=0; j<ROW; j++){	
-//				if (board[i][j].get_value()== WHITE_PIECE){
-//					WHITE_SCORE++;
-//				}
-//				else if (board[i][j].get_value()== BLACK_PIECE){
-//					BLACK_SCORE++;
-//				}
-//			}
-//		}
-//		v.add(BLACK_SCORE);
-//		v.add(WHITE_SCORE);
-//		return v;		
-//	} // end get_score_update	
 }

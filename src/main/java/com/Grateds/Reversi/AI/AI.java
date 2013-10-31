@@ -8,13 +8,13 @@ import java.util.Random;
 
 public class AI {
 	
-	private static final int[] sOFFSET_MOVE_ROW = {-1, -1, -1,  0,  0,  1,  1,  1}; // move offset for row 
-	private static final int[] sOFFSET_MOVE_COL = {-1,  0,  1, -1,  1, -1,  0,  1}; // move offset for column	
-	public static final int sSUGGEST_BLACK_PIECE = 2; // susggest piece for black 
-	public static final int sSUGGEST_WHITE_PIECE = 1; // susggest piece for white 
-	private static int sEMPTY_PIECE = 0;
-	private static int sBLACK_PIECE = 2;
-	private static int sWHITE_PIECE = 1;
+	private static final int[] OFFSET_MOVE_ROW = {-1, -1, -1,  0,  0,  1,  1,  1}; // move offset for row 
+	private static final int[] OFFSET_MOVE_COL = {-1,  0,  1, -1,  1, -1,  0,  1}; // move offset for column	
+	public static final int SUGGEST_BLACK_PIECE = 2; // susggest piece for black 
+	public static final int SUGGEST_WHITE_PIECE = 1; // susggest piece for white 
+	private static int EMPTY_PIECE = 0;
+	private static int BLACK_PIECE = 2;
+	private static int WHITE_PIECE = 1;
 	
 	private Controller controller;
 	private Board b;
@@ -33,14 +33,14 @@ public class AI {
 	 * @return true if the move is valid, false otherwise	
 	 */
 	public boolean isValidMove(int piece, int row, int col) {		
-		if (b.get(row, col) != sEMPTY_PIECE) // check whether this square is empty
+		if (b.get(row, col) != EMPTY_PIECE) // check whether this square is empty
 			return false;		
-		int oppPiece = (piece == sBLACK_PIECE) ? sWHITE_PIECE : sBLACK_PIECE;
+		int oppPiece = (piece == BLACK_PIECE) ? WHITE_PIECE : BLACK_PIECE;
 		boolean isValid = false;
 		// check 8 directions
 		for (int i = 0; i < 8; ++i) {
-			int curRow = row + sOFFSET_MOVE_ROW[i];
-			int curCol = col + sOFFSET_MOVE_COL[i];
+			int curRow = row + OFFSET_MOVE_ROW[i];
+			int curCol = col + OFFSET_MOVE_COL[i];
 			boolean hasOppPieceBetween = false;
 			while (curRow >=0 && curRow < 8 && curCol >= 0 && curCol < 8) {	
 				if (b.get(curRow, curCol) == oppPiece)
@@ -52,8 +52,8 @@ public class AI {
 				}
 				else
 					break;
-				curRow += sOFFSET_MOVE_ROW[i];
-				curCol += sOFFSET_MOVE_COL[i];
+				curRow += OFFSET_MOVE_ROW[i];
+				curCol += OFFSET_MOVE_COL[i];
 			}
 			if (isValid)
 				break;
@@ -91,7 +91,7 @@ public class AI {
 	 */
 	// piece = piece to find from the position (x,y)
 	public boolean findAtNorth(int piece, int x, int y){
-		if(x==0 || b.get(x-1, y)==sEMPTY_PIECE) return false;
+		if(x==0 || b.get(x-1, y)==EMPTY_PIECE) return false;
 		else if(b.get(x-1, y)==piece) return true;
 		else return findAtNorth(piece,x-1,y); // there is an opponent
 	} // end findAtNorth
@@ -105,7 +105,7 @@ public class AI {
 	 * @return
 	 */
 	public boolean findAtSouth(int piece, int x, int y){
-		if(x==7 || b.get(x+1, y)==sEMPTY_PIECE) return false;
+		if(x==7 || b.get(x+1, y)==EMPTY_PIECE) return false;
 		else if(b.get(x+1, y)==piece) return true;
 		else return findAtSouth(piece,x+1,y); // there is an opponent
 	}
@@ -119,7 +119,7 @@ public class AI {
 	 * @return
 	 */
 	public boolean findAtWest(int piece, int x, int y){
-		if(y==0 || b.get(x, y-1)==sEMPTY_PIECE) return false;
+		if(y==0 || b.get(x, y-1)==EMPTY_PIECE) return false;
 		else if(b.get(x, y-1)==piece) return true;
 		else return findAtWest(piece,x,y-1); // there is an opponent
 	} // end findAtWest
@@ -133,7 +133,7 @@ public class AI {
 	 * @return
 	 */
 	public boolean findAtEast(int piece, int x, int y){
-		if(y==7 || b.get(x,y+1)==sEMPTY_PIECE) return false;
+		if(y==7 || b.get(x,y+1)==EMPTY_PIECE) return false;
 		else if(b.get(x,y+1)==piece) return true;
 		else return findAtEast(piece,x,y+1); // there is an opponent
 	} // end findAtEast
@@ -147,7 +147,7 @@ public class AI {
 	 * @return
 	 */
 	public boolean findAtNE(int piece, int x, int y){
-		if(x==0 || y==7 || b.get(x-1,y+1)==sEMPTY_PIECE) return false;
+		if(x==0 || y==7 || b.get(x-1,y+1)==EMPTY_PIECE) return false;
 		else if(b.get(x-1,y+1)==piece) return true;
 		else return findAtNE(piece,x-1,y+1); // there is an opponent
 	} // end findAtNE
@@ -161,7 +161,7 @@ public class AI {
 	 * @return
 	 */
 	public boolean findAtSE(int piece, int x, int y){
-		if(x==7 || y==7 || b.get(x+1,y+1)==sEMPTY_PIECE) return false;
+		if(x==7 || y==7 || b.get(x+1,y+1)==EMPTY_PIECE) return false;
 		else if(b.get(x+1,y+1)==piece) return true;
 		else return findAtSE(piece,x+1,y+1); // there is an opponent
 	} // end findAtSE
@@ -175,7 +175,7 @@ public class AI {
 	 * @return
 	 */
 	public boolean findAtSW(int piece, int x, int y){
-		if(x==7 || y==0 || b.get(x+1,y-1)==sEMPTY_PIECE) return false;
+		if(x==7 || y==0 || b.get(x+1,y-1)==EMPTY_PIECE) return false;
 		else if(b.get(x+1,y-1)==piece) return true;
 		else return findAtSW(piece,x+1,y-1); // there is an opponent
 	} // end findAtSW
@@ -189,7 +189,7 @@ public class AI {
 	 * @return
 	 */
 	public boolean findAtNW(int piece, int x, int y){
-		if(x==0 || y==0 || b.get(x-1,y-1)==sEMPTY_PIECE) return false;
+		if(x==0 || y==0 || b.get(x-1,y-1)==EMPTY_PIECE) return false;
 		else if(b.get(x-1,y-1)==piece) return true;
 		else return findAtNW(piece,x-1,y-1); // there is an opponent
 	} // end findAtNW
@@ -220,8 +220,8 @@ public class AI {
 	 * @param x
 	 * @param y
 	 */
-	public void solve(int piece, int x, int y){
-		int oppPiece = (piece == sBLACK_PIECE) ? sWHITE_PIECE : sBLACK_PIECE;
+	public int solve(int piece, int x, int y){
+		int oppPiece = (piece == BLACK_PIECE) ? WHITE_PIECE : BLACK_PIECE;
 		int auxRow = x;
 		int auxCol = y;
 		if (findAtNorth(piece,x,y)){
@@ -290,6 +290,7 @@ public class AI {
 				auxCol--;
 			}
 		}
+		return 0;
 	} // end solve
 	
 	/**  
@@ -297,15 +298,16 @@ public class AI {
 	 * @param b, the board
 	 * @return boolean
 	 */	
-	public void simulation(Board b, ArrayList<Integer> pMoves){
+	public int simulation(Board b, ArrayList<Integer> pMoves){
 //		ArrayList<Integer> pMoves = findValidMove(1);
 		Random rand = new Random();
 		int numRan; // random number to select a valid move
 		if (pMoves.size() != 0) {
 			numRan = rand.nextInt(pMoves.size());
 			if ((numRan % 2) != 0) numRan--;
-			controller.set_piece(pMoves.get(numRan), pMoves.get(numRan+1), sWHITE_PIECE);
-			solve(sWHITE_PIECE, pMoves.get(numRan), pMoves.get(numRan+1));
+			controller.set_piece(pMoves.get(numRan), pMoves.get(numRan+1), WHITE_PIECE);
+			return solve(WHITE_PIECE, pMoves.get(numRan), pMoves.get(numRan+1));
 		}
+		return 1;
 	} // end simulation
 }
