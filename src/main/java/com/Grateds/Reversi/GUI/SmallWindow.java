@@ -44,6 +44,8 @@ public class SmallWindow extends JFrame implements Observer{
     }
    
     public void update(Observable o, Object arg) {
+        controller.get_scores();
+        controller.update_totalScore();
         this.repaint();
     }
     
