@@ -14,7 +14,7 @@ public class SmallWindow extends JFrame implements Observer{
 	private Board board;
 	private String WhiteScore;
 	private String BlackScore;
-        private GameGraphicsPanel gameGraphicsPanel1;
+	private GameGraphicsPanel gameGraphicsPanel1;
 
     public SmallWindow(Controller c) {
         setTitle("Reversi");
@@ -29,6 +29,7 @@ public class SmallWindow extends JFrame implements Observer{
         this.add(gameGraphicsPanel1);
         this.setSize(565, 605);
         setResizable(false);
+        this.setLocationRelativeTo(getOwner());
         setVisible(true);   
         setScores(controller.getBlackScore(),controller.getWhiteScore());
     } // end MainWindow

@@ -21,7 +21,6 @@ public class NewGame extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(getOwner());
         this.setVisible(true);
-        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
     /**
@@ -40,7 +39,7 @@ public class NewGame extends javax.swing.JFrame {
 
         jLabel1.setText("jLabel1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("New game");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
