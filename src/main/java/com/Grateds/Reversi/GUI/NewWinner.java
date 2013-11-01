@@ -11,6 +11,10 @@ import com.Grateds.Reversi.CONTROLLER.Controller;
 public class NewWinner extends javax.swing.JFrame {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * Creates new form UserInterface
      */
 	private Controller controller;
@@ -45,9 +49,6 @@ public class NewWinner extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("");
-
-        jTextField1.setText("");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Name");
@@ -108,7 +109,7 @@ public class NewWinner extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
     	controller.stop();
     	boolean terminate = false;
-    	while(jTextField1.getText()!="" && !terminate){
+    	while(!jTextField1.getText().equals("") && !terminate){
     		User u = new User();
     		String score = jTextField2.getText();
     		u.create(jTextField1.getText(), Integer.parseInt(score));
