@@ -21,6 +21,7 @@ public class NewGame extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(getOwner());
         this.setVisible(true);
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
     /**

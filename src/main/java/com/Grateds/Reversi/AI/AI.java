@@ -10,8 +10,6 @@ public class AI {
 	
 	private static final int[] OFFSET_MOVE_ROW = {-1, -1, -1,  0,  0,  1,  1,  1}; // move offset for row 
 	private static final int[] OFFSET_MOVE_COL = {-1,  0,  1, -1,  1, -1,  0,  1}; // move offset for column	
-	public static final int SUGGEST_BLACK_PIECE = 2; // susggest piece for black 
-	public static final int SUGGEST_WHITE_PIECE = 1; // susggest piece for white 
 	private static int EMPTY_PIECE = 0;
 	private static int BLACK_PIECE = 2;
 	private static int WHITE_PIECE = 1;
@@ -193,25 +191,6 @@ public class AI {
 		else if(b.get(x-1,y-1)==piece) return true;
 		else return findAtNW(piece,x-1,y-1); // there is an opponent
 	} // end findAtNW
-	
-	/**
-	 * 
-	 * @param b
-	 * @param piece
-	 * @param x
-	 * @param y
-	 * @return
-	 */
-	public boolean isValid(int piece, int x, int y){
-		return 	findAtNorth(piece,x,y) ||
-				findAtSouth(piece,x,y) ||
-				findAtEast(piece,x,y)  ||
-				findAtWest(piece,x,y)  ||
-				findAtNE(piece,x,y)	 ||
-				findAtSE(piece,x,y)	 ||
-				findAtNW(piece,x,y)	 ||
-				findAtSW(piece,x,y);
-	} // end isValid
 	
 	/**
 	 * 

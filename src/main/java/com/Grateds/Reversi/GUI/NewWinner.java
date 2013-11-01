@@ -21,6 +21,7 @@ public class NewWinner extends javax.swing.JFrame {
         this.setLocationRelativeTo(getOwner());
         this.setResizable(false);
         this.setVisible(true);
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
     /**
@@ -107,7 +108,7 @@ public class NewWinner extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
     	controller.stop();
     	boolean terminate = false;
-    	while(!jTextField1.equals("") && !terminate){
+    	while(jTextField1.getText()!="" && !terminate){
     		User u = new User();
     		String score = jTextField2.getText();
     		u.create(jTextField1.getText(), Integer.parseInt(score));
