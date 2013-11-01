@@ -25,6 +25,7 @@ public class TopScoresWindow extends JFrame{
     public TopScoresWindow(){
         initComponents();
         this.setTitle("Top Scores");
+        this.setLocationRelativeTo(getOwner());
     }
     private void initComponents() {
 
@@ -35,7 +36,7 @@ public class TopScoresWindow extends JFrame{
 
         scoresTable.setEnabled(false);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         //read scores file
         scoresTable.setModel(readModelScores());
         //center values fields
@@ -94,9 +95,9 @@ public class TopScoresWindow extends JFrame{
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
         File file = new File("src/main/java/com/Grateds/Reversi/users.txt");
         if(file.delete()){
-            System.out.println("Scores deleted");
+//            System.out.println("Scores deleted");
         }else{
-            System.out.println("Scores not deleted");
+//            System.out.println("Scores not deleted");
         }
         this.dispose();
     }
@@ -139,12 +140,12 @@ public class TopScoresWindow extends JFrame{
         }
         return model;
     }
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TopScoresWindow().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new TopScoresWindow().setVisible(true);
+//            }
+//        });
+//    }
     
 }
