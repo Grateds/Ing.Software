@@ -42,6 +42,8 @@ public class SmallWindow extends JFrame implements Observer{
     	      WhiteScore=WScore.toString();      
     }
    
-    public void update(Observable o, Object arg) {}
+    public void update(Observable o, Object arg) {
+        this.repaint();
+    }
     
 }
