@@ -25,7 +25,6 @@ public class NewWinner extends javax.swing.JFrame {
         this.setLocationRelativeTo(getOwner());
         this.setResizable(false);
         this.setVisible(true);
-        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
     /**
@@ -44,7 +43,7 @@ public class NewWinner extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("NEW WINNER");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
