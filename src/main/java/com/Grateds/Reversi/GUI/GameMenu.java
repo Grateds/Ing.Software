@@ -63,6 +63,12 @@ public class GameMenu extends JMenuBar{
         
         jMenuItem6.setText("Top scores"); // Top scores
         jMenu1.add(jMenuItem6);
+        jMenuItem6.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent event) {
+                    TopScoresWindow scoreWindow = new TopScoresWindow();
+                    scoreWindow.show();
+        	}
+        });
         jMenu1.add(jSeparator4);
         
         jMenuItem7.setText("Options"); // Options
