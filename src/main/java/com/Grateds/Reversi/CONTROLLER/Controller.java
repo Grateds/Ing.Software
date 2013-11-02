@@ -198,16 +198,5 @@ public class Controller {
 	public void setBoard(Board board){	
 		table.change_board(board);
 	} // end setBoard
-	
-    public void quitGame() {
-        System.exit(0);
-    } // end quitGame
-    
-    public void reset_game_first(boolean b){ // utilizado en MainWindow
-		initialization();
-		turn = b;
-		stopped = false;
-		if (b) update_blackValidMoves();
-		else update_whiteValidMoves();
-	} // reset_game_first_computer
+
 }
