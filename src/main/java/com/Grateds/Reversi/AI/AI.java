@@ -276,15 +276,14 @@ public class AI {
 	 * @param b, the board
 	 * @return boolean
 	 */	
-	public void simulation(Board b, ArrayList<Integer> pMoves){
-//		ArrayList<Integer> pMoves = findValidMove(1);
+	public void simulation(Board b, ArrayList<Integer> pMoves, int piece){
 		Random rand = new Random();
 		int numRan; // random number to select a valid move
 		if (pMoves.size() != 0) {
 			numRan = rand.nextInt(pMoves.size());
 			if ((numRan % 2) != 0) numRan--;
-			controller.set_piece(pMoves.get(numRan), pMoves.get(numRan+1), WHITE_PIECE);
-			solve(WHITE_PIECE, pMoves.get(numRan), pMoves.get(numRan+1));
+			controller.set_piece(pMoves.get(numRan), pMoves.get(numRan+1), piece);
+			solve(piece, pMoves.get(numRan), pMoves.get(numRan+1));
 		}
 	} // end simulation
 }

@@ -95,8 +95,8 @@ public class NewGame extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
     	while(player_piece!=null){
-    		if (player_piece == "White"){controller.reset_game_first(false);this.setVisible(false);}
-    		else{ controller.reset_game_first(true);this.setVisible(false);}
+    		if (player_piece == "White"){controller.reset_game(1);this.setVisible(false);}
+    		else{ controller.reset_game(2);this.setVisible(false);}
     		player_piece = null;
     	}
     	controller.resume();

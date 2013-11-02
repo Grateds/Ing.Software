@@ -29,6 +29,8 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
     private BufferedImage whitePieceImg = null;
     private BufferedImage boardImg = null;
     private int BLACK_PIECE = 2;
+    private int PLAYER_PIECE;
+    private boolean PLAYER_TURN;
     private Board b;
     private Controller controller;
     
@@ -37,6 +39,8 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         addMouseListener(this);
         setBorder(null);
         controller = c;
+        PLAYER_PIECE = controller.get_playerPiece();
+        PLAYER_TURN = (PLAYER_PIECE == BLACK_PIECE) ? true : false;
         b = controller.getBoard();
         b.addObserver(this);
     }
@@ -87,12 +91,12 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         int y=me.getY();
         int col = (x/sizeRect+1);
         int row = (y/sizeRect+1);
-        
-        if (controller.getTurn() && controller.set_piece(row-1, col-1, BLACK_PIECE)){
+        if (PLAYER_TURN && controller.set_piece(row-1, col-1, controller.get_playerPiece())){
         	controller.stop();
         	controller.not_done_movePlayer();
-        	makeMoveIn(col, row, BLACK_PIECE);
+        	makeMoveIn(col, row, PLAYER_PIECE);
         	controller.done_movePlayer();
+        	controller.setCpuTurn();
         	controller.resume();
         }
     }
