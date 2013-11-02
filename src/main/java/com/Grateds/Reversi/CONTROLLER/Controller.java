@@ -199,4 +199,11 @@ public class Controller {
 		table.change_board(board);
 	} // end setBoard
 
+		 public void reset_game_first(boolean b){ 
+		  initialization();
+		  turn = b;
+		  stopped = false;
+		  if (b) update_blackValidMoves();
+		  else update_whiteValidMoves();
+	 } // reset_game_first
 }
