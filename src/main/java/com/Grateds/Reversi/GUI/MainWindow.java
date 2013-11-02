@@ -76,13 +76,13 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jLabel1.setText("Black: "+2);	// score of Black piece
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
+        jLabel1.setText("Black: ");	// score of Black piece
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 22)); 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));        
         add(jLabel1, java.awt.BorderLayout.SOUTH);
 
-        jLabel2.setText("White: "+2);	// score of White piece
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); 
+        jLabel2.setText("White: ");	// score of White piece
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 22)); 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));        
         add(jLabel2, java.awt.BorderLayout.SOUTH);
 
@@ -141,10 +141,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     	controller.update_totalScore();
     	setScores(controller.getBlackScore(),controller.getWhiteScore());
     	jLabel1.setText("Black: "+BlackScore);  // score of Black piece
-    	jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 22)); 
-    	jLabel2.setText("White: "+WhiteScore);  // score of White piece
-    	jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 22));       
-    	gamePanel1.repaint();
+    	jLabel2.setText("White: "+WhiteScore);  // score of White piece    	
     	this.repaint();    	
     }
     

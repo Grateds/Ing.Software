@@ -12,9 +12,6 @@ public class SmallWindow extends JFrame implements Observer{
 	private GameMenu menuBar;
 	private Controller controller;
 	private Board board;
-	private String WhiteScore;
-	private String BlackScore;
-	private GameGraphicsPanel gameGraphicsPanel1;
 
     public SmallWindow(Controller c) {
         setTitle("Reversi");
@@ -31,18 +28,12 @@ public class SmallWindow extends JFrame implements Observer{
         setResizable(false);
         this.setLocationRelativeTo(getOwner());
         setVisible(true);   
-        setScores(controller.getBlackScore(),controller.getWhiteScore());
     } // end MainWindow
-    
+   
     public Controller getController(){
     	return controller;
     }
-    
-    private void setScores(Integer BScore, Integer WScore){
-    	      BlackScore=BScore.toString();
-    	      WhiteScore=WScore.toString();      
-    }
-   
+       
     public void update(Observable o, Object arg) {
         controller.get_scores();
         controller.update_totalScore();
