@@ -230,4 +230,8 @@ public class Controller {
 	public void setBoard(Board board){	
 		table.change_board(board);
 	} // end setBoard
+	
+	public void set_load(int x, int y, int value){
+		board[x][y].set_value(value);
+	}
 }
