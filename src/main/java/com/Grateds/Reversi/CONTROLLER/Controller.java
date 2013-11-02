@@ -78,7 +78,7 @@ public class Controller {
 			CPU_TURN = true;
 		}
 		while (!game_over() || runGame){
-			//TimeUnit.SECONDS.sleep(1);
+			TimeUnit.SECONDS.sleep(1);
 			get_scores();
 			if(CPU_TURN && finishMovePlayer && !stopped || (PLAYER_TURN && solver.findValidMove(PLAYER_PIECE).size()==0)){
 				not_done_moveCPU();
