@@ -31,7 +31,8 @@ public class GameMenu extends JMenuBar{
         jMenuItem1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
         		controller.stop();
-            	NewGame window = new NewGame(controller);  		
+            	@SuppressWarnings("unused")
+				NewGame window = new NewGame(controller);  		
         	}
         }); 
         jMenu1.add(jSeparator1);
@@ -58,13 +59,11 @@ public class GameMenu extends JMenuBar{
         jMenu1.add(jMenuItem4);
         jMenu1.add(jSeparator3); 
         
-//      jMenuItem5.setText("Redo"); // Redo
-//      jMenu1.add(jMenuItem5);
-        
         jMenuItem6.setText("Top scores"); // Top scores
         jMenu1.add(jMenuItem6);
         jMenuItem6.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent event) {
+        	@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent event) {
                     TopScoresWindow scoreWindow = new TopScoresWindow();
                     scoreWindow.show();
         	}

@@ -17,7 +17,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class TopScoresWindow extends JFrame{
     
-    private JScrollPane jScrollPane1;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JScrollPane jScrollPane1;
     private JTable scoresTable;
     private JButton deleteButton;
     private JButton exitButton;
@@ -104,8 +108,10 @@ public class TopScoresWindow extends JFrame{
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
     }
-    public javax.swing.table.DefaultTableModel readModelScores(){
-        String id;
+    @SuppressWarnings("serial")
+	public javax.swing.table.DefaultTableModel readModelScores(){
+        @SuppressWarnings("unused")
+		String id;
         String name;
         Integer score;
         javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(){

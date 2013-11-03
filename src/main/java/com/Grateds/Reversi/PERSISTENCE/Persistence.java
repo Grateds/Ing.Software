@@ -5,7 +5,6 @@ import com.Grateds.Reversi.MODEL.Board;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Vector;
 import java.io.*;
 
 public class Persistence {

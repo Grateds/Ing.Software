@@ -93,11 +93,13 @@ public class Controller {
             if(game_over() && finishMovePlayer && finishMoveCPU){
             	if(PLAYER_PIECE == BLACK_PIECE && getBlackScore()>getWhiteScore() && win){
             		JOptionPane.showMessageDialog(null, "YOU WIN");
-            		NewWinner winer = new NewWinner(this);
+            		@SuppressWarnings("unused")
+					NewWinner winer = new NewWinner(this);
             		win = false;
             	}else if (PLAYER_PIECE == WHITE_PIECE && getBlackScore()<getWhiteScore() && win){
             		JOptionPane.showMessageDialog(null, "YOU WIN");
-            		NewWinner winer = new NewWinner(this);
+            		@SuppressWarnings("unused")
+					NewWinner winer = new NewWinner(this);
             		win = false;
             	}else if (PLAYER_PIECE == BLACK_PIECE && getBlackScore()<getWhiteScore() && loose) {
             		JOptionPane.showMessageDialog(null, "CPU WINS");
@@ -127,27 +129,27 @@ public class Controller {
 	
 	public void done_moveCPU(){
 		finishMoveCPU = true;
-	} 
+	} // end done_moveCPU
 	
 	public void not_done_moveCPU(){
 		finishMoveCPU = false;
-	}
+	} // end not_done_moveCPU
 	
 	public void done_movePlayer(){
 		finishMovePlayer = true;
-	} 
+	} // end done_movePlayer
 	
 	public void not_done_movePlayer(){
 		finishMovePlayer = false;
-	}
+	} // end not_done_movePlayer
 	
 	public void stop(){
 		stopped = true;
-	} 
+	} // end stop
 	
 	public void resume(){
 		stopped = false;
-	}
+	} // end resume
 	
 	public boolean set_piece(int x, int y, int piece){
 		if (isValidMove(piece,x,y)){
@@ -172,7 +174,7 @@ public class Controller {
 	
 	public int get_playerPiece(){
 		return PLAYER_PIECE;
-	}
+	} // end_getBoard
 	
 	public void setPlayerTurn(){
 		PLAYER_TURN = true;
@@ -192,40 +194,28 @@ public class Controller {
 		return save.loadBoard();
 	} // end loadBoard
 	
-	public void drawBoard(){
-		System.out.println("    0 1 2 3 4 5 6 7");
-		System.out.println("    ---------------");
-		for(int i=0; i<8; i++){
-			System.out.print(i+" | ");
-			for(int j=0; j<8; j++){
-				System.out.print(table.get(i, j)+" ");
-			}
-			System.out.println("");
-		}
-	} // end drawBoard
-	
 	public void update_totalScore(){
 		if (PLAYER_PIECE == BLACK_PIECE) totalScore = (BLACK_SCORE-WHITE_SCORE)*324;
 		else totalScore = (WHITE_SCORE-BLACK_SCORE)*324;
-	}
+	} // end update_totalScore
 	
 	public int get_totalScore(){
 		return totalScore;
-	}
+	} // end get_totalScore
 	
 	public void get_scores(){
 		Vector<Integer> v =	table.get_score();
 		BLACK_SCORE = v.get(0);
 		WHITE_SCORE = v.get(1);
-	}
+	} // end get_scores()
 	
 	public int getWhiteScore() { 
 		return WHITE_SCORE;
-	}// end getwhitescore 
+	}// end getWhiteScore 
 
 	public int getBlackScore() {  
 		return BLACK_SCORE;
-	} // endgetblackscore
+	} // end getBlackScore
 	
 	public void setBoard(Board board){	
 		table.change_board(board);

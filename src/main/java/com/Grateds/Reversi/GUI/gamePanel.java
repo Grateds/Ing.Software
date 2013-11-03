@@ -9,7 +9,11 @@ import javax.swing.JPanel;
 
 public class gamePanel extends JPanel{
 
-    private BufferedImage background;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private BufferedImage background;
 
     public gamePanel() {
         try {
