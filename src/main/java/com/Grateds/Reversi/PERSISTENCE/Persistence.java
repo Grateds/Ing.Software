@@ -1,4 +1,4 @@
-package com.Grateds.Reversi.SAVEANDLOAD;
+package com.Grateds.Reversi.PERSISTENCE;
 
 import com.Grateds.Reversi.MODEL.Board;
 
@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.Vector;
 import java.io.*;
 
-public class SaveAndLoad {
+public class Persistence {
 
 	public void saveBoard(Board b){
        	FileWriter fichero = null;
