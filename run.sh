@@ -11,3 +11,4 @@ export CLASSPATH=$CLASSPATH:target/classes
 
 echo "*********************  EXECUTING PROGRAM  **********************"
 java -cp $CLASSPATH com.Grateds.Reversi.App
+

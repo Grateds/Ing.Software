@@ -119,4 +119,7 @@ public class Board extends Observable{
 		this.setChanged();
 		this.notifyObservers();
 	}
+		public void set_load(int x, int y, int value){
+		board[x][y].set_value(value);
+	}
 }

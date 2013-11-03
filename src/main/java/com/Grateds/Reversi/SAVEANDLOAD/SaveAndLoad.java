@@ -1,10 +1,11 @@
 package com.Grateds.Reversi.SAVEANDLOAD;
 
 import com.Grateds.Reversi.MODEL.Board;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.File;
+import java.util.Vector;
 import java.io.*;
 
 public class SaveAndLoad {
@@ -20,7 +21,11 @@ public class SaveAndLoad {
             		pw.print(b.get(i, j)+" ");
                 }
                 pw.println("");
-			}
+			} 
+            pw.println(b.get_score().elementAt(0)); //cantidad de negras 
+            pw.println(b.get_score().elementAt(1)); //cantidad de blancas
+            pw.println(b.get_score().elementAt(0)+ b.get_score().elementAt(1)); // numero de calas
+            
             } catch (Exception e) {
                 e.printStackTrace();
             } finally{
@@ -53,7 +58,7 @@ public class SaveAndLoad {
         int index = 0;
         for (int i = 0; i < 8; i++){
         	for (int j = 0; j < 8; j++){
-            	b.set(i, j, numArray.get(index++));
+            	b.set_load(i, j, numArray.get(index++));
             } 
         }
         return b;

@@ -230,4 +230,6 @@ public class Controller {
 	public void setBoard(Board board){	
 		table.change_board(board);
 	} // end setBoard
+	
+
 }
