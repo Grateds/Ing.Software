@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JOptionPane;
 
-import com.Grateds.Reversi.SAVEANDLOAD.*;
+import com.Grateds.Reversi.PERSISTENCE.*;
 import com.Grateds.Reversi.GUI.NewWinner;
 import com.Grateds.Reversi.MODEL.*;
 import com.Grateds.Reversi.AI.*;
@@ -14,7 +14,7 @@ import com.Grateds.Reversi.AI.*;
 public class Controller {
 	
 	private Board table;
-    private SaveAndLoad save;
+    private Persistence save;
 	private AI solver;
 	private int BLACK_PIECE = 2;
 	private int WHITE_PIECE = 1;
@@ -35,7 +35,7 @@ public class Controller {
 	public Controller(){
 		table = new Board();
 		solver = new AI(this);
-		save = new SaveAndLoad();
+		save = new Persistence();
 		PLAYER_PIECE = 2;
 		PLAYER_TURN = true;
 		totalScore = 0;
