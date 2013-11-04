@@ -21,10 +21,6 @@ public class Persistence {
                 }
                 pw.println("");
 			} 
-            pw.println(b.get_score().elementAt(0)); //cantidad de negras 
-            pw.println(b.get_score().elementAt(1)); //cantidad de blancas
-            pw.println(b.get_score().elementAt(0)+ b.get_score().elementAt(1)); // numero de calas
-            
             } catch (Exception e) {
                 e.printStackTrace();
             } finally{
