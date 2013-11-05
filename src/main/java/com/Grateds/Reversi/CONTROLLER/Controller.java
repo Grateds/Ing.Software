@@ -34,8 +34,8 @@ public class Controller {
 	private ArrayList<Integer> cpuValidMoves = new ArrayList<Integer>();
 	private ArrayList<Integer> playerValidMoves = new ArrayList<Integer>();
                 
-        MainWindow mw;
-        SmallWindow sw;
+    MainWindow mw;
+    SmallWindow sw;
 	
 	public Controller(){
 		table = new Board();
@@ -160,7 +160,7 @@ public class Controller {
 		if (isValidMove(piece,x,y)){
 			table.set(x, y, piece);
 			solver.solve(piece, x, y);
-			return true;// succesful
+			return true; // succesful
 		}else return false;
 	} // end set_piece
 	
@@ -172,19 +172,21 @@ public class Controller {
 		solver.simulation(table,playerMoves, piece);
 	} // end cpu_move
         
-        public void setWindows(MainWindow main, SmallWindow small){
-            mw = main;
-            sw = small;
+    public void setWindows(MainWindow main, SmallWindow small){
+        mw = main;
+        sw = small;
+    } // end setWindows
+    
+    public void changeView(){
+        if(mw.isVisible()){
+        	mw.setVisible(false);
+            sw.setVisible(true);
+        }else if (sw.isVisible()){
+            sw.setVisible(false);
+            mw.setVisible(true);
         }
-        public void changeView(){
-            if(mw.isVisible()){
-                mw.setVisible(false);
-                sw.setVisible(true);
-            }else if (sw.isVisible()){
-                sw.setVisible(false);
-                mw.setVisible(true);
-            }
-        }
+    } // end changeView
+    
 	public Board getBoard(){
 		// Get current table
 		return table;
@@ -238,6 +240,4 @@ public class Controller {
 	public void setBoard(Board board){	
 		table.change_board(board);
 	} // end setBoard
-	
-
-}
+} // end class Controller
