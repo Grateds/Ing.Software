@@ -70,8 +70,13 @@ public class GameMenu extends JMenuBar{
         });
         jMenu1.add(jSeparator4);
         
-        jMenuItem7.setText("Options"); // Options
+        jMenuItem7.setText("Change view"); // Options
         jMenu1.add(jMenuItem7);
+        jMenuItem7.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent event) {
+                    controller.changeView();
+        	}
+        });
         jMenu1.add(jSeparator5); 
         
         jMenuItem8.setText("Exit"); // Exit

@@ -27,7 +27,7 @@ public class SmallWindow extends JFrame implements Observer{
         this.setSize(565, 605);
         setResizable(false);
         this.setLocationRelativeTo(getOwner());
-        setVisible(true);   
+        //setVisible(true);   
     } // end MainWindow
    
     public Controller getController(){

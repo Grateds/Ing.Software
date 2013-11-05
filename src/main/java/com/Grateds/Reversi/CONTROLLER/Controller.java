@@ -10,6 +10,8 @@ import com.Grateds.Reversi.PERSISTENCE.*;
 import com.Grateds.Reversi.GUI.NewWinner;
 import com.Grateds.Reversi.MODEL.*;
 import com.Grateds.Reversi.AI.*;
+import com.Grateds.Reversi.GUI.MainWindow;
+import com.Grateds.Reversi.GUI.SmallWindow;
 
 public class Controller {
 	
@@ -166,7 +168,23 @@ public class Controller {
 	public void cpu_move(ArrayList<Integer> playerMoves, int piece){
 		solver.simulation(table,playerMoves, piece);
 	} // end cpu_move
-	
+        MainWindow mw;
+        SmallWindow sw;
+        public void setWindows(MainWindow main, SmallWindow small){
+            mw = main;
+            sw = small;
+        }
+        public void changeView(){
+            if(mw.isVisible()){
+                mw.setVisible(false);
+                sw.setVisible(true);
+                //sw.repaint();
+            }else if (sw.isVisible()){
+                sw.setVisible(false);
+                mw.setVisible(true);
+                //mw.repaint();
+            }
+        }
 	public Board getBoard(){
 		// Get current table
 		return table;

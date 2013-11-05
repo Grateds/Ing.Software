@@ -26,7 +26,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
         initComponents();
         setResizable(false);
         this.setLocationRelativeTo(getOwner());
-        setVisible(true);
+        //setVisible(true);
         controller.initialization();
         setScores(controller.getBlackScore(),controller.getWhiteScore());
     } // end MainWindow
