@@ -22,7 +22,7 @@ public class SmallWindow extends JFrame implements Observer{
         setJMenuBar(menuBar);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         controller.initialization(); // fix
-        GameGraphicsPanel gameGraphicsPanel1 = new GameGraphicsPanel(c);
+        GameGraphicsPanel gameGraphicsPanel1 = new GameGraphicsPanel(c,1);
         this.add(gameGraphicsPanel1);
         this.setSize(565, 605);
         setResizable(false);

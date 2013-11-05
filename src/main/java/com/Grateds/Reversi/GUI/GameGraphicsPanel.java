@@ -34,9 +34,10 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
     private Board b;
     private Controller controller;
     
-    public GameGraphicsPanel(Controller c){
-        loadImages();
-        addMouseListener(this);
+    public GameGraphicsPanel(Controller c, int skin){
+    	if (skin==0) loadImages1();
+    	else loadImages2();
+    	addMouseListener(this);
         setBorder(null);
         controller = c;
         PLAYER_PIECE = controller.get_playerPiece();
@@ -45,7 +46,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         b.addObserver(this);
     }
 
-    private void loadImages() {
+    private void loadImages1() {
         try {																
             boardImg = ImageIO.read(new File("img/skin_1/board.jpg"));
             blackPieceImg = ImageIO.read(new File("img/skin_1/blackpiece.png"));
@@ -54,6 +55,17 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
             e.printStackTrace();
         }
     }
+    
+    private void loadImages2() {
+        try {																
+            boardImg = ImageIO.read(new File("img/skin_2/board.jpg"));
+            blackPieceImg = ImageIO.read(new File("img/skin_2/blackpiece.png"));
+            whitePieceImg = ImageIO.read(new File("img/skin_2/whitepiece.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g.drawImage(boardImg, WIDTH, WIDTH, this);

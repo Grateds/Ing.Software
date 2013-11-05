@@ -49,7 +49,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         gamePanel1 = new gamePanel();
-        gameGraphicsPanel1 = new GameGraphicsPanel(controller);
+        gameGraphicsPanel1 = new GameGraphicsPanel(controller,0);
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
