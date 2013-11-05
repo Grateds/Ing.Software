@@ -17,10 +17,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class GameGraphicsPanel extends JPanel implements MouseListener, Observer{
-    
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	int sizeRect = 70;
@@ -34,6 +31,11 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
     private Board b;
     private Controller controller;
     
+    /**
+     * 
+     * @param c, the Controller
+     * @param skin
+     */
     public GameGraphicsPanel(Controller c, int skin){
     	if (skin==0) loadImages1();
     	else loadImages2();
@@ -44,7 +46,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         PLAYER_TURN = (PLAYER_PIECE == BLACK_PIECE) ? true : false;
         b = controller.getBoard();
         b.addObserver(this);
-    }
+    } // end GameGraphicsPanel
 
     private void loadImages1() {
         try {																
@@ -54,7 +56,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } // end loadImages1
     
     private void loadImages2() {
         try {																
@@ -64,7 +66,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } // end loadImages2
     
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
@@ -73,19 +75,24 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         if(controller.getBoard()!=null){
             drawBoard(g,controller.getBoard());
         }
-    }
+    } // end paint
     
     private void drawPiece(Graphics g, BufferedImage img, int row, int col) {
         g.drawImage(img,((col-1) * sizeRect+2),((row-1) * sizeRect)+2, null);
-    }
+    } // end drawPiece
     
     private void makeMoveIn(int col, int row, int piece) {
         Graphics g = getGraphics();
         // update model with the move of the player
         if (piece == BLACK_PIECE) drawPiece(g,blackPieceImg, row, col);
         else drawPiece(g,blackPieceImg, row, col);
-    }
+    } // end makeMoveIn
     
+    /**
+     * 
+     * @param g
+     * @param b, the Board
+     */
     public void drawBoard(Graphics g,Board b){
         for(int i= 0; i < 8; i++){
             for(int j= 0; j < 8; j++){
@@ -96,7 +103,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
                 }
             }
         }
-    }
+    } // end drawBoard
     
     public void mouseClicked(MouseEvent me) {
         int x=me.getX();
@@ -111,7 +118,7 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
         	controller.setCpuTurn();
         	controller.resume();
         }
-    }
+    } // end mouseClicked
     
     public void mousePressed(MouseEvent me) {}
     public void mouseReleased(MouseEvent me) {}
@@ -121,5 +128,5 @@ public class GameGraphicsPanel extends JPanel implements MouseListener, Observer
 	public void update(Observable arg0, Object arg1) {
 		Graphics g = getGraphics();
 		drawBoard(g,controller.getBoard());
-	}
+	} // end update
 }
