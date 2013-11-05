@@ -9,6 +9,10 @@ import java.io.*;
 
 public class Persistence {
 
+	/**
+	 * Method to save the game to a file
+	 * @param b, the Board
+	 */
 	public void saveBoard(Board b){
        	FileWriter fichero = null;
         PrintWriter pw = null;
@@ -33,6 +37,10 @@ public class Persistence {
             }
     } // end saveBoard
 	
+	/**
+	 * Method to load a game from a file
+	 * @return Board b
+	 */
     public Board loadBoard(){
     	ArrayList<Integer> numArray = new ArrayList<Integer>();	
     	Board b = new Board();  	
@@ -58,5 +66,4 @@ public class Persistence {
         }
         return b;
     } //end loadBoard  
-	
-}
+} // end class Persistence
