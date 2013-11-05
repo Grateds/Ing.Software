@@ -23,9 +23,8 @@ public class GameMenu extends JMenuBar{
 		controller = c;
 		board = c.getBoard();	
 		
-        // Menu Game
         this.add(jMenu1);
-        jMenu1.setText("Game");
+        jMenu1.setText("Game"); // Menu Game
         jMenuItem1.setText("New game");
         jMenu1.add(jMenuItem1);
         jMenuItem1.addActionListener(new ActionListener() {
@@ -55,9 +54,9 @@ public class GameMenu extends JMenuBar{
         });
         jMenu1.add(jSeparator2);
         
-        jMenuItem4.setText("Skins"); // Undo
-        jMenu1.add(jMenuItem4);
-        jMenu1.add(jSeparator3); 
+//      jMenuItem4.setText("Skins"); 
+//      jMenu1.add(jMenuItem4);
+//      jMenu1.add(jSeparator3); 
         
         jMenuItem6.setText("Top scores"); // Top scores
         jMenu1.add(jMenuItem6);
@@ -70,7 +69,7 @@ public class GameMenu extends JMenuBar{
         });
         jMenu1.add(jSeparator4);
         
-        jMenuItem7.setText("Change view"); // Options
+        jMenuItem7.setText("Change view"); // Change view
         jMenu1.add(jMenuItem7);
         jMenuItem7.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
@@ -92,7 +91,7 @@ public class GameMenu extends JMenuBar{
         jMenu2.add(jMenuItem9);
         jMenuItem9.setText("About");
         
-    }
+    } // end GameMenu
 
     JMenuBar jMenuBar1 = new javax.swing.JMenuBar();
     JMenu jMenu1 = new javax.swing.JMenu();
@@ -103,9 +102,9 @@ public class GameMenu extends JMenuBar{
     JMenuItem jMenuItem3 = new javax.swing.JMenuItem();
     Separator jSeparator2 = new javax.swing.JPopupMenu.Separator();
     
-    JMenuItem jMenuItem4 = new javax.swing.JMenuItem();
+//  JMenuItem jMenuItem4 = new javax.swing.JMenuItem();
 //  JMenuItem jMenuItem5 = new javax.swing.JMenuItem();
-    Separator jSeparator3 = new javax.swing.JPopupMenu.Separator();
+//  Separator jSeparator3 = new javax.swing.JPopupMenu.Separator();
     
     JMenuItem jMenuItem6 = new javax.swing.JMenuItem();
     Separator jSeparator4 = new javax.swing.JPopupMenu.Separator();
