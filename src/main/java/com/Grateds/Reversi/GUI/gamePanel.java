@@ -8,10 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class gamePanel extends JPanel{
-
-    /**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private BufferedImage background;
 
@@ -22,10 +19,11 @@ public class gamePanel extends JPanel{
             e.printStackTrace();
         }
         setBorder(null);
-    }
+    } // end gamePanel
+    
     public void paint(Graphics g) {
         g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
         setOpaque(false);
         super.paint(g);
-    }
+    } // end paint
 }
