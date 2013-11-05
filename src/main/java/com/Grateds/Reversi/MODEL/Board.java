@@ -69,11 +69,11 @@ public class Board extends Observable{
 	
 	public void set_suggest(int x, int y, int value){
 		board[x][y].suggest(value);	
-	}
+	} // end set_suggest
 	
 	public int getSuggest(int x, int y){
 		return board[x][y].get_suggest();
-	}
+	} // end getSuggest
 	
 	public void resetSuggest(){
 		for(int i=0; i<COL; i++){
@@ -81,7 +81,7 @@ public class Board extends Observable{
 				board[j][i].suggest(0);
 			}
 		}
-	}
+	} // end resetSuggest
 	
 	public int get(int x, int y){
 		return board[x][y].get_value();
@@ -119,7 +119,7 @@ public class Board extends Observable{
 		this.setChanged();
 		this.notifyObservers();
 	}
-		public void set_load(int x, int y, int value){
+	public void set_load(int x, int y, int value){
 		board[x][y].set_value(value);
-	}
+	} // end set_load
 }
