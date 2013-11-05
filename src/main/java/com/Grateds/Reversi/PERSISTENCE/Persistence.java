@@ -21,16 +21,16 @@ public class Persistence {
                 }
                 pw.println("");
 			} 
-            } catch (Exception e) {
+        }catch (Exception e) {
                 e.printStackTrace();
-            } finally{
+        } finally{
                try{
             	   if (null != fichero) // I make sure to close the file
             		   fichero.close();
                }catch (Exception e2) {
                   e2.printStackTrace();
                }
-            }
+        }
     } // end saveBoard
 	
     public Board loadBoard(){
