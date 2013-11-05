@@ -33,12 +33,12 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     
     public Controller getController(){
     	return controller;
-    }
+    } // end getController
     
     private void setScores(Integer BScore, Integer WScore){
     	BlackScore=BScore.toString();
     	WhiteScore=WScore.toString();      
-    }
+    } // end setScores
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -144,7 +144,7 @@ public class MainWindow extends javax.swing.JFrame implements Observer {
     	jLabel1.setText("Black: "+BlackScore);  // score of Black piece
     	jLabel2.setText("White: "+WhiteScore);  // score of White piece    	
     	this.repaint();    	
-    }
+    } // end update
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.Grateds.Reversi.GUI.GameGraphicsPanel gameGraphicsPanel1;
