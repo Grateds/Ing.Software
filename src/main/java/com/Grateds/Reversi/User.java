@@ -33,7 +33,7 @@ public class User {
 		PrintWriter pw = null;
 		String key = id.toString();
 		try{
-			usersFile = new FileWriter("src/main/java/com/Grateds/Reversi/users.txt");
+			usersFile = new FileWriter("users.txt");
 			pw = new PrintWriter(usersFile);
 			int i=0;
 			while(i<usr.size()){
@@ -56,7 +56,7 @@ public class User {
 		String name;
 		String score;
 		try{
-			Scanner usersFile = new Scanner(new FileReader("src/main/java/com/Grateds/Reversi/users.txt"));
+			Scanner usersFile = new Scanner(new FileReader("users.txt"));
 			while(usersFile.hasNext()){
 				id = usersFile.next();
 				name = usersFile.next();
@@ -77,7 +77,7 @@ public class User {
 		FileWriter usersFile = null;
 		PrintWriter pw = null;
 		try{
-			usersFile = new FileWriter("src/main/java/com/Grateds/Reversi/users.txt",true);
+			usersFile = new FileWriter("users.txt",true);
 			pw = new PrintWriter(usersFile);
 			pw.print(usr.id+" ");
 			pw.print(usr.Name+" ");

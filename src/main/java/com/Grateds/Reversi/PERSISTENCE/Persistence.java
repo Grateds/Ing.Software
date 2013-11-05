@@ -17,7 +17,7 @@ public class Persistence {
        	FileWriter fichero = null;
         PrintWriter pw = null;
         try{
-            fichero = new FileWriter("src/main/java/com/Grateds/Reversi/savedBoard.txt");
+            fichero = new FileWriter("savedBoard.txt");
             pw = new PrintWriter(fichero);                   						
             for (int i = 0; i < 8; i++){
             	for (int j = 0; j < 8; j++){
@@ -44,7 +44,7 @@ public class Persistence {
     public Board loadBoard(){
     	ArrayList<Integer> numArray = new ArrayList<Integer>();	
     	Board b = new Board();  	
-        File f = new File("src/main/java/com/Grateds/Reversi/savedBoard.txt");
+        File f = new File("savedBoard.txt");
         int numero;
         Scanner entrada = null;  
         try {

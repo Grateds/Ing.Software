@@ -94,7 +94,7 @@ public class TopScoresWindow extends JFrame{
         pack();
     }
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        File file = new File("src/main/java/com/Grateds/Reversi/users.txt");
+        File file = new File("users.txt");
         if(file.delete()){
 //            System.out.println("Scores deleted");
         }else{
@@ -127,7 +127,7 @@ public class TopScoresWindow extends JFrame{
         model.addColumn("User");
         model.addColumn("Score");
         try{
-            Scanner usersFile = new Scanner(new FileReader("src/main/java/com/Grateds/Reversi/users.txt"));
+            Scanner usersFile = new Scanner(new FileReader("users.txt"));
             while(usersFile.hasNext()){
                 Vector<Object> usr = new Vector<Object>();
                 id = usersFile.next();
