@@ -33,6 +33,9 @@ public class Controller {
 	private int totalScore;
 	private ArrayList<Integer> cpuValidMoves = new ArrayList<Integer>();
 	private ArrayList<Integer> playerValidMoves = new ArrayList<Integer>();
+                
+        MainWindow mw;
+        SmallWindow sw;
 	
 	public Controller(){
 		table = new Board();
@@ -168,8 +171,7 @@ public class Controller {
 	public void cpu_move(ArrayList<Integer> playerMoves, int piece){
 		solver.simulation(table,playerMoves, piece);
 	} // end cpu_move
-        MainWindow mw;
-        SmallWindow sw;
+        
         public void setWindows(MainWindow main, SmallWindow small){
             mw = main;
             sw = small;
@@ -178,11 +180,9 @@ public class Controller {
             if(mw.isVisible()){
                 mw.setVisible(false);
                 sw.setVisible(true);
-                //sw.repaint();
             }else if (sw.isVisible()){
                 sw.setVisible(false);
                 mw.setVisible(true);
-                //mw.repaint();
             }
         }
 	public Board getBoard(){
