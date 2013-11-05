@@ -18,6 +18,10 @@ public class GameMenu extends JMenuBar{
 	private Controller controller;
 	private Board board = new Board();
 
+	/**
+	 * Game Options Menu
+	 * @param c, the Controller
+	 */
 	public GameMenu(Controller c){
 		
 		controller = c;
@@ -107,4 +111,4 @@ public class GameMenu extends JMenuBar{
     
     JMenu jMenu2 = new javax.swing.JMenu();
     JMenuItem jMenuItem9 = new javax.swing.JMenuItem();
-}
+} // end class GameMenu
