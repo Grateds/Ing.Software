@@ -17,11 +17,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class TopScoresWindow extends JFrame{
     
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private JScrollPane jScrollPane1;
+    private static final long serialVersionUID = 1L;
+    private JScrollPane jScrollPane1;
     private JTable scoresTable;
     private JButton deleteButton;
     private JButton exitButton;
