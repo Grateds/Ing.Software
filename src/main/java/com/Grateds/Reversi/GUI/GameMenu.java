@@ -54,10 +54,6 @@ public class GameMenu extends JMenuBar{
         });
         jMenu1.add(jSeparator2);
         
-//      jMenuItem4.setText("Skins"); 
-//      jMenu1.add(jMenuItem4);
-//      jMenu1.add(jSeparator3); 
-        
         jMenuItem6.setText("Top scores"); // Top scores
         jMenu1.add(jMenuItem6);
         jMenuItem6.addActionListener(new ActionListener() {
@@ -89,8 +85,7 @@ public class GameMenu extends JMenuBar{
         this.add(jMenu2); // Menu Help
         jMenu2.setText("Help");
         jMenu2.add(jMenuItem9);
-        jMenuItem9.setText("About");
-        
+        jMenuItem9.setText("About");     
     } // end GameMenu
 
     JMenuBar jMenuBar1 = new javax.swing.JMenuBar();
@@ -100,11 +95,7 @@ public class GameMenu extends JMenuBar{
     
     JMenuItem jMenuItem2 = new javax.swing.JMenuItem();
     JMenuItem jMenuItem3 = new javax.swing.JMenuItem();
-    Separator jSeparator2 = new javax.swing.JPopupMenu.Separator();
-    
-//  JMenuItem jMenuItem4 = new javax.swing.JMenuItem();
-//  JMenuItem jMenuItem5 = new javax.swing.JMenuItem();
-//  Separator jSeparator3 = new javax.swing.JPopupMenu.Separator();
+    Separator jSeparator2 = new javax.swing.JPopupMenu.Separator(); 
     
     JMenuItem jMenuItem6 = new javax.swing.JMenuItem();
     Separator jSeparator4 = new javax.swing.JPopupMenu.Separator();
