@@ -3,7 +3,7 @@ package com.Grateds.Reversi.MODEL;
 import java.util.Observable;
 import java.util.Vector;
 
-public class Board extends Observable{
+public class Board extends Observable implements Model{
 	
 	private final int BLACK_PIECE = 2; // represents black piece
 	private final int WHITE_PIECE = 1; // represents white piece

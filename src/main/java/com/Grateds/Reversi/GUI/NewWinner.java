@@ -1,7 +1,7 @@
 package com.Grateds.Reversi.GUI;
 
-import com.Grateds.Reversi.User;
 import com.Grateds.Reversi.CONTROLLER.Controller;
+import com.Grateds.Reversi.PERSISTENCE.User;
 
 
 /**
